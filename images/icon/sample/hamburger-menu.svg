@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ハンバーガーメニュー">
+  <defs>
+    <symbol id="hamburger-menu" viewBox="0 0 64 64" fill="none">
+      <rect width="64" height="64" rx="12" fill="currentColor"/>
+      <path d="M16 24H48" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      <path d="M16 32H48" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      <path d="M16 40H48" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="hamburger-menu-svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <use class="hamburger-menu" href="./images/icon/sample/hamburger-menu.svg#hamburger-menu" x="0" y="0" fill="" stroke="none"></use>
+</svg>

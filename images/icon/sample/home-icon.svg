@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ホームアイコン">
+  <defs>
+    <symbol id="home-icon" viewBox="0 0 24 24" fill="none">
+      <path d="M12 6.19L17 10.69V18.5H15V12.5H9V18.5H7V10.69L12 6.19ZM12 3.5L2 12.5H5V20.5H11V14.5H13V20.5H19V12.5H22L12 3.5Z" fill="black"/>
+    </symbol>
+    <symbol id="home-icon-40" viewBox="0 0 40 40" fill="none">
+      <path d="M20 10.3167L28.3333 17.8167V30.8333H25V20.8333H15V30.8333H11.6667V17.8167L20 10.3167ZM20 5.83333L3.33334 20.8333H8.33334V34.1667H18.3333V24.1667H21.6667V34.1667H31.6667V20.8333H36.6667L20 5.83333Z" fill="black"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="home-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <use class="home-icon" href="./images/icon/sample/home-icon.svg#home-icon" x="0" y="0" fill="" stroke="none"></use>
+</svg>
+
+<svg class="home-icon-40-svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <use class="home-icon-40" href="./images/icon/sample/home-icon.svg#home-icon-40" x="0" y="0" fill="" stroke="none"></use>
+</svg>

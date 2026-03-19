@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="テンプレートアイコン">
+  <defs>
+    <symbol id="template-id" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="8" fill="#ffffffff" stroke="#77777788" stroke-width="3"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7.47917e-07L2.57143 9.42857L0 12L2.57143 14.5714L12 24L14.5714 21.4286L5.14286 12L14.5714 2.57143L12 7.47917e-07Z" fill="#777777ff"/>
+    </symbol>
+    <symbol id="template-id-red" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="8" fill="#ffffffff" stroke="#77777788" stroke-width="3"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7.47917e-07L2.57143 9.42857L0 12L2.57143 14.5714L12 24L14.5714 21.4286L5.14286 12L14.5714 2.57143L12 7.47917e-07Z" fill="#ff3300ff"/>
+      </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="emplate-id-svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <use class="template-id" href="./images/icon/_template.svg#template-id" x="0" y="0" fill="" stroke="none"></use>
+</svg>
+
+<svg class="emplate-id-red-svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <use class="template-id-red" href="./images/icon/_template.svg#template-id-red" x="0" y="0" fill="" stroke="none"></use>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="アコーディオンの開くアイコン">
+  <defs>
+    <symbol id="accordion-icon" viewBox="0 0 33 20" fill="none">
+      <path d="M31.8269 0.671708C32.608 1.45276 32.608 2.71879 31.8269 3.49983L16.156 19.1717L13.242 16.2567L0.58573 3.6014C-0.195289 2.82038 -0.195231 1.55433 0.58573 0.773271L0.77323 0.585771C1.55428 -0.195246 2.82032 -0.195267 3.60136 0.585771L16.2576 13.241L28.9129 0.585771C29.6939 -0.195223 30.9599 -0.195113 31.741 0.585771L31.8269 0.671708Z" fill="#777777"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <use class="accordion-icon" href="./images/icon/sample/accordion-icon.svg#accordion-icon" x="0" y="0" fill="" stroke="none"></use>
+</svg>

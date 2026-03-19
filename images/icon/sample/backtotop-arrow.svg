@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ページトップへ戻る矢印">
+  <defs>
+    <symbol id="backtotop-arrow" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10.5" fill="white" stroke="#777777" stroke-width="3"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" pointer-events="none" d="M11.2286 5.57148C11.6546 5.14543 12.3454 5.14543 12.7714 5.57148L13.5429 6.34291L18.4286 11.2286C18.8546 11.6547 18.8546 12.3454 18.4286 12.7715C18.0025 13.1975 17.3118 13.1975 16.8857 12.7715L14.8286 10.7143C13.2664 9.15216 10.7336 9.15216 9.17143 10.7143L7.11429 12.7715C6.68824 13.1975 5.99748 13.1975 5.57143 12.7715C5.14538 12.3454 5.14538 11.6547 5.57143 11.2286L11.2286 5.57148Z" fill="#777777"/>
+      <path pointer-events="none" d="M12.109 7.20007C12.7116 7.20007 13.2 7.68851 13.2 8.29104V16.2914C13.2 16.894 12.7116 17.3824 12.109 17.3824C11.5065 17.3824 11.0181 16.894 11.0181 16.2914V8.29104C11.0181 7.68851 11.5065 7.20007 12.109 7.20007Z" fill="#777777"/>
+    </symbol>
+    <symbol id="backtotop-arrow-red" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10.5" fill="#ffffff88" stroke="#ff0000ff" stroke-width="3"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" pointer-events="none" d="M11.2286 5.57148C11.6546 5.14543 12.3454 5.14543 12.7714 5.57148L13.5429 6.34291L18.4286 11.2286C18.8546 11.6547 18.8546 12.3454 18.4286 12.7715C18.0025 13.1975 17.3118 13.1975 16.8857 12.7715L14.8286 10.7143C13.2664 9.15216 10.7336 9.15216 9.17143 10.7143L7.11429 12.7715C6.68824 13.1975 5.99748 13.1975 5.57143 12.7715C5.14538 12.3454 5.14538 11.6547 5.57143 11.2286L11.2286 5.57148Z" fill="#ff0000ff"/>
+      <path pointer-events="none" d="M12.109 7.20007C12.7116 7.20007 13.2 7.68851 13.2 8.29104V16.2914C13.2 16.894 12.7116 17.3824 12.109 17.3824C11.5065 17.3824 11.0181 16.894 11.0181 16.2914V8.29104C11.0181 7.68851 11.5065 7.20007 12.109 7.20007Z" fill="#ff0000ff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="backtotop-arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <use class="backtotop-arrow" href="./images/icon/sample/backtotop-arrow.svg#backtotop-arrow" x="0" y="0" fill="" stroke="none"></use>
+</svg>
+
+<svg class="backtotop-arrow-red-svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <use class="backtotop-arrow-red" href="./images/icon/sample/backtotop-arrow.svg#backtotop-arrow-red" x="0" y="0" fill="" stroke="none"></use>
+</svg>

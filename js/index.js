@@ -1,0 +1,528 @@
+import { newsData } from "./news/news-data.js";
+/**
+ * HTMLのheadの、scriptタグ記入のプロパティ
+ * ・defer: 非同期でJSファイルがDL
+ * ・type="module": ファイル内定義の変数がグローバル変数として扱われなくなり、他ファイルで同変数名を使用しても名前空間が分離されているのでお互いに影響を与えない（import文を使用するなら必要）
+ */
+
+/**
+ * 社員紹介カードのアコーディオン制御：
+ * 詳細ボタンのクリックにより、対応するフッターエリアの開閉状態（is-openクラス）を切り替える
+ */
+const memberAccordion = () => {
+  const accordionButtons = document.querySelectorAll('.career-button');
+  accordionButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const footer = btn.closest('.card-column__footer');
+      if (footer) {
+        footer.classList.toggle('is-open');
+      }
+    });
+  });
+};
+
+/**
+ * JSONデータからニュースリストを生成してHTMLに挿入：
+ * テンプレートリテラルでニュースリストごとに該当するターゲットIDのJSONデータを挿入し、HTMLに挿入
+ */
+const renderNewsList = () => {
+  const container = document.querySelector('#news-list-container');
+  if (!container) return;
+  container.innerHTML = '';
+  Object.entries(newsData).forEach(([id, data]) => {
+    const listItem = `
+      <li class="list-item">
+        <button class="news-link open-modal-button" 
+                type="button" 
+                data-modal-target="${id}"
+        >
+          <div class="news-meta">
+            <span class="category ${data.label}">${data.category}</span>
+            <time datetime="${data.date.replaceAll('.', '-')}">${data.date}</time>
+          </div>
+          <div class="news-content">
+            <h3 class="news-title">${data.title}</h3>
+            <p class="news-detail">${data.detail}</p>
+          </div>
+        </button>
+      </li>
+    `;
+    container.insertAdjacentHTML('beforeend', listItem);
+  });
+};
+
+/**
+ * 採用情報の職種別による表示切り替え：
+ * 募集要項・エントリー両エリア左上の職種別ボタンのクリックにより、対応する職種による表示（activeクラス）を切り替える
+ */
+const entryDetailActive = () => {
+  const tabRecruitDetailButtons = document.querySelectorAll('.tab-recruitment-type-btn');
+  tabRecruitDetailButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // クリックされたナビゲーションタブの職種にのみ.activeをクラス付与
+      tabRecruitDetailButtons.forEach((element) => {
+        element.classList.remove('active');
+      });
+      const someBtnClassElements = document.querySelectorAll(`button[data-target="${btn.dataset.target}"]`);
+      someBtnClassElements.forEach((element) => {
+        element.classList.add('active');
+      });
+      // クリックされたナビゲーションタブの職種に連動して、該当する職種の募集要項の内容にのみ.activeをクラス付与
+      const recruitDetailContent = document.querySelectorAll('.detail-content');
+      recruitDetailContent.forEach((element) => {
+        element.classList.remove('active');
+      });
+      const targetId = btn.dataset.target;
+      const targetRecruitDetailContent = document.getElementById(`detail-content__${targetId}`);
+      targetRecruitDetailContent.classList.add('active');
+      // クリックされたナビゲーションタブの職種に連動して、該当するエントリーフォームの希望職種フォームのテキストを変更
+      const btnText = btn.textContent;
+      const recruitEntrySelectedJob = document.getElementById('selected-job');
+      recruitEntrySelectedJob.value = btnText;
+      recruitEntrySelectedJob.setAttribute('value', btnText);
+    });
+  });
+};
+
+/**
+ * 採用情報のエントリーフォームのバリデーション：
+ * 採用情報エントリーフォーム内のボタンのクリックにより、バリデーションチェックを行いエラー該当のものにメッセージを出す
+ */
+const handleEntryForm = () => {
+  const entryForm = document.querySelector('.entry-form');
+  if (!entryForm) return;
+  entryForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    let hasError = false;
+    const inputs = entryForm.querySelectorAll('input, textarea');
+    inputs.forEach((input) => {
+      const formItem = input.closest('.form-item');
+      const val = input.value.trim();
+      let isItemError = false;
+      // 読取専用の不正チェック
+      if (input.hasAttribute('readonly') && !(val === "エンジニア" || val === "デザイナー" || val === "コンサルタント")) {
+        isItemError = true;
+      }
+      // 必須チェック
+      if (input.hasAttribute('required') && val === "") {
+        isItemError = true;
+        const errorText = formItem.querySelector('.error-message'); errorText.innerText = "必須項目です";
+      }
+      // メール形式チェック
+      if (input.type === 'email' && val !== "") {
+        const emailRegex = /^[a-zA-Z0-9_.+-]+@([a-z0-9][a-z0-9-]*[a-z0-9]\.)+[a-z]{2,}$/;
+        if (!emailRegex.test(val)) {
+          isItemError = true;
+          const errorMessage = formItem.querySelector('.error-message');
+          errorMessage.innerText = "メールアドレス形式でご入力ください";
+        }
+      }
+      // 電話番号形式チェック（任意項目だが入力がある場合のみ）
+      if (input.type === 'tel' && val !== "") {
+        const telRegex = /^(0[5-9]0[0-9]{8}|0[1-9][1-9][0-9]{7})$/;
+        if (!telRegex.test(val)) {
+          isItemError = true;
+          const errorMessage = formItem.querySelector('.error-message');
+          errorMessage.innerText = "電話番号形式の半角でご入力ください";
+        }
+      }
+      // クラス付与の判定
+      if (isItemError) {
+        formItem.classList.add('is-error');
+        hasError = true;
+      } else {
+        formItem.classList.remove('is-error');
+      }
+    });
+    if (hasError) return;
+
+    // 送信処理
+    const submitBtn = entryForm.querySelector('button[type="submit"]');
+    try {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "送信中...";
+      const formData = new FormData(entryForm);
+      // 擬似送信
+      // 【デモ用実装】
+      // サーバー環境（PHP等）がないローカル環境でも、送信後の演出（サンクスメッセージ表示やエラーハンドリング）を
+      // 正しく確認できるように、Promiseを使用して通信をシミュレート（モック化）しています。
+      // 実際の運用時は、この部分を実際の fetch API 呼び出しに差し替えて使用します。
+      const mockResponse = await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({
+            ok: true,
+            json: () => Promise.resolve({
+              status: "success",
+              message: `【擬似成功】${formData.get('name')}様、${formData.get('job')}へのエントリーを受け付けました！`
+            })
+          });
+        }, 300);
+      });
+      // const response = await fetch('send_mail.php', {
+      //   method: 'POST',
+      //   body: formData
+      //   // 必要に応じて headers（.then(), .catch(), .finally()）なども追加
+      // });
+      // HTTPステータスチェック
+      if (!mockResponse.ok) {
+        throw new Error('応答エラー');
+      }
+      const data = await mockResponse.json();
+      console.log("サーバーからのレスポンス:", data.message);
+      if (data.status === "success") {
+        (function showThanksMessage() {
+          const form = document.querySelector('.entry-form');
+          const thanks = document.getElementById('thanks-message');
+          form.style.transition = 'opacity 0.5s ease';
+          form.style.opacity = '0';
+          setTimeout(() => {
+            form.style.display = 'none';
+            thanks.style.display = 'block';
+            thanks.style.opacity = '1';
+          }, 500);
+        })();
+      }
+    } catch (error) {
+      console.error("送信失敗:", error);
+      alert("通信中に問題が発生しました。インターネット接続を確認し、もう一度お試しください。");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "この職種にエントリーする";
+    }
+  });
+};
+
+/**
+ * サンクスメッセージの「フォームに戻る」ボタンによる表示切り替え：
+ * 「フォームに戻る」ボタン押下で、サンクスメッセージがフェードアウトし、フォームがフェードインする。
+ */
+const thanksMessageButton = () => {
+  const entryForm = document.querySelector('.entry-form');
+  if (!entryForm) return;
+  const submitBtn = entryForm.querySelector('button[type="submit"]');
+  const thanksMessage = document.getElementById('thanks-message');
+  if (!thanksMessage) return;
+  const thanksMessageButton = thanksMessage.querySelector('button');
+  const selectedJobInput = document.getElementById('selected-job');
+  if (!selectedJobInput) return;
+  thanksMessageButton.addEventListener('click', () => {
+    // サンクスメッセージがフェードアウト&フォームがフェードイン
+    (function showEntryForm() {
+      // サンクスメッセージのフェードアウト処理
+      thanksMessage.style.transition = 'opacity 0.5s ease';
+      thanksMessage.style.opacity = '0';
+      setTimeout(() => {
+        // フォーム表示による切り替え
+        thanksMessage.style.display = 'none';
+        entryForm.style.display = 'block';
+        entryForm.style.opacity = '1';
+        // フォーム値リセット
+        const currentJob = selectedJobInput.value;
+        entryForm.reset();
+        selectedJobInput.value = currentJob;
+        // エラー表示（is-errorクラス）全削除
+        const formItems = entryForm.querySelectorAll('.form-item');
+        formItems.forEach(item => item.classList.remove('is-error'));
+      }, 200);
+      // エンタリーフォーム側のボタンの状態を復元
+      submitBtn.disabled = false;
+      submitBtn.textContent = "この職種にエントリーする";
+    })();
+  });
+};
+
+/**
+ * ページネーション
+ */
+const pagination = (perPage = 1) => {
+  const containerListUl = document.querySelector('ul.linked-to-pagination');
+  if (!containerListUl) return;
+  const containerList = containerListUl.querySelectorAll('li');
+  const pager = document.querySelector('ul.pager');
+  if (!containerList || !pager) return;
+  let currentPage = 1; // カレントページ番号
+  const itemsPerPage = perPage; // 1ページごとのリスト数
+  const totalItems = containerList.length; // リスト合計数
+  const totalPage = Math.ceil(totalItems / itemsPerPage); // ページ合計数
+
+  // ページリストの表示設定
+  const pageListToDisplay = (current = 1) => {
+    // 「リストデータがありませんの表示」
+    if (totalItems === 0) {
+      const listSection = containerListUl.closest('.page-section');
+      if (!listSection) return;
+      listSection.innerHTML = '';
+      const noListDataDisplay = `
+        <div class="list__no-data">データがありません</div>
+      `;
+      listSection.insertAdjacentHTML('beforeend', noListDataDisplay);
+    } else {
+      const firstListIndexInRange = (current - 1) * itemsPerPage;
+      containerList.forEach((list, i)  => {
+        if (i >= firstListIndexInRange && i < firstListIndexInRange + itemsPerPage) {
+          list.style.display = 'block';
+          if (i === firstListIndexInRange + itemsPerPage - 1) {
+            list.style.borderBottom = '3px solid #ccc';
+          }
+        } else {
+          list.style.display = 'none';
+        }
+      });
+    }
+  };
+
+  // ページャーの表示設定
+  const pagerToDisplay = (listItemToDisplay = 'initial') => {
+    let listItems = [];
+    pager.innerHTML = '';
+    const createPageItem = (type, content, isCurrent = false) => {
+      const currentClass = isCurrent ? 'current' : '';
+      return `
+        <li class="page-list page-list__${type} ${currentClass}">
+          <button>${content}</button>
+        </li>
+      `;
+    };
+
+    if (totalPage >= 11) {
+      // initialまたはカレント番号5以下の場合の処理
+      if ( listItemToDisplay === 'initial' || listItemToDisplay <= 5 ) {
+        listItems.push(createPageItem('first', '≪'));
+        listItems.push(createPageItem('previous', '＜'));
+        listItems.push(createPageItem('1', '1', ['initial', 1].includes(listItemToDisplay)));
+        for(let i = 2; i <= 7; i++) {
+          listItems.push(createPageItem(i, i, (listItemToDisplay === i)));
+        }
+        listItems.push(createPageItem('ellipsis--next', '…'));
+        listItems.push(createPageItem(totalPage, totalPage));
+        listItems.push(createPageItem('next', '＞'));
+        listItems.push(createPageItem('last', '≫'));
+      // カレント番号が最終ページから数えて5つ目まで場合の処理
+      } else if ( listItemToDisplay > (totalPage - 5) ) {
+        listItems.push(createPageItem('first', '≪'));
+        listItems.push(createPageItem('previous', '＜'));
+        listItems.push(createPageItem('1', '1'));
+        listItems.push(createPageItem('ellipsis--previous', '…'));
+        for(let i = (totalPage - 6); i < totalPage; i++) {
+          listItems.push(createPageItem(i, i, (listItemToDisplay === i)));
+        }
+        listItems.push(createPageItem(totalPage, totalPage, listItemToDisplay === totalPage));
+        listItems.push(createPageItem('next', '＞'));
+        listItems.push(createPageItem('last', '≫'));
+      // カレント番号が上記条件分岐以外の数字番号の場合の処理
+      } else {
+        listItems.push(createPageItem('first', '≪'));
+        listItems.push(createPageItem('previous', '＜'));
+        listItems.push(createPageItem('1', '1'));
+        listItems.push(createPageItem('ellipsis--previous', '…'));
+        for(let i = (listItemToDisplay - 2); i <= (listItemToDisplay + 2); i++) {
+          listItems.push(createPageItem(i, i, (listItemToDisplay === i)));
+        }
+        listItems.push(createPageItem('ellipsis--next', '…'));
+        listItems.push(createPageItem(totalPage, totalPage));
+        listItems.push(createPageItem('next', '＞'));
+        listItems.push(createPageItem('last', '≫'));
+      }
+    } else {
+      listItems.push(createPageItem('first', '≪'));
+      listItems.push(createPageItem('previous', '＜'));
+      listItems.push(createPageItem('1', '1', ['initial', 1].includes(listItemToDisplay)));
+      for(let i = 2; i <= totalPage; i++) {
+        listItems.push(createPageItem(i, i, (listItemToDisplay === i)));
+      }
+      listItems.push(createPageItem('next', '＞'));
+      listItems.push(createPageItem('last', '≫'));
+    }
+    pager.innerHTML = listItems.join('');
+  };
+
+  // リストの初期表示の処理
+  pageListToDisplay();
+  pagerToDisplay();
+
+  // ページボタン押下時の処理
+  pager.addEventListener('click', (event) => {
+    const btn = event.target.closest('button');
+    if (!btn) return;
+    const pageList = btn.closest('.page-list');
+    if (!pageList) return;
+    if (isNaN(btn.textContent)) {
+      // ページャーの番号以外が押された時の処理。
+      pageList.classList.forEach(className => {
+        if (className.startsWith('page-list__')) {
+          const pageListName = className.replace('page-list__', '');
+          if (pageListName === 'first') {
+            currentPage = 1;
+          } else if (pageListName === 'previous') {
+            currentPage = currentPage > 1 ? (currentPage - 1) : currentPage;
+          } else if (pageListName === 'ellipsis--previous') {
+            currentPage = Math.trunc((currentPage - 2) / 2);
+          } else if (pageListName === 'ellipsis--next') {
+            currentPage = Math.trunc((totalPage + currentPage + 2) / 2);
+          } else if (pageListName === 'next') {
+            currentPage = currentPage < totalPage ? (currentPage + 1) : currentPage;
+          } else if (pageListName === 'last') {
+            currentPage = totalPage;
+          } else {
+            currentPage = 1;
+          }
+        }
+      });
+    } else {
+      // ページャーの番号が押された時の処理
+      currentPage = Number(btn.textContent);
+    }
+    pageListToDisplay(currentPage);
+    pagerToDisplay(currentPage);
+  });
+};
+
+/**
+ * FAQのアコーディオン：
+ * FAQの質問エリアのクリックにより、対応する回答エリアの開閉状態（is-openクラス）を切り替える
+ */
+const faqAccordion = () => {
+  const accordionQuestions = document.querySelectorAll('.faq-question');
+  accordionQuestions.forEach(dt => {
+    dt.addEventListener('click', () => {
+      const answers = dt.closest('.faq-item');
+      if (answers) {
+        answers.classList.toggle('is-open');
+      }
+    });
+  });
+};
+
+/**
+ * モーダルが開いているときの処理：
+ * 背後のコンテンツをスクロールさせない。
+ */
+const modalOpen = () => {
+  const modal = document.querySelector('dialog[open]');
+  const bodyContent = document.querySelector('body');
+  const scrollContainer = document.querySelector('.modal-body-detail-inner');
+  if(!modal || !bodyContent || !scrollContainer) return;
+  bodyContent.style.overflow = 'hidden';
+  scrollContainer.scrollTop = 0;
+};
+
+/**
+ * モーダルを閉じる処理：
+ * モーダルカード内の「右上×印ボタン・モーダルカード外の黒背景部分・最下部の閉じるボタン」の押下でモーダルが閉じる。
+ */
+const modalClose = () => {
+  const modal = document.querySelector('dialog');
+  const bodyContent = document.querySelector('body');
+  const topScrollButton = document.querySelector('.backtotop-arrow-svg-button');
+  if (!modal || !bodyContent || !topScrollButton) return;
+  modal.addEventListener('close', () => {
+    bodyContent.style.overflow = 'visible';
+    topScrollButton.classList.remove('active');
+});
+  // 黒背景部分の押下
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.close();
+    }
+  });
+  // ×印ボタンの押下
+  const modalCloseIconButton = modal.querySelector('.modal-close-icon-button');
+  if (!modalCloseIconButton) return;
+    modalCloseIconButton.addEventListener('click', () => {
+    modal.close();
+  });
+  // 閉じるボタンの押下
+  // const modalCloseForm = modal.querySelector('.modal-body-button-form');
+  // if (!modalCloseForm) return;
+  // const modalCloseFormButton = modalCloseForm.querySelector('button');
+  // if (!modalCloseFormButton) return;
+  //   modalCloseFormButton.addEventListener('click', () => {
+  //     // ここに処理
+  // });
+};
+
+/**
+ * モーダルカードの詳細文の中のトップスクロールボタンの処理：
+ * モーダルカード内の「トップスクロールボタン」の押下で詳細文の最上部まで戻る。
+ */
+const modalBodyDetailTopScroll = () => {
+  const modalBodyDetail = document.querySelector('.modal-body-detail');
+  if (!modalBodyDetail) return;
+  const scrollContainer = modalBodyDetail.querySelector('.modal-body-detail-inner');
+  const topScrollButton = modalBodyDetail.querySelector('.backtotop-arrow-svg-button');
+  if (!scrollContainer || !topScrollButton) return;
+
+  scrollContainer.addEventListener('scroll', () => {
+    topScrollButton.classList.toggle('active', scrollContainer.scrollTop > 100);
+  });
+
+  topScrollButton.addEventListener('click', () => {
+    scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+};
+
+/**
+ * リスト一覧のボタン化された各リスト押下による連動モーダル表示：
+ * 各ボタン化されたリストのクリックにより、情報連動させたモーダルを表示させる
+ */
+const openModalListButtons = () => {
+  const listButtons = document.querySelectorAll('.open-modal-button');
+  const modal = document.querySelector('dialog');
+  if (!listButtons || !modal) return;
+  const modalTitle = modal.querySelector('.modal-title h3');
+  const modalCategory = modal.querySelector('.modal-body-meta .category');
+  const modalTime = modal.querySelector('.modal-body-meta time');
+  const modalDetailInner = modal.querySelector('.modal-body-detail-inner');
+  listButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.modalTarget;
+      const newsDataList = newsData[targetId];
+      if (newsDataList) {
+        modalTitle.textContent = newsDataList.title;
+        modalCategory.className = `category ${newsDataList.label}`;
+        modalCategory.textContent = newsDataList.category;
+        modalTime.setAttribute('datetime', newsDataList.date.replaceAll('.', '-'));
+        modalTime.textContent = newsDataList.date;
+        modalDetailInner.textContent = newsDataList.detail;
+        modal.showModal();
+        modalOpen();
+      }
+    });
+  });
+};
+
+/**
+ * ページ内の全初期化処理をまとめる
+ */
+const init = () => {
+  if (document.body.classList.contains('about-page')) {
+    memberAccordion();
+  }
+  if (document.body.classList.contains('news-page')) {
+    renderNewsList();
+  }
+  if (document.body.classList.contains('recruit-page')) {
+    entryDetailActive();
+  }
+  if (document.querySelector('.entry-form')) {
+    handleEntryForm();
+    thanksMessageButton();
+  }
+  if (document.querySelector('.pagination-field')) {
+    pagination(3);
+  }
+  if (document.querySelector('#faq')) {
+    faqAccordion();
+  }
+  if (document.querySelector('dialog')) {
+    modalOpen();
+    modalClose();
+    modalBodyDetailTopScroll();
+    openModalListButtons();
+  }
+};
+init();
+// ※以下の処理は、外部ライブラリなどでscriptタグにdeferがつけられない時用
+// const ExternalLibrary = () => {
+//   test();
+// };
+// document.addEventListener('DOMContentLoaded', ExternalLibrary);

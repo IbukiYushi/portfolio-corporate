@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="前ページへ戻る矢印">
+  <defs>
+    <symbol id="browserback-arrow" viewBox="0 0 24 24" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7.47917e-07L2.57143 9.42857L0 12L2.57143 14.5714L12 24L14.5714 21.4286L5.14286 12L14.5714 2.57143L12 7.47917e-07Z" fill="#777777"/>
+      </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="browserback-arrow-svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <use class="browserback-arrow" href="./images/icon/sample/browserback-arrow.svg#browserback-arrow" x="0" y="0" fill="" stroke="none"></use>
+</svg>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>サイト名</title>
+  <meta name="description" content="サイトの説明">
+  <meta property="og:title" content="サイトタイトル">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <meta property="og:description" content="サイトの説明">
+  <meta property="og:site_name" content="サイト名">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./images/icon/favicon/favicon.ico" sizes="16x16 32x32 48x48"/>
+  <!-- TODO: 実際に表示させる -->
+  <link rel="preload" href="./images/test.png" as="image" type="image/png"/>
+  <link rel="stylesheet" href="./css/reset.css"/>
+  <link rel="stylesheet" href="./css/grid-page-layout.css"/>
+  <!-- TODO: @mediaのレスポンシブ用css -->
+  <link rel="stylesheet" href="./css/style.css"/>
+  <script type="module" src="./js/index.js" defer></script>
+</head>
+<body class="recruit-page">
+  <header>
+    <div class="site-logo-field">
+      <a class="nav-link" href="./index.html">
+        <svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <use class="site-logo" href="./images/icon/sample/site-logo.svg#site-logo" x="0" y="0" fill="" stroke="none"></use>
+        </svg>
+        <h1 class="site-name">サイト名</h1>
+      </a>
+    </div>
+    <div class="global-nav">
+      <nav class="nav-link-field">
+        <a class="nav-link" href="./index.html">ホーム</a>
+        <a class="nav-link" href="./about.html">企業案内</a>
+        <a class="nav-link" href="./news.html">ニュース</a>
+        <a class="nav-link" href="./recruit.html">採用情報</a>
+        <a class="nav-link" href="./contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <button class="hamburger-menu-button" type="button">
+      <svg class="hamburger-menu-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <use href="./images/icon/sample/hamburger-menu.svg#hamburger-menu" x="0" y="0" fill="" stroke="none"></use>
+      </svg>
+    </button>
+  </header>
+  <main>
+    <section id="main-section-recruit" class="main-section-recruit">
+      <div class="page-title-anchor-field">
+        <div class="title-field">
+          <h2>採用情報</h2>
+        </div>
+        <div class="anchor-field">
+          <a href="#message">メッセージ</a>
+          <a href="#details">募集要項</a>
+          <a href="#entry">エントリー</a>
+        </div>
+      </div>
+
+
+      <div class="page-section-field">
+
+        <section id="message" class="page-section">
+          <h3>メッセージ</h3>
+          <div class="message-contents">
+            <div class="message-body">
+              <h4 class="slogan">「技術」を「価値」に変え、<br>共により良い未来を創り出す。</h4>
+              <div class="messages">
+                <p class="message">
+                  私たちは、単にシステムを構築したりデザインを整えたりする集団ではありません。<br>
+                  お客様が抱える真の課題に深く向き合い、デジタルの力でビジネスに確かな変革をもたらすことをミッションとしています。
+                </p>
+                <p class="message">
+                  変化の激しい現代において、必要とされるのは最先端の技術だけでなく、それをどう活用するかという「想像力」です。<br>
+                  それは個々の専門性を尊重し、チーム一丸となって新しい価値を生み出すこと。
+                </p>
+                <p class="message">
+                  自分のスキルを誰かのために役立てたい、未踏の領域に挑戦してみたい。<br>
+                  そんな情熱を持ったあなたと共に、まだ見ぬ未来を創り出せる日を心待ちにしています。
+                </p>
+              </div>
+            </div>
+            <figure class="image-container">
+              <img src="./images/contents/entry/entry.jpg" alt="採用情報のメッセージ用画像" width="800" height="400" loading="lazy" decoding="async">
+            </figure>
+          </div>
+        </section>
+
+        <section id="details" class="page-section">
+          <nav class="tab-recruitment-type-field">
+            <button class="tab-recruitment-type-btn active" data-target="engineer">エンジニア</button>
+            <button class="tab-recruitment-type-btn" data-target="designer">デザイナー</button>
+            <button class="tab-recruitment-type-btn" data-target="consultant">コンサルタント</button>
+          </nav>
+          <h3>募集要項</h3>
+          <div class="detail-contents">
+            <div class="detail-content active" id="detail-content__engineer">
+              <div class="detail-content-header">
+                <h4>ITエンジニア</h4>
+                <p>技術で未来を実装する</p>
+              </div>
+              <div class="detail-content-body">
+                <table class="recruit-table">
+                  <tbody>
+                    <tr>
+                      <th>応募資格</th>
+                      <td>
+                        【必須】HTML5/CSS3/JavaScriptの実務経験（2年以上）<br>
+                        【歓迎】React, Vue.jsなどのモダンフレームワーク、またはNode.jsによるバックエンド開発経験
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>仕事内容</th>
+                      <td>自社製品およびクライアント向けWebアプリの開発</td>
+                    </tr>
+                    <tr>
+                      <th>雇用形態</th>
+                      <td>正社員（試用期間3ヶ月）</td>
+                    </tr>
+                    <tr>
+                      <th>給与</th>
+                      <td>月給 30万円〜55万円 ＋ 賞与年2回</td>
+                    </tr>
+                    <tr>
+                      <th>勤務時間</th>
+                      <td>
+                        <span>
+                          9:00〜18:00（実働8時間 / 休憩1時間）
+                        </span>
+                        <span>
+                          ★残業は月平均15時間程度。自身の裁量でスケジュールを調整しやすい環境です。
+                        </span>
+                        <span>
+                          ＜時間外労働時間＞<br>
+                          月平均0~5時間程度
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>休日・休暇</th>
+                      <td>
+                        完全週休2日制（土・日）、祝日<br>
+                        年間休日125日以上<br>
+                        夏季休暇、年末年始休暇、有給休暇（入社半年後に10日付与）、慶弔休暇、産前産後・育児休暇
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>勤務地</th>
+                      <td>本社（東京都〇〇区） または フルリモートワーク可</td>
+                    </tr>
+                    <tr>
+                      <th>福利厚生</th>
+                      <td>各種社会保険完備、技術書購入支援、資格取得支援制度、リモートワーク手当、通勤手当</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <figure class="image-container">
+                  <img src="./images/contents/entry/entry-engineer.jpg" alt="採用情報の募集要項用画像" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+              </div>
+            </div>
+            <div class="detail-content" id="detail-content__designer">
+              <div class="detail-content-header">
+                <h4>Webデザイナー</h4>
+                <p>価値を形にする</p>
+              </div>
+              <div class="detail-content-body">
+                <table class="recruit-table">
+                  <tbody>
+                    <tr>
+                      <th>応募資格</th>
+                      <td>
+                        【必須】Figma, Adobe XD等を用いたUI/UXデザイン経験<br>
+                        【歓迎】デザインシステム構築の経験、小規模なコーディング（CSS/Sass）の知識
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>仕事内容</th>
+                      <td>自社製品およびクライアント向けWebアプリのデザイン作成</td>
+                    </tr>
+                    <tr>
+                      <th>雇用形態</th>
+                      <td>正社員（試用期間3ヶ月）</td>
+                    </tr>
+                    <tr>
+                      <th>給与</th>
+                      <td>月給 28万円〜50万円 ＋ 賞与年2回</td>
+                    </tr>
+                    <tr>
+                      <th>勤務時間</th>
+                      <td>
+                        <span>
+                          10:00〜19:00（実働8時間 / 休憩1時間）
+                        </span>
+                        <span>
+                          ★少し遅めのスタートで、朝の時間を有効活用できます。
+                        </span>
+                        <span>
+                          ＜時間外労働時間＞<br>
+                          月平均0~5時間程度
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>休日・休暇</th>
+                      <td>
+                        完全週休2日制（土・日）、祝日<br>
+                        年間休日125日以上<br>
+                        GW休暇、夏季休暇、年末年始休暇、有給休暇、リフレッシュ休暇、記念日休暇（誕生日など）
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>勤務地</th>
+                      <td>本社 または ハイブリッドワーク（週2〜3リモート可）</td>
+                    </tr>
+                    <tr>
+                      <th>福利厚生</th>
+                      <td>各種社会保険完備、ハイスペックPC・サブモニター貸与、フォント購入支援、社員旅行（自由参加）、通勤手当</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <figure class="image-container">
+                  <img src="./images/contents/entry/entry-designer.jpg" alt="採用情報の募集要項用画像" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+              </div>
+            </div>
+            <div class="detail-content" id="detail-content__consultant">
+              <div class="detail-content-header">
+                <h4>コンサルタント</h4>
+                <p>伴走して課題を解決する</p>
+              </div>
+              <div class="detail-content-body">
+                <table class="recruit-table">
+                  <tbody>
+                    <tr>
+                      <th>応募資格</th>
+                      <td>
+                        【必須】IT業界でのディレクション、または法人営業の経験（3年以上）<br>
+                        【歓迎】データ分析に基づく戦略立案経験、DX推進プロジェクトの参画経験
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>仕事内容</th>
+                      <td>自社製品およびクライアント向けWebアプリのコンサルタント</td>
+                    </tr>
+                    <tr>
+                      <th>雇用形態</th>
+                      <td>正社員（試用期間3ヶ月）</td>
+                    </tr>
+                    <tr>
+                      <th>給与</th>
+                      <td>月給 35万円〜60万円 ＋ インセンティブ ＋ 賞与</td>
+                    </tr>
+                    <tr>
+                      <th>勤務時間</th>
+                      <td>
+                        <span>
+                          9:00〜18:00（実働8時間 / 休憩1時間）
+                        </span>
+                        <span>
+                          ★直行直帰可。クライアントの状況に合わせて柔軟な働き方が可能です。
+                        </span>
+                        <span>
+                          ＜時間外労働時間＞<br>
+                          月平均0~5時間程度
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>休日・休暇</th>
+                      <td>
+                        完全週休2日制（土・日）、祝日<br>
+                        年間休日120日以上<br>
+                        夏季休暇、年末年始休暇、有給休暇、特別休暇（ボランティア・自己研鑽など）、アニバーサリー休暇
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>勤務地</th>
+                      <td>本社 および クライアント先（必要に応じて）</td>
+                    </tr>
+                    <tr>
+                      <th>福利厚生</th>
+                      <td>各種社会保険完備、社用携帯・PC貸与、慶弔見舞金、確定拠出年金制度、通勤手当</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <figure class="image-container">
+                  <img src="./images/contents/entry/entry-consultant.jpg" alt="採用情報の募集要項用画像" width="800" height="400" loading="lazy" decoding="async">
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="entry" class="page-section">
+          <nav class="tab-recruitment-type-field">
+            <button class="tab-recruitment-type-btn active" data-target="engineer">エンジニア</button>
+            <button class="tab-recruitment-type-btn" data-target="designer">デザイナー</button>
+            <button class="tab-recruitment-type-btn" data-target="consultant">コンサルタント</button>
+          </nav>
+          <h3>エントリー</h3>
+          <div class="entry-contents">
+            <form method="post" class="entry-form" autocomplete="on" novalidate>
+              <p class="entry-form-lead">
+                  必要事項を入力し、送信ボタンを押してください。<br>
+                  後ほど担当者よりメールにてご連絡いたします。
+              </p>
+              <div class="form-card">
+                <div class="form-item">
+                  <label for="selected-job">
+                    希望職種
+                  </label>
+                  <input type="text" id="selected-job" name="job" value="エンジニア" tabindex="-1" readonly>
+                  <span class="error-message-field">
+                    <span class="asterisk-mark">※</span>
+                    <span class="error-message">読取専用です。左上の該当する職種タブを選択し直してください。</span>
+                  </span>
+                </div>
+                <div class="form-item">
+                  <label for="user-name">
+                    お名前
+                    <span class="required">必須</span>
+                  </label>
+                  <input type="text" id="user-name" name="name" autocomplete="name" required placeholder="例）山田 太郎">
+                  <span class="error-message-field">
+                    <span class="asterisk-mark">※</span>
+                    <span class="error-message">必須項目です</span>
+                  </span>
+                </div>
+                <div class="form-item">
+                  <label for="user-email">
+                    メールアドレス
+                    <span class="required">必須</span>
+                  </label>
+                  <input type="email" id="user-email" name="email" autocomplete="email" required placeholder="例）example@example.com">
+                  <span class="error-message-field">
+                    <span class="asterisk-mark">※</span>
+                    <span class="error-message">必須項目です<!-- メールアドレスの形式でご入力ください --></span>
+                  </span>
+                </div>
+                <div class="form-item">
+                  <label for="user-tel">
+                    電話番号
+                    <span class="optional">任意</span>
+                  </label>
+                  <input type="tel" id="user-tel" name="tel" autocomplete="tel" placeholder="例）09012345678">
+                  <span class="error-message-field">
+                    <span class="asterisk-mark">※</span>
+                    <span class="error-message"></span>
+                  </span>
+                </div>
+                <!-- <div class="form-item">
+                  <label for="subject">
+                    件名
+                    <span class="required">必須</span>
+                  </label>
+                  <input type="text" id="user-subject" name="subject"  value="採用エントリー" readonly>
+                  <span class="error-message">
+                    <span class="asterisk-mark"></span>
+                  </span>
+                </div> -->
+                <div class="form-item">
+                  <label for="user-message">
+                    メッセージ
+                    <span class="required">必須</span>
+                  </label>
+                  <textarea id="user-message" name="message" rows="8" placeholder="お問い合わせ内容をご入力ください。" required></textarea>
+                  <span class="error-message-field">
+                    <span class="asterisk-mark">※</span>
+                    <span class="error-message">必須項目です</span>
+                  </span>
+                </div>
+                <div class="form-button-field">
+                  <button type="submit" class="button button--lift button--lg">この職種にエントリーする</button>
+                </div>
+              </div>
+            </form>
+            <div id="thanks-message" class="thanks-message">
+              <div class="thanks-content">
+                <h4>エントリーありがとうございました！</h4>
+                <p>
+                  内容を確認の上、3営業日以内に<br>
+                  担当者よりメールにてご連絡させていただきます。
+                </p>
+                <button type="button" class="button button--lift button--lg">フォームに戻る</button>
+              </div>
+            </div>
+            <figure class="image-container">
+              <img src="./images/contents/entry/entry-resume.jpg" alt="採用情報のエントリー用画像" width="800" height="400" loading="lazy" decoding="async">
+            </figure>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="copy">&copy;Company Co., Ltd.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="事業利益アイコン">
+  <defs>
+    <symbol id="performance" viewBox="0 0 200 200" fill="none">
+      <rect x="28" y="115" width="24" height="80" rx="4" fill="#B9B9B9"/>
+      <rect x="68" y="99" width="24" height="96" rx="4" fill="#B9B9B9"/>
+      <rect x="108" y="83" width="24" height="112" rx="4" fill="#D9D9D9"/>
+      <rect x="148" y="67" width="24" height="128" rx="4" fill="#B9B9B9"/>
+      <path d="M172 44C172 45.1046 171.104 46 170 46C168.895 45.9999 168 45.1045 168 44V32.791L30.7644 113.739C29.8791 114.261 28.7518 113.959 28.2458 113.064C27.74 112.169 28.0478 111.019 28.9333 110.497L165.405 30L153.946 30C152.842 29.9999 151.946 29.1045 151.946 28C151.946 26.8955 152.842 26.0001 153.946 26L169.946 26C169.955 26 169.964 26.0009 169.973 26.001C169.982 26.0009 169.991 26 170 26C171.104 26 172 26.8954 172 28V44Z" fill="#777777"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="performance-svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <use class="performance" href="./images/icon/sample/performance.svg#performance" x="0" y="0" fill="" stroke="none"></use>
+</svg>

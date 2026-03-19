@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="サイトロゴ">
+  <defs>
+    <symbol id="site-logo" viewBox="0 0 48 48" fill="none">
+      <g clip-path="url(#clip0_257_37)">
+        <circle cx="24" cy="24" r="24" fill="#020202"/>
+        <path d="M24 3L43.0526 36H4.94744L24 3Z" fill="#F4F4F4"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_257_37">
+          <rect width="48" height="48" fill="white"/>
+        </clipPath>
+      </defs>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <use class="site-logo" href="./images/icon/sample/site-logo.svg#site-logo" x="0" y="0" fill="" stroke="none"></use>
+</svg>

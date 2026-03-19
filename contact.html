@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>サイト名</title>
+  <meta name="description" content="サイトの説明">
+  <meta property="og:title" content="サイトタイトル">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <meta property="og:description" content="サイトの説明">
+  <meta property="og:site_name" content="サイト名">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./images/icon/favicon/favicon.ico" sizes="16x16 32x32 48x48">
+  <!-- TODO: 実際に表示させる -->
+  <link rel="preload" href="./images/test.png" as="image" type="image/png" />
+  <link rel="stylesheet" href="./css/reset.css"/>
+  <link rel="stylesheet" href="./css/grid-page-layout.css"/>
+  <!-- TODO: @mediaのレスポンシブ用css -->
+  <link rel="stylesheet" href="./css/style.css"/>
+  <script type="module" src="./js/index.js" defer></script>
+</head>
+<body class="contact-page">
+  <header>
+    <div class="site-logo-field">
+      <a class="nav-link" href="./index.html">
+        <svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <use class="site-logo" href="./images/icon/sample/site-logo.svg#site-logo" x="0" y="0" fill="" stroke="none"></use>
+        </svg>
+        <h1 class="site-name">サイト名</h1>
+      </a>
+    </div>
+    <div class="global-nav">
+      <nav class="nav-link-field">
+        <a class="nav-link" href="./index.html">ホーム</a>
+        <a class="nav-link" href="./about.html">企業案内</a>
+        <a class="nav-link" href="./news.html">ニュース</a>
+        <a class="nav-link" href="./recruit.html">採用情報</a>
+        <a class="nav-link" href="./contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <button class="hamburger-menu-button" type="button">
+      <svg class="hamburger-menu-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <use href="./images/icon/sample/hamburger-menu.svg#hamburger-menu" x="0" y="0" fill="" stroke="none"></use>
+      </svg>
+    </button>
+  </header>
+  <main>
+    <section id="main-section-contact" class="main-section-contact">
+      <div class="page-title-field">
+        <h2>お問合せ</h2>
+        <p>以下のフォームに必要事項をご記入の上、送信してください。</p>
+      </div>
+      <form action="/submit-contact" method="post">
+        <div class="form-card">
+          <div>
+            <label for="user-name">お名前<span class="required">必須</span></label>
+            <input type="text" id="user-name" name="user_name" placeholder="例）山田 太郎" required>
+            <span class="error-message"><span class="asterisk-mark">※</span>必須項目です</span>
+          </div>
+          <div>
+            <label for="user-email">メールアドレス<span class="required">必須</span></label>
+            <input type="email" id="user-email" name="user_email" placeholder="例）example@example.com" required>
+            <span class="error-message"><span class="asterisk-mark">※</span>必須項目です</span>
+          </div>
+          <div>
+            <label for="user-tel">電話番号<span class="optional">任意</span></label>
+            <input type="tel" id="user-tel" name="user_tel" placeholder="例）09012345678">
+            <span class="error-message"><span class="asterisk-mark"></span></span>
+          </div>
+          <div>
+            <label for="subject">件名<span class="optional">任意</span></label>
+            <input type="text" id="subject" name="subject" placeholder="件名をご入力ください。">
+            <span class="error-message"><span class="asterisk-mark"></span></span>
+          </div>
+          <div>
+            <label for="message">メッセージ本文<span class="required">必須</span></label>
+            <textarea id="message" name="message" rows="6" placeholder="お問い合わせ内容をご入力ください。" required></textarea>
+            <span class="error-message"><span class="asterisk-mark">※</span>必須項目です</span>
+          </div>
+          <div class="form-button-field">
+            <input type="submit" value="送信する" class="button button--lift button--lg button--border-circle">
+          </div>
+        </div>
+      </form>
+      <hr>
+      <form action="/submit-contact" method="post" class="form-reference-samples">
+        <div class="form-header">
+          <h2>フォーム入力タイプ リファレンス</h2>
+        </div>
+        <fieldset>
+          <legend>1. テキスト入力系</legend>
+          <div class="form-group">
+            <label for="sample-text">text（標準）</label>
+            <input type="text" id="sample-text" name="sample_text" placeholder="標準的なテキスト">
+          </div>
+          <div class="form-group">
+            <label for="sample-password">password</label>
+            <input type="password" id="sample-password" name="sample_password" placeholder="パスワード">
+          </div>
+          <div class="form-group">
+            <label for="sample-email">email</label>
+            <input type="email" id="sample-email" name="sample_email" placeholder="メールアドレス">
+          </div>
+          <div class="form-group">
+            <label for="sample-tel">tel（電話番号）</label>
+            <input type="tel" id="sample-tel" name="sample_tel" placeholder="090-xxxx-xxxx">
+          </div>
+          <div class="form-group">
+            <label for="sample-url">url</label>
+            <input type="url" id="sample-url" name="sample_url" placeholder="https://example.com">
+          </div>
+          <div class="form-group">
+            <label for="sample-search">search（検索）</label>
+            <input type="search" id="sample-search" name="sample_search" placeholder="検索ワード">
+          </div>
+          <div class="form-group">
+            <label for="sample-number">number（数値）</label>
+            <input type="number" id="sample-number" name="sample_number" value="10" min="1" max="100">
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>2. 日付・時刻系</legend>
+          <div class="form-group">
+            <label for="sample-date">date（日付）</label>
+            <input type="date" value="2025-10-31" id="sample-date" name="sample_date">
+          </div>
+          <div class="form-group">
+            <label for="sample-datetime-local">datetime-local（日時）</label>
+            <input type="datetime-local" value="2025-10-31T14:30" id="sample-datetime-local" name="sample_datetime_local" min="2025-10-25T09:00" max="2025-11-30T17:00">
+          </div>
+          <div class="form-group">
+            <label for="sample-month">month（年月）</label>
+            <input type="month" value="2025-10" id="sample-month" name="sample_month"min="2025-01" max="2026-12">
+          </div>
+          <div class="form-group">
+            <label for="sample-week">week（年週）</label>
+            <input type="week" value="2025-W44" id="sample-week" name="sample_week"min="2025-W40" max="2025-W50">
+          </div>
+          <div class="form-group">
+            <label for="sample-time">time（時刻）</label>
+            <input type="time" value="14:30" id="sample-time" name="sample_time" min="09:00" max="18:00">
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>3. 選択・ボタン系</legend>
+          <div class="form-group-outer">
+            <div class="form-group radio-field">
+              <label><input type="radio" id="sample-radio1" name="sample_radio" value="opt1">ラジオボタン 1</label>
+              <label><input type="radio" id="sample-radio2" name="sample_radio" value="opt2" checked>ラジオボタン 2</label>
+            </div>
+            <div class="form-group checkbox-field">
+              <label><input type="checkbox" id="sample-checkbox1" name="sample_checkbox1">チェックボックス A</label>
+              <label><input type="checkbox" id="sample-checkbox2"                     name="sample_checkbox2"checked>チェックボックス B</label>
+            </div>
+          </div>
+          <div class="form-group button-field">
+            <input type="submit" value="submit（送信ボタン）">
+            <input type="reset" value="reset（リセット）">
+            <input type="button" value="button（汎用）">
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>4. その他</legend>
+          <div class="form-group">
+            <label for="sample-file">file（ファイル選択）</label>
+            <input type="file" id="sample-file" name="sample_file">
+          </div>
+          <div class="form-group">
+            <label for="sample-color">color（カラーピッカー）</label>
+            <input type="color" id="sample-color" name="sample_color" value="#007bff">
+          </div>
+          <div class="form-group">
+            <label for="sample-range">range（スライダー）</label>
+            <input type="range" id="sample-range" name="sample_range" value="50" min="0" max="100">
+          </div>
+          <div class="form-group">
+            <label for="sample-image">image（画像ボタン）</label>
+            <input type="image" id="sample-image" name="sample_image" src="https://placehold.jp/200x100.png" alt="画像ボタンの代替テキスト">
+          </div>
+          <div class="form-group">
+            <label for="sample-textarea">textarea</label>
+            <textarea id="sample-textarea" name="sample_textarea" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="sample-select">select（ドロップダウン）</label>
+            <select id="sample-select" name="sample_select" required>
+              <option value="" disabled selected>選択してください</option>
+              <option value="opt1">選択肢 1</option>
+              <option value="opt2">選択肢 2</option>
+              <option value="opt2">選択肢 3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="multiple-select">選択項目（複数選択可）</label>
+            <select id="multiple-select" name="multiple_items" multiple size="3">
+              <option value="item1">オプション 1</option>
+              <option value="item2">オプション 2</option>
+              <option value="item3" selected>オプション 3</option>
+              <option value="item4">オプション 4</option>
+              <option value="item5">オプション 5</option>
+              <option value="item6" disabled>オプション 6</option>
+              <option value="item7">オプション 7</option>
+              <option value="item8">オプション 8</option>
+            </select>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <div class="copy">&copy;Company Co., Ltd.</div>
+  </footer>
+</body>
+</html>

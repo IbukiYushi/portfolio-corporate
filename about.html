@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>サイト名</title>
+  <meta name="description" content="サイトの説明">
+  <meta property="og:title" content="サイトタイトル">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <meta property="og:description" content="サイトの説明">
+  <meta property="og:site_name" content="サイト名">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./images/icon/favicon/favicon.ico" sizes="16x16 32x32 48x48"/>
+  <!-- TODO: 実際に表示させる -->
+  <link rel="preload" href="./images/test.png" as="image" type="image/png"/>
+  <link rel="stylesheet" href="./css/reset.css"/>
+  <link rel="stylesheet" href="./css/grid-page-layout.css"/>
+  <!-- TODO: @mediaのレスポンシブ用css -->
+  <link rel="stylesheet" href="./css/style.css"/>
+  <script type="module" src="./js/index.js" defer></script>
+</head>
+<body class="about-page">
+  <header>
+    <div class="site-logo-field">
+      <a class="nav-link" href="./index.html">
+        <svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <use class="site-logo" href="./images/icon/sample/site-logo.svg#site-logo" x="0" y="0" fill="" stroke="none"></use>
+        </svg>
+        <h1 class="site-name">サイト名</h1>
+      </a>
+    </div>
+    <div class="global-nav">
+      <nav class="nav-link-field">
+        <a class="nav-link" href="./index.html">ホーム</a>
+        <a class="nav-link" href="./about.html">企業案内</a>
+        <a class="nav-link" href="./news.html">ニュース</a>
+        <a class="nav-link" href="./recruit.html">採用情報</a>
+        <a class="nav-link" href="./contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <button class="hamburger-menu-button" type="button">
+      <svg class="hamburger-menu-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <use href="./images/icon/sample/hamburger-menu.svg#hamburger-menu" x="0" y="0" fill="" stroke="none"></use>
+      </svg>
+    </button>
+  </header>
+  <main>
+    <section id="main-section-about" class="main-section-about">
+      <div class="page-title-anchor-field">
+        <div class="title-field">
+          <h2>企業案内</h2>
+        </div>
+        <nav class="anchor-field">
+          <a href="#greeting">ご挨拶と理念</a>
+          <a href="#business">事業内容</a>
+          <a href="#company-info">会社概要</a>
+          <a href="#history">沿革</a>
+          <a href="#members">社員紹介</a>
+          <a href="#faq">よくある質問</a>
+        </nav>
+      </div>
+      <div class="page-section-field">
+        <section id="greeting" class="page-section">
+          <h3>ご挨拶と理念</h3>
+          <blockquote class="vision-quote">
+            「技術と創造性で、未来の課題を解決する」<br>
+            これが私たちの変わらぬビジョンです。<br>
+            お客様の期待を超え、社会に新たな価値を提供し続けることが、私たちの使命です。
+          </blockquote>
+          <figure class="representative-photo">
+            <img src="./images/contents/business-ceo.jpg" alt="代表取締役社長">
+            <figcaption class="signature">代表取締役社長 山田 太郎</figcaption>
+          </figure>
+          <p>
+            当社は設立以来、デジタルトランスフォーメーションの波に乗り、常に最先端の技術を取り入れてまいりました。特に、ユーザー体験（UX）を最優先したデザインと、堅牢なシステム構築の両立をコアコンピタンスとしております。この情熱と誠実さをもって、私たちは次の時代を創造します。
+          </p>
+        </section>
+        <section id="business" class="page-section">
+          <h3>事業内容</h3>
+          <div class="section-container">
+            <article class="business-item split-content">
+              <div class="content-text">
+                <h4>Webサイト制作・開発</h4>
+                <p>
+                  お客様のビジネス戦略に基づき
+                  <br>ユーザー体験（UX）を最優先したデザインと
+                  <br>堅牢で拡張性の高いフロントエンド実装を提供します。
+                </p>
+                <p>
+                  特に、レスポンシブデザインとセマンティックなマークアップにより
+                  <br>検索エンジン最適化（SEO）とアクセシビリティ（A11y）
+                  <br>を両立させます。
+                </p>
+                <ul class="service-list">
+                  <li>コーポレートサイト、採用サイトの企画・制作</li>
+                  <li>CMS（WordPressなど）のカスタマイズと導入支援</li>
+                  <li>UI/UX設計とデザインシステム構築</li>
+                </ul>
+              </div>
+              <div class="content-image">
+                <img src="./images/contents/business-web.jpg" alt="Webサイト制作・開発の画像">
+              </div>
+            </article>
+            <hr>
+            <article class="business-item split-content split-content--reversed">
+              <div class="content-text">
+                <h4>アプリケーション開発・システム連携</h4>
+                <p>
+                  お客様の業務効率化を実現するため
+                  <br>最新のクラウド技術に基づいたバックエンド開発と
+                  <br>既存システムとのAPI連携を設計・実装します。
+                  <br>データセキュリティと処理速度を両立させ、事業の成長を技術面から支えます。
+                </p>
+                <ul class="service-list">
+                  <li>API開発およびBFF（Backend For Frontend）の実装</li>
+                  <li>クラウドインフラ（AWS/GCP）を活用したシステム構築</li>
+                  <li>各種業務システムの保守・運用代行</li>
+                </ul>
+              </div>
+              <div class="content-image">
+                <img src="./images/contents/business-development.jpg" alt="アプリケーション開発・システム連携の画像">
+              </div>
+            </article>
+          </div>
+        </section>
+        <section id="company-info" class="page-section">
+          <h3>会社概要</h3>
+          <div class="section-container">
+            <div class="company-info-item company-basic-data">
+              <dl>
+                <dt>商号</dt>
+                <dd>サンプル株式会社</dd>
+                <dt>設立</dt>
+                <dd>2020年4月1日</dd>
+                <dt>代表者</dt>
+                <dd><a href="#greeting">代表取締役社長 山田 太郎</a></dd>
+                <dt>資本金</dt>
+                <dd>1,000万円</dd>
+                <dt>事業内容</dt>
+                <dd><a href="#business">Webサイト制作・システム開発・ITコンサルティング</a></dd>
+                <dt>取引銀行</dt>
+                <dd>赤色銀行、青色銀行</dd>
+              </dl>
+            </div>
+            <div class="company-info-item company-highlight-data">
+              <div class="highlight-card stats-employees">
+                <h4>従業員数</h4>
+                <div class="stats-body">
+                  <svg class="users-icon-svg" width="100%" height="24" viewBox="20 0 72 24" fill="none">
+                      <use class="user-icon" href="./images/icon/sample/user-icon.svg#user-icon" x="0" y="0" fill="" stroke="none"></use>
+                      <use class="user-icon" href="./images/icon/sample/user-icon.svg#user-icon" x="20" y="2" fill="" stroke="none"></use>
+                      <use class="user-icon" href="./images/icon/sample/user-icon.svg#user-icon" x="40" y="0" fill="" stroke="none"></use>
+                    </svg>
+                    <p class="stats-number">1,234<span>名</span></p>
+                </div>
+              </div>
+              <div class="highlight-card stats-performance">
+                <h4>業績</h4>
+                <div class="stats-grid">
+                  <div class="stats-item">
+                    <div class="stats-item__sales">
+                      <h5>売上高</h5>
+                      <p class="stats-number">1億4800<span>万円</span></p>
+                    </div>
+                    <div class="stats-item__business-profit">
+                      <h5>事業利益</h5>
+                      <p class="stats-number">2400<span>万円</span></p>
+                    </div>
+                  </div>
+                  <svg class="performance-svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+                    <use class="performance" href="./images/icon/sample/performance.svg#performance" x="0" y="0" fill="" stroke="none"></use>
+                  </svg>
+                </div>
+              </div>
+              <div class="highlight-card stats-access">
+                <h4>所在地（アクセスマップ）</h4>
+                <div class="map-container">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.831946129619!2d139.7644864764289!3d35.68113977258713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1767952654874!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="address-info">
+                  <div class="address">
+                    <p class="zip-code">〒000-0000</p>
+                    <p class="address-text">東京都〇〇区△△ 1-2-3 〇〇ビル 5F</p>
+                  </div>
+                  <p class="tel">TEL: <a href="tel:0312345678">03-1234-5678</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="history" class="page-section">
+          <h3>沿革</h3>
+          <div class="section-container">
+            <div class="history-timeline">
+              <dl>
+                <dt>2020年 4月</dt>
+                <dd>東京都千代田区にてサンプル株式会社を設立</dd>
+                <dt>2021年 10月</dt>
+                <dd>自社サービス「Sample App」をリリース</dd>
+                <dt>2022年 8月</dt>
+                <dd>事業拡大に伴い、現在の本社オフィスに移転</dd>
+                <dt>2023年 12月</dt>
+                <dd>「デジタルトランスフォーメーション賞」にて優秀賞を受賞</dd>
+                <dt>2025年 1月</dt>
+                <dd>従業員数が1,000名を超える</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+        <section id="members" class="page-section">
+          <h3>社員紹介</h3>
+          <div class="cards-field">
+            <div class="card">
+              <div class="card-column__main">
+                <div class="text-container">
+                  <p class="position">
+                    <span>ディレクター</span>
+                    <span>ITエンジニア</span>
+                    <span>Webデザイナー</span>
+                    <span>コンサル</span>
+                  </p>
+                  <div class="name-field">
+                    <p class="last-name">田中</p>
+                    <p class="first-name">一郎</p>
+                  </div>
+                </div>
+                <figure class="image-container">
+                  <img src="./images/contents/members/member-1.jpg" alt="社員1" width="100" height="150" loading="lazy" decoding="async">
+                </figure>
+              </div>
+              <hr class="card-column__hr">
+              <div class="card-column__footer">
+                <button class="career-button">
+                  <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <use class="accordion-icon" href="./images/icon/sample/accordion-icon.svg#accordion-icon" x="0" y="0" fill="" stroke="none"></use>
+                  </svg>
+                  <span>詳細</span>
+                </button>
+                <div class="career-detail-container">
+                  <p class="career-detail">
+                    大学卒業後、大手システムインテグレーターにて基幹システムの構築に従事。2020年にサンプル株式会社を設立。<br>
+                    技術者としてのバックグラウンドを活かし、現在は経営戦略の立案から、大規模プロジェクトのディレクションまで幅広く統括しています。<br>
+                    特に最新のWeb技術をビジネス価値に変換するコンサルティングに定評があり、これまでに50社以上のDX推進を成功に導いてきました。<br>
+                    座右の銘は『技術は人のために』。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-column__main">
+                <div class="text-container">
+                  <p class="position">
+                    <span>Webデザイナー</span>
+                    <span>コンサル</span>
+                  </p>
+                  <div class="name-field">
+                    <p class="last-name">佐藤</p>
+                    <p class="first-name">優希</p>
+                  </div>
+                </div>
+                <figure class="image-container">
+                  <img src="./images/contents/members/member-2.jpg" alt="社員2" width="100" height="150" loading="lazy" decoding="async">
+                </figure>
+              </div>
+              <hr class="card-column__hr">
+              <div class="card-column__footer">
+                <button class="career-button">
+                  <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <use class="accordion-icon" href="./images/icon/sample/accordion-icon.svg#accordion-icon" x="0" y="0" fill="" stroke="none"></use>
+                  </svg>
+                  <span>詳細</span>
+                </button>
+                <div class="career-detail-container">
+                  <p class="career-detail">
+                    ユーザー心理に基づいた美しく使いやすいインターフェース設計を追求。<br>
+                    デザインシステム構築の経験が豊富で、一貫性のあるブランド体験を提供します。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-column__main">
+                <div class="text-container">
+                  <p class="position">
+                    <span>コンサル</span>
+                  </p>
+                  <div class="name-field">
+                    <p class="last-name">斉藤</p>
+                    <p class="first-name">あかり</p>
+                  </div>
+                </div>
+                <figure class="image-container">
+                  <img src="./images/contents/members/member-3.jpg" alt="社員3" width="100" height="150" loading="lazy" decoding="async">
+                </figure>
+              </div>
+              <hr class="card-column__hr">
+              <div class="card-column__footer">
+                <button class="career-button">
+                  <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <use class="accordion-icon" href="./images/icon/sample/accordion-icon.svg#accordion-icon" x="0" y="0" fill="" stroke="none"></use>
+                  </svg>
+                  <span>詳細</span>
+                </button>
+                <div class="career-detail-container">
+                  <p class="career-detail">
+                    新規事業の立ち上げ支援をメインに活動。<br>
+                    徹底的な市場調査とデータ分析に基づき、地に足の着いた成長戦略を提案。<br>
+                    伴走型の支援スタイルに定評があります。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="faq" class="page-section">
+          <h3>よくある質問</h3>
+          <div class="faq-list">
+            <dl class="faq-item">
+              <dt class="faq-question">
+                <p class="question-text">
+                  <span>
+                    Webサイト制作の期間はどのくらいかかりますか？
+                  </span>
+                </p>
+                <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use href="./images/icon/sample/accordion-icon.svg#accordion-icon"></use>
+                </svg>
+              </dt>
+              <dd class="faq-answer">
+                <p class="answer-text">
+                  <span>
+                    一般的なコーポレートサイト（5〜10ページ程度）の場合、着手から納品まで約1ヶ月〜2ヶ月程度のお時間をいただいております。<br>お急ぎの場合は調整も可能ですので、お気軽にご相談ください。
+                  </span>
+                </p>
+              </dd>
+            </dl>
+            <dl class="faq-item">
+              <dt class="faq-question">
+                <p class="question-text">
+                  <span>
+                    システム開発のみ、または保守運用のみの依頼は可能ですか？
+                  </span>
+                </p>
+                <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use href="./images/icon/sample/accordion-icon.svg#accordion-icon"></use>
+                </svg>
+              </dt>
+              <dd class="faq-answer">
+                <p class="answer-text">
+                  <span>
+                    はい、可能です。既存システムの改修や、他社様が制作されたサイトの保守運用バトンタッチも承っております。<br>現在の状況をヒアリングさせていただき、最適なプランをご提案いたします。
+                  </span>
+                </p>
+              </dd>
+            </dl>
+            <dl class="faq-item">
+              <dt class="faq-question">
+                <p class="question-text">
+                  <span>
+                    遠方なのですが、打ち合わせは対面で行う必要がありますか？<br>場合によって対面とWeb会議ツールの活用を併用できるとありがたいです。
+                  </span>
+                </p>
+                <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use href="./images/icon/sample/accordion-icon.svg#accordion-icon"></use>
+                </svg>
+              </dt>
+              <dd class="faq-answer">
+                <p class="answer-text">
+                  <span>
+                    対面である必要はございません。ZoomやGoogle MeetなどのWeb会議ツールを活用し、全国どこでもスムーズに進行可能です。<br>もちろん、ご希望があれば対面での打ち合わせも柔軟に対応いたします。
+                  </span>
+                </p>
+              </dd>
+            </dl>
+          </div>
+        </section>
+      </div>
+    <section>
+  </main>
+    <footer>
+    <div class="copy">&copy;Company Co., Ltd.</div>
+  </footer>
+</body>
+</html>

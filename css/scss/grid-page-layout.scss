@@ -1,0 +1,66 @@
+body {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 8svh 1fr 4fr 8svh;
+  grid-template-columns: clamp(240px, 20vw, 20vw) 1fr;
+  grid-template-areas: 
+    " header  header "
+    " hero    hero   "
+    " sidebar main   "
+    " footer  footer ";
+
+  header {
+    grid-area: header;
+  }
+
+  section {
+    &.hero {
+      grid-area: hero;
+    }
+  }
+
+  aside {
+    &.sidebar {
+      grid-area: sidebar;
+    }
+  }
+
+  main {
+    grid-area: main;
+    section {
+      & .part1 {}
+      & .part2 {}
+      & .part3 {}
+    }
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+
+  &.about-page,
+  &.news-page,
+  &.recruit-page,
+  &.contact-page,
+  &.other-page {
+    grid-template-rows: 8svh 1fr 8svh; 
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      " header "
+      " main   "
+      " footer ";
+    main {
+      grid-area: main;
+      display: block; 
+      padding: 20px;
+    }
+  }
+
+  &.recruit-page {
+    main {
+      padding: 0;
+    }
+  }
+}
+
