@@ -222,35 +222,6 @@ body {
           align-items: center;
         }
       }
-      &.main-section3 {
-        margin: 40px 20px;
-        > h2 {
-          font-size: 1.125rem;
-          text-align: center;
-          margin: 8px;
-        }
-        > div {
-          border: 1px solid #000;
-          max-width: 80%;
-          border-radius: 0.25em;
-          margin-inline: auto;
-          padding: 8px;
-          > * {
-            margin-bottom: 2svh;
-          }
-          > h3 {
-            font-size: 1rem;
-            text-align: center;
-          }
-          > .button-field {
-            display: flex;
-            justify-content: center;
-            align-items: start;
-            flex-wrap: wrap;
-            gap: 2svw;
-          }
-        }
-      }
       // about.htmlのメインセクション
       &.main-section-about {
         margin-block-end: 80px;
@@ -1247,14 +1218,54 @@ body {
           }
         }
       }
-
       // contact.htmlのメインセクション
       &.main-section-contact {
         > .page-title-field {
           text-align: center;
         }
       }
-
+      // other.htmlのメインセクション
+      &.main-section-other {
+        > .page-title-anchor-field {
+          text-align: center;
+        }
+        > .page-section-field {
+          #button-reference {
+            margin: 40px 20px;
+            > h2 {
+              font-size: 1.125rem;
+              text-align: center;
+              margin: 8px;
+            }
+            > div {
+              border: 1px solid #000;
+              max-width: 80%;
+              border-radius: 0.25em;
+              margin-inline: auto;
+              padding: 8px;
+              > * {
+                margin-bottom: 2svh;
+              }
+              > h3 {
+                font-size: 1rem;
+                text-align: center;
+              }
+              > .button-field {
+                display: flex;
+                justify-content: center;
+                align-items: start;
+                flex-wrap: wrap;
+                gap: 2svw;
+              }
+            }
+          }
+          #form-reference {
+            form {
+              margin: 20px 0;
+            }
+          }
+        }
+      }
     }
     > hr {
       border: 1px solid #404040;
@@ -1453,9 +1464,6 @@ a {
 
 // フォーム
 form {
-  &.form-reference-samples {
-    margin: 20px 0;
-  }
   > .form-header {
     text-align: center;
   }

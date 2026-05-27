@@ -417,7 +417,7 @@ const modalClose = () => {
   modal.addEventListener('close', () => {
     bodyContent.style.overflow = 'visible';
     topScrollButton.classList.remove('active');
-});
+  });
   // 黒背景部分の押下
   modal.addEventListener('click', (event) => {
     if (event.target === modal) {
