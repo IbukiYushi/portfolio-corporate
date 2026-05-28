@@ -53,38 +53,78 @@
         <h2>お問合せ</h2>
         <p>以下のフォームに必要事項をご記入の上、送信してください。</p>
       </div>
-      <form action="/submit-contact" method="post">
+      <form method="post" class="contact-form" autocomplete="on" novalidate>
         <div class="form-card">
-          <div>
-            <label for="user-name">お名前<span class="required">必須</span></label>
+          <div class="form-item">
+            <label for="user-name">
+              お名前
+              <span class="required">必須</span>
+            </label>
             <input type="text" id="user-name" name="user_name" placeholder="例）山田 太郎" required>
-            <span class="error-message"><span class="asterisk-mark">※</span>必須項目です</span>
+            <span class="error-message-field">
+              <span class="asterisk-mark">※</span>
+              <span class="error-message">必須項目です</span>
+            </span>
           </div>
-          <div>
-            <label for="user-email">メールアドレス<span class="required">必須</span></label>
+          <div class="form-item">
+            <label for="user-email">
+              メールアドレス
+              <span class="required">必須</span>
+            </label>
             <input type="email" id="user-email" name="user_email" placeholder="例）example@example.com" required>
-            <span class="error-message"><span class="asterisk-mark">※</span>必須項目です</span>
+            <span class="error-message-field">
+              <span class="asterisk-mark">※</span>
+              <span class="error-message">必須項目です</span>
+            </span>
           </div>
-          <div>
-            <label for="user-tel">電話番号<span class="optional">任意</span></label>
+          <div class="form-item">
+            <label for="user-tel">
+              電話番号
+              <span class="optional">任意</span>
+            </label>
             <input type="tel" id="user-tel" name="user_tel" placeholder="例）09012345678">
-            <span class="error-message"><span class="asterisk-mark"></span></span>
+            <span class="error-message-field">
+              <span class="asterisk-mark">※</span>
+              <span class="error-message"></span>
+            </span>
           </div>
-          <div>
-            <label for="subject">件名<span class="optional">任意</span></label>
+          <div class="form-item">
+            <label for="subject">
+              件名
+              <span class="optional">任意</span>
+            </label>
             <input type="text" id="subject" name="subject" placeholder="件名をご入力ください。">
-            <span class="error-message"><span class="asterisk-mark"></span></span>
+            <span class="error-message-field">
+              <span class="asterisk-mark">※</span>
+              <span class="error-message"></span>
+            </span>
           </div>
-          <div>
-            <label for="message">メッセージ本文<span class="required">必須</span></label>
+          <div class="form-item">
+            <label for="message">
+              メッセージ本文
+              <span class="required">必須</span>
+            </label>
             <textarea id="message" name="message" rows="6" placeholder="お問い合わせ内容をご入力ください。" required></textarea>
-            <span class="error-message"><span class="asterisk-mark">※</span>必須項目です</span>
+            <span class="error-message-field">
+              <span class="asterisk-mark">※</span>
+              <span class="error-message">必須項目です</span>
+            </span>
           </div>
           <div class="form-button-field">
-            <input type="submit" value="送信する" class="button button--lift button--lg button--border-circle">
+            <button type="submit" class="button button--lift button--lg submit submit--width100">送信する</button>
           </div>
         </div>
       </form>
+      <div id="thanks-message" class="thanks-message">
+        <div class="thanks-content">
+          <h4>お問合せありがとうございました！</h4>
+          <p>
+            内容を確認の上、3営業日以内に<br>
+            担当者よりメールにてご連絡させていただきます。
+          </p>
+          <button type="button" class="button button--lift button--lg submit">フォームに戻る</button>
+        </div>
+      </div>
     </section>
   </main>
   <footer>

@@ -1087,7 +1087,40 @@ body > main > section.main-section-recruit > .page-section-field > .page-section
   border-radius: 8px;
 }
 body > main > section.main-section-contact > .page-title-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+body > main > section.main-section-contact > .contact-form {
+  margin-inline: auto;
+  width: 80svw;
+}
+body > main > section.main-section-contact > .thanks-message {
+  display: none;
+  padding-block: 80px;
   text-align: center;
+  animation: fadeInThanksMessage 0.8s ease forwards;
+}
+@keyframes fadeInThanksMessage {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+body > main > section.main-section-contact > .thanks-message > .thanks-content > h4 {
+  font-size: 2rem;
+  color: darkorange;
+  margin-bottom: 20px;
+}
+body > main > section.main-section-contact > .thanks-message > .thanks-content > p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
 }
 body > main > section.main-section-other > .page-title-anchor-field {
   text-align: center;
@@ -1331,6 +1364,21 @@ form > .form-card > div {
   display: flex;
   flex-direction: column;
 }
+form > .form-card > div.form-item > .error-message-field {
+  display: flex;
+  align-items: baseline;
+  visibility: hidden;
+  opacity: 0;
+  color: #ff0000;
+  min-height: 18px;
+  transition: opacity 0.3s ease;
+}
+form > .form-card > div.form-item > .error-message-field > .asterisk-mark {
+  font-size: 0.625rem;
+}
+form > .form-card > div.form-item > .error-message-field > .error-message {
+  font-size: 0.75rem;
+}
 form > .form-card > div.form-item.is-error > input, form > .form-card > div.form-item.is-error textarea {
   border: 2px solid #ff0000;
   background: #fce8e6;
@@ -1372,22 +1420,6 @@ label span.optional {
   background: #aaaaaa;
 }
 
-.error-message-field {
-  display: flex;
-  align-items: baseline;
-  visibility: hidden;
-  opacity: 0;
-  color: #ff0000;
-  min-height: 18px;
-  transition: opacity 0.3s ease;
-}
-.error-message-field > .asterisk-mark {
-  font-size: 0.625rem;
-}
-.error-message-field > .error-message {
-  font-size: 0.75rem;
-}
-
 input, textarea, select {
   width: 100%;
   cursor: pointer;
@@ -1405,12 +1437,7 @@ input {
   border: 1px solid #888888;
   border-radius: 0.25em;
 }
-input:-moz-read-only {
-  color: #555;
-  background: #ccc;
-  pointer-events: none;
-}
-input:read-only {
+input[readonly] {
   color: #555;
   background: #ccc;
   pointer-events: none;
@@ -1601,4 +1628,14 @@ button.submit:focus-visible {
   outline: 2px solid #606060;
   outline-offset: 1px;
   border-radius: 4px;
+}
+button.submit--width100 {
+  color: #333333;
+  width: 100%;
+  border-width: 2px;
+}
+button.submit--width100:active {
+  color: #444444;
+  background: #dddddd;
+  filter: brightness(0.8);
 }

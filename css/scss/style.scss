@@ -1221,7 +1221,38 @@ body {
       // contact.htmlのメインセクション
       &.main-section-contact {
         > .page-title-field {
+          // text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+        }
+        > .contact-form {
+          margin-inline: auto;
+          width: 80svw;
+        }
+        > .thanks-message {
+          display: none;
+          padding-block: 80px;
           text-align: center;
+          animation: fadeInThanksMessage 0.8s ease forwards;
+          @keyframes fadeInThanksMessage {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          > .thanks-content {
+            > h4 {
+              font-size: 2rem;
+              color: darkorange;
+              margin-bottom: 20px;
+            }
+            > p {
+              font-size: 1.2rem;
+              line-height: 1.8;
+              margin-bottom: 40px;
+            }
+            > button {}
+          }
         }
       }
       // other.htmlのメインセクション
@@ -1478,19 +1509,34 @@ form {
       display: flex;
       flex-direction: column;
       &.form-item {
+        >.error-message-field {
+          display: flex;
+          align-items: baseline;
+          visibility: hidden;
+          opacity: 0;
+          color: #ff0000;
+          min-height: 18px;
+          transition: opacity 0.3s ease;
+          > .asterisk-mark {
+            font-size: 0.625rem;
+          }
+          > .error-message {
+            font-size: 0.75rem;
+          }
+        }
         &.is-error {
           > input, textarea {
-          border: 2px solid #ff0000;
-          background: #fce8e6;
-          // &:not(:placeholder-shown) {
-          //   border: 2px solid #008000; 
-          //   background: #ffffff;
-          // }
-        }
-        > .error-message-field {
-          visibility: visible;
-          opacity: 1;
-  }
+            border: 2px solid #ff0000;
+            background: #fce8e6;
+            // &:not(:placeholder-shown) {
+            //   border: 2px solid #008000; 
+            //   background: #ffffff;
+            // }
+          }
+          > .error-message-field {
+            visibility: visible;
+            opacity: 1;
+          }
         }
       }
       &.form-button-field {
@@ -1538,23 +1584,6 @@ label {
   }
 }
 
-// バリデーションメッセージ
-.error-message-field {
-    display: flex;
-    align-items: baseline;
-    visibility: hidden;
-    opacity: 0;
-    color: #ff0000;
-    min-height: 18px;
-    transition: opacity 0.3s ease;
-  > .asterisk-mark {
-    font-size: 0.625rem;
-  }
-  > .error-message {
-    font-size: 0.75rem;
-  }
-}
-
 // 入力欄・テキストエリア・リストボックス
 input, textarea, select {
   width: 100%;
@@ -1572,7 +1601,7 @@ input {
   padding: 0.25em 0.5em;
   border: 1px solid #888888;
   border-radius: 0.25em;
-  &:read-only {
+  &[readonly] {
     color: #555;
     background: #ccc;
     pointer-events: none;
@@ -1722,9 +1751,9 @@ button {
   &.button {
     &--border-circle {
       border-radius: 100vmax;
-        @include focus-visible-state(
-          $border-radius: 100vmax
-        );
+      @include focus-visible-state(
+        $border-radius: 100vmax
+      );
     }
   }
   &.button {
@@ -1806,5 +1835,15 @@ button {
       $outline-offset: 1px,
       $border-radius: 4px
     );
+    // TODO: --width100がindex.html修正後に一つしか使われていなかったら.submitに統合
+    &--width100 {
+      color: #333333;
+      width: 100%;
+      border-width: 2px;
+      @include active-state (
+        $color: #444444,
+        $background: #dddddd
+      );
+    }
   }
 }

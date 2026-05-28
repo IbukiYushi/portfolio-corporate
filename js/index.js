@@ -192,10 +192,10 @@ const handleEntryForm = () => {
 };
 
 /**
- * サンクスメッセージの「フォームに戻る」ボタンによる表示切り替え：
+ * 採用情報ページのサンクスメッセージの「フォームに戻る」ボタンによる表示切り替え：
  * 「フォームに戻る」ボタン押下で、サンクスメッセージがフェードアウトし、フォームがフェードインする。
  */
-const thanksMessageButton = () => {
+const entryThanksMessageButton = () => {
   const entryForm = document.querySelector('.entry-form');
   if (!entryForm) return;
   const submitBtn = entryForm.querySelector('button[type="submit"]');
@@ -223,9 +223,147 @@ const thanksMessageButton = () => {
         const formItems = entryForm.querySelectorAll('.form-item');
         formItems.forEach(item => item.classList.remove('is-error'));
       }, 200);
-      // エンタリーフォーム側のボタンの状態を復元
+      // エントリーフォーム側のボタンの状態を復元
       submitBtn.disabled = false;
       submitBtn.textContent = "この職種にエントリーする";
+    })();
+  });
+};
+
+/**
+ * お問合せフォームのバリデーション：
+ * お問合せフォーム内のボタンのクリックにより、バリデーションチェックを行いエラー該当のものにメッセージを出す
+ */
+const handleContactForm = () => {
+  const contactForm = document.querySelector('.contact-form');
+  if (!contactForm) return;
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    let hasError = false;
+    const inputs = contactForm.querySelectorAll('input, textarea');
+    inputs.forEach((input) => {
+      const formItem = input.closest('.form-item');
+      const val = input.value.trim();
+      let isItemError = false;
+      // 必須チェック
+      if (input.hasAttribute('required') && val === "") {
+        isItemError = true;
+        const errorText = formItem.querySelector('.error-message'); errorText.innerText = "必須項目です";
+      }
+      // メール形式チェック
+      if (input.type === 'email' && val !== "") {
+        const emailRegex = /^[a-zA-Z0-9_.+-]+@([a-z0-9][a-z0-9-]*[a-z0-9]\.)+[a-z]{2,}$/;
+        if (!emailRegex.test(val)) {
+          isItemError = true;
+          const errorMessage = formItem.querySelector('.error-message');
+          errorMessage.innerText = "メールアドレス形式でご入力ください";
+        }
+      }
+      // 電話番号形式チェック（任意項目だが入力がある場合のみ）
+      if (input.type === 'tel' && val !== "") {
+        const telRegex = /^(0[5-9]0[0-9]{8}|0[1-9][1-9][0-9]{7})$/;
+        if (!telRegex.test(val)) {
+          isItemError = true;
+          const errorMessage = formItem.querySelector('.error-message');
+          errorMessage.innerText = "電話番号形式の半角でご入力ください";
+        }
+      }
+      // クラス付与の判定
+      if (isItemError) {
+        formItem.classList.add('is-error');
+        hasError = true;
+      } else {
+        formItem.classList.remove('is-error');
+      }
+    });
+    if (hasError) return;
+
+    // 送信処理
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    try {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "送信中...";
+      const formData = new FormData(contactForm);
+      // 擬似送信
+      // 【デモ用実装】
+      // サーバー環境（PHP等）がないローカル環境でも、送信後の演出（サンクスメッセージ表示やエラーハンドリング）を
+      // 正しく確認できるように、Promiseを使用して通信をシミュレート（モック化）しています。
+      // 実際の運用時は、この部分を実際の fetch API 呼び出しに差し替えて使用します。
+      const mockResponse = await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({
+            ok: true,
+            json: () => Promise.resolve({
+              status: "success",
+              message: `【擬似成功】${formData.get('name')}様、${formData.get('job')}へのエントリーを受け付けました！`
+            })
+          });
+        }, 300);
+      });
+      // const response = await fetch('send_mail.php', {
+      //   method: 'POST',
+      //   body: formData
+      //   // 必要に応じて headers（.then(), .catch(), .finally()）なども追加
+      // });
+      // HTTPステータスチェック
+      if (!mockResponse.ok) {
+        throw new Error('応答エラー');
+      }
+      const data = await mockResponse.json();
+      console.log("サーバーからのレスポンス:", data.message);
+      if (data.status === "success") {
+        (function showThanksMessage() {
+          const form = document.querySelector('.contact-form');
+          const thanks = document.getElementById('thanks-message');
+          form.style.transition = 'opacity 0.5s ease';
+          form.style.opacity = '0';
+          setTimeout(() => {
+            form.style.display = 'none';
+            thanks.style.display = 'block';
+            thanks.style.opacity = '1';
+          }, 500);
+        })();
+      }
+    } catch (error) {
+      console.error("送信失敗:", error);
+      alert("通信中に問題が発生しました。インターネット接続を確認し、もう一度お試しください。");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "送信する";
+    }
+  });
+};
+
+/**
+ * お問い合わせページのサンクスメッセージの「フォームに戻る」ボタンによる表示切り替え：
+ * 「フォームに戻る」ボタン押下で、サンクスメッセージがフェードアウトし、フォームがフェードインする。
+ */
+const contactThanksMessageButton = () => {
+  const contactForm = document.querySelector('.contact-form');
+  if (!contactForm) return;
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const thanksMessage = document.getElementById('thanks-message');
+  if (!thanksMessage) return;
+  const thanksMessageButton = thanksMessage.querySelector('button');
+  thanksMessageButton.addEventListener('click', () => {
+    // サンクスメッセージがフェードアウト&フォームがフェードイン
+    (function showContactForm() {
+      // サンクスメッセージのフェードアウト処理
+      thanksMessage.style.transition = 'opacity 0.5s ease';
+      thanksMessage.style.opacity = '0';
+      setTimeout(() => {
+        // フォーム表示による切り替え
+        thanksMessage.style.display = 'none';
+        contactForm.style.display = 'block';
+        contactForm.style.opacity = '1';
+        // フォーム値リセット
+        contactForm.reset();
+        // エラー表示（is-errorクラス）全削除
+        const formItems = contactForm.querySelectorAll('.form-item');
+        formItems.forEach(item => item.classList.remove('is-error'));
+      }, 200);
+      // 問い合わせフォーム側のボタンの状態を復元
+      submitBtn.disabled = false;
+      submitBtn.textContent = "送信する";
     })();
   });
 };
@@ -505,7 +643,11 @@ const init = () => {
   }
   if (document.querySelector('.entry-form')) {
     handleEntryForm();
-    thanksMessageButton();
+    entryThanksMessageButton();
+  }
+  if (document.querySelector('.contact-form')) {
+    handleContactForm();
+    contactThanksMessageButton();
   }
   if (document.querySelector('.pagination-field')) {
     pagination(3);
