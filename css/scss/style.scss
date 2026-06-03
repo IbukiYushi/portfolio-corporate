@@ -122,104 +122,198 @@ body {
     }
   }
 
-  > section {
-    &.hero {
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
-      align-items: center;
-      background-color: orange;
-      > .hero-text {
-        text-align: center;
-        /* > h1 {} */
-        /* > pre {} */
-        /* > a {} */
+  > section[id="hero"] {
+    position: relative;
+    width: 100%;
+    height: calc(100svh - 80px);
+    overflow: hidden;
+    // background: orange; TODO:レスポンシブ対応時
+    > .hero-text {
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      z-index: 2;
+      text-align: left;
+      background: rgba(255, 200, 60, 0.6);
+      animation: initGlassmorphism 0.8s ease-in-out forwards;
+      @keyframes initGlassmorphism {
+        from { background: rgba(255, 200, 60, 0.4); filter: blur(1px); }
+        to { background: rgba(255, 200, 60, 0.6); filter: blur(0); }
       }
-      > .hero-image {}
+      padding-block: 20px 40px;
+      padding-inline: 40px;
+      border-radius: 4px;
+      > .hero-title {
+        font-size: 4.0rem;
+        color: #333333;
+        font-weight: bold;
+        line-height: 1.5;
+        padding-block: 40px;
+      }
+      > .hero-subtitle {
+        font-size: 2.75rem;
+        color: #555555;
+        margin-top: 40px;
+        line-height: 1.5;
+        > span {
+          display: block;
+          margin-left: 8svw;
+          padding-block: 24px;
+          &:last-of-type {
+            margin-left: 10svw;
+          }
+        }
+      }
+    }
+    > .hero-image {
+      width: 100%;
+      height: 100%;
+      > img {
+        height: calc(100svh - 80px);
+        width: 100%;
+        // max-width: 100%; TODO:レスポンシブ対応時
+        object-fit: cover;
+        margin-inline: auto;
+        filter: brightness(140%);
+      }
     }
   }
 
-  > aside {
+  > aside[class="sidebar"] {
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    row-gap: 24px;
     background-color: aqua;
-    &.sidebar {
-      display: flex;
-      flex-flow: column;
-      justify-content: start;
-      align-items: center;
-      row-gap: 24px;
-      padding-top: 24px;
-      > search {
-        > form {
-          display: initial;
-          > label {}
-          > div {
-            display: flex;
-            flex-direction: initial;
-            justify-content: start;
-            align-items: center;
-            column-gap: 4px;
-            > input {
-              max-width: 160px;
-            }
-            > button {}
+    padding-top: 24px;
+    > search {
+      > form {
+        display: initial;
+        > label {}
+        > div {
+          display: flex;
+          flex-direction: initial;
+          justify-content: start;
+          align-items: center;
+          column-gap: 4px;
+          > input {
+            max-width: 160px;
           }
+          > button {}
         }
       }
-      > nav {
-        width: 200px;
-        > details {
-          > .title {}
-          > .anchor-field {
-            display: flex;
-            flex-flow: column;
-            justify-content: start;
-            align-items: flex-start;
-          }
-        }
-      }
-      > article {}
     }
+    > nav {
+      width: 200px;
+      > details {
+        > .title {}
+        > .anchor-field {
+          display: flex;
+          flex-flow: column;
+          justify-content: start;
+          align-items: flex-start;
+        }
+      }
+    }
+    > article {}
   }
 
   > main {
     background-color: antiquewhite;
     > section {
       // index.htmlのメインセクション
-      &.main-section1 {
-        padding: 80px 0;
-        > h2 {
-          font-size: 1.125rem;
-          text-align: center;
-          margin: 8px;
-        }
-        > .dummyimg {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          > picture {
-            > img {}
+      &.main-section-top {
+        > .page-section {
+          > h3 {
+            text-align: center;
           }
-          > pre {}
-        }
-      }
-      &.main-section2 {
-        margin: 40px 0;
-        > dl {
-          > div {
-            background-color: #666666;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            padding: 8px;
-            > dt {
-              font-weight: bold;
+          &#about-top {
+            > .section-header {
+              text-align: center;
+              padding-block: 80px 40px;
+              > .section-title {
+                color: #222222;
+                font-size: 2.5rem;
+                letter-spacing: 0.08em;
+                &--english {
+                  color: #aaaaaa;
+                  opacity: 0.4;
+                  font-size: 3.5rem;
+                  font-style: italic;
+                  letter-spacing: 0.18em;
+                }
+              }
             }
-            > dd {}
+            > .services-container {
+              max-width: 70svw;
+              margin-inline: auto;
+              > .service-card {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 40px;
+                align-items: center;
+                > .service-card-body {
+                  align-self: start;
+                  padding-top: 24px;
+                  > .service-card-title {
+                    display: flex;
+                    flex-direction: column;
+                    span {
+                      font-size: 1.5rem;
+                      &.--en {
+                        font-size: 1.0rem;
+                        color: #aaaaaa;
+                        border-left: 4px solid orange;
+                        padding-left: 8px;
+                      }
+                    }
+                  }
+                  > .service-card-text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content:space-between;
+                    color: #333333;
+                    padding-block: 40px;
+                    padding-inline: 16px;
+                    span {}
+                  }
+                  > .service-button-field {
+                    > button {
+                        font-weight: normal;
+                        font-size: 1rem;
+                        border-width: 1px;
+                      > a {
+                        display: flex;
+                        justify-content: center;
+                        gap: 24px;
+                      }
+                    }
+                  }
+                }
+                > .service-card-image {
+                  img {
+                    width: 100%;
+                    height: auto;
+                  }
+                }
+              }
+              > hr {
+                border: none;
+                height: 1px;
+                background: #888888;
+                margin-block: 8px;
+              }
+            }
           }
-        }
-        > .svg-field {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
+          &#news-top {
+            background: #07b39b;
+            height: 200px;
+          }
+          &#contact-top {
+            background: orange;
+            height: 200px;
+          }
         }
       }
       // about.htmlのメインセクション
@@ -1251,7 +1345,12 @@ body {
               line-height: 1.8;
               margin-bottom: 40px;
             }
-            > button {}
+            > button {
+              @include active-state (
+                $color: #444444,
+                $background: #dddddd
+              );
+            }
           }
         }
       }
@@ -1261,7 +1360,7 @@ body {
           text-align: center;
         }
         > .page-section-field {
-          #button-reference {
+          > #button-reference {
             margin: 40px 20px;
             > h2 {
               font-size: 1.125rem;
@@ -1290,9 +1389,25 @@ body {
               }
             }
           }
-          #form-reference {
+          > #form-reference {
             form {
               margin: 20px 0;
+            }
+          }
+          > #left-picture-reference {
+            > h2 {
+              font-size: 1.125rem;
+              text-align: center;
+              margin: 8px;
+            }
+            > .dummyimg {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              > picture {
+                > img {}
+              }
+              > pre {}
             }
           }
         }

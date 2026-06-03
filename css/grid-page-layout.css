@@ -1,35 +1,39 @@
 body {
   min-height: 100dvh;
   display: grid;
-  grid-template-rows: 8svh 1fr 4fr 8svh;
-  grid-template-columns: clamp(240px, 20vw, 20vw) 1fr;
-  grid-template-areas: " header  header " " hero    hero   " " sidebar main   " " footer  footer ";
 }
 body header {
   grid-area: header;
 }
-body section.hero {
+body section[id=hero] {
   grid-area: hero;
 }
-body aside.sidebar {
+body aside[class=sidebar] {
   grid-area: sidebar;
 }
 body main {
   grid-area: main;
+  display: block;
+  padding: 20px;
+}
+body.recruit-page > main {
+  padding: 0;
 }
 body footer {
   grid-area: footer;
 }
-body.about-page, body.news-page, body.recruit-page, body.contact-page, body.other-page {
+body.top-page {
+  grid-template-rows: 8svh 1fr auto 8svh;
+  grid-template-columns: 1fr;
+  grid-template-areas: " header " " hero " " main   " " footer ";
+}
+body.about-page, body.news-page, body.recruit-page, body.contact-page {
   grid-template-rows: 8svh 1fr 8svh;
   grid-template-columns: 1fr;
   grid-template-areas: " header " " main   " " footer ";
 }
-body.about-page main, body.news-page main, body.recruit-page main, body.contact-page main, body.other-page main {
-  grid-area: main;
-  display: block;
-  padding: 20px;
-}
-body.recruit-page main {
-  padding: 0;
+body.other-page {
+  grid-template-rows: 8svh 1fr 8svh;
+  grid-template-columns: 1fr clamp(240px, 20vw, 20vw);
+  grid-template-areas: " header header  " " main   sidebar " " footer footer  ";
 }

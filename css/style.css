@@ -72,34 +72,82 @@ body > header > .hamburger-menu-button:focus-visible {
 body > header > .hamburger-menu-button:active {
   color: #606060;
 }
-body > section.hero {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  background-color: orange;
+body > section[id=hero] {
+  position: relative;
+  width: 100%;
+  height: calc(100svh - 80px);
+  overflow: hidden;
 }
-body > section.hero > .hero-text {
-  text-align: center;
-  /* > h1 {} */
-  /* > pre {} */
-  /* > a {} */
+body > section[id=hero] > .hero-text {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  z-index: 2;
+  text-align: left;
+  background: rgba(255, 200, 60, 0.6);
+  animation: initGlassmorphism 0.8s ease-in-out forwards;
 }
-body > aside {
-  background-color: aqua;
+@keyframes initGlassmorphism {
+  from {
+    background: rgba(255, 200, 60, 0.4);
+    filter: blur(1px);
+  }
+  to {
+    background: rgba(255, 200, 60, 0.6);
+    filter: blur(0);
+  }
 }
-body > aside.sidebar {
+body > section[id=hero] > .hero-text {
+  padding-block: 20px 40px;
+  padding-inline: 40px;
+  border-radius: 4px;
+}
+body > section[id=hero] > .hero-text > .hero-title {
+  font-size: 4rem;
+  color: #333333;
+  font-weight: bold;
+  line-height: 1.5;
+  padding-block: 40px;
+}
+body > section[id=hero] > .hero-text > .hero-subtitle {
+  font-size: 2.75rem;
+  color: #555555;
+  margin-top: 40px;
+  line-height: 1.5;
+}
+body > section[id=hero] > .hero-text > .hero-subtitle > span {
+  display: block;
+  margin-left: 8svw;
+  padding-block: 24px;
+}
+body > section[id=hero] > .hero-text > .hero-subtitle > span:last-of-type {
+  margin-left: 10svw;
+}
+body > section[id=hero] > .hero-image {
+  width: 100%;
+  height: 100%;
+}
+body > section[id=hero] > .hero-image > img {
+  height: calc(100svh - 80px);
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-inline: auto;
+  filter: brightness(140%);
+}
+body > aside[class=sidebar] {
   display: flex;
   flex-flow: column;
   justify-content: start;
   align-items: center;
   row-gap: 24px;
+  background-color: aqua;
   padding-top: 24px;
 }
-body > aside.sidebar > search > form {
+body > aside[class=sidebar] > search > form {
   display: initial;
 }
-body > aside.sidebar > search > form > div {
+body > aside[class=sidebar] > search > form > div {
   display: flex;
   flex-direction: initial;
   justify-content: start;
@@ -107,13 +155,13 @@ body > aside.sidebar > search > form > div {
   -moz-column-gap: 4px;
        column-gap: 4px;
 }
-body > aside.sidebar > search > form > div > input {
+body > aside[class=sidebar] > search > form > div > input {
   max-width: 160px;
 }
-body > aside.sidebar > nav {
+body > aside[class=sidebar] > nav {
   width: 200px;
 }
-body > aside.sidebar > nav > details > .anchor-field {
+body > aside[class=sidebar] > nav > details > .anchor-field {
   display: flex;
   flex-flow: column;
   justify-content: start;
@@ -122,35 +170,88 @@ body > aside.sidebar > nav > details > .anchor-field {
 body > main {
   background-color: antiquewhite;
 }
-body > main > section.main-section1 {
-  padding: 80px 0;
-}
-body > main > section.main-section1 > h2 {
-  font-size: 1.125rem;
+body > main > section.main-section-top > .page-section > h3 {
   text-align: center;
-  margin: 8px;
 }
-body > main > section.main-section1 > .dummyimg {
+body > main > section.main-section-top > .page-section#about-top > .section-header {
+  text-align: center;
+  padding-block: 80px 40px;
+}
+body > main > section.main-section-top > .page-section#about-top > .section-header > .section-title {
+  color: #222222;
+  font-size: 2.5rem;
+  letter-spacing: 0.08em;
+}
+body > main > section.main-section-top > .page-section#about-top > .section-header > .section-title--english {
+  color: #aaaaaa;
+  opacity: 0.4;
+  font-size: 3.5rem;
+  font-style: italic;
+  letter-spacing: 0.18em;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container {
+  max-width: 70svw;
+  margin-inline: auto;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+  align-items: center;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card > .service-card-body {
+  align-self: start;
+  padding-top: 24px;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card > .service-card-body > .service-card-title {
+  display: flex;
+  flex-direction: column;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card > .service-card-body > .service-card-title span {
+  font-size: 1.5rem;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card > .service-card-body > .service-card-title span.--en {
+  font-size: 1rem;
+  color: #aaaaaa;
+  border-left: 4px solid orange;
+  padding-left: 8px;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card > .service-card-body > .service-card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333333;
+  padding-block: 40px;
+  padding-inline: 16px;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card > .service-card-body > .service-button-field > button {
+  font-weight: normal;
+  font-size: 1rem;
+  border-width: 1px;
+}
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card > .service-card-body > .service-button-field > button > a {
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap: 24px;
 }
-body > main > section.main-section2 {
-  margin: 40px 0;
+body > main > section.main-section-top > .page-section#about-top > .services-container > .service-card > .service-card-image img {
+  width: 100%;
+  height: auto;
 }
-body > main > section.main-section2 > dl > div {
-  background-color: #666666;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  padding: 8px;
+body > main > section.main-section-top > .page-section#about-top > .services-container > hr {
+  border: none;
+  height: 1px;
+  background: #888888;
+  margin-block: 8px;
 }
-body > main > section.main-section2 > dl > div > dt {
-  font-weight: bold;
+body > main > section.main-section-top > .page-section#news-top {
+  background: #07b39b;
+  height: 200px;
 }
-body > main > section.main-section2 > .svg-field {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+body > main > section.main-section-top > .page-section#contact-top {
+  background: orange;
+  height: 200px;
 }
 body > main > section.main-section-about {
   margin-block-end: 80px;
@@ -1122,40 +1223,55 @@ body > main > section.main-section-contact > .thanks-message > .thanks-content >
   line-height: 1.8;
   margin-bottom: 40px;
 }
+body > main > section.main-section-contact > .thanks-message > .thanks-content > button:active {
+  color: #444444;
+  background: #dddddd;
+  filter: brightness(0.8);
+}
 body > main > section.main-section-other > .page-title-anchor-field {
   text-align: center;
 }
-body > main > section.main-section-other > .page-section-field #button-reference {
+body > main > section.main-section-other > .page-section-field > #button-reference {
   margin: 40px 20px;
 }
-body > main > section.main-section-other > .page-section-field #button-reference > h2 {
+body > main > section.main-section-other > .page-section-field > #button-reference > h2 {
   font-size: 1.125rem;
   text-align: center;
   margin: 8px;
 }
-body > main > section.main-section-other > .page-section-field #button-reference > div {
+body > main > section.main-section-other > .page-section-field > #button-reference > div {
   border: 1px solid #000;
   max-width: 80%;
   border-radius: 0.25em;
   margin-inline: auto;
   padding: 8px;
 }
-body > main > section.main-section-other > .page-section-field #button-reference > div > * {
+body > main > section.main-section-other > .page-section-field > #button-reference > div > * {
   margin-bottom: 2svh;
 }
-body > main > section.main-section-other > .page-section-field #button-reference > div > h3 {
+body > main > section.main-section-other > .page-section-field > #button-reference > div > h3 {
   font-size: 1rem;
   text-align: center;
 }
-body > main > section.main-section-other > .page-section-field #button-reference > div > .button-field {
+body > main > section.main-section-other > .page-section-field > #button-reference > div > .button-field {
   display: flex;
   justify-content: center;
   align-items: start;
   flex-wrap: wrap;
   gap: 2svw;
 }
-body > main > section.main-section-other > .page-section-field #form-reference form {
+body > main > section.main-section-other > .page-section-field > #form-reference form {
   margin: 20px 0;
+}
+body > main > section.main-section-other > .page-section-field > #left-picture-reference > h2 {
+  font-size: 1.125rem;
+  text-align: center;
+  margin: 8px;
+}
+body > main > section.main-section-other > .page-section-field > #left-picture-reference > .dummyimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 body > main > hr {
   border: 1px solid #404040;

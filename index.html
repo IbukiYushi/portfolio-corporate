@@ -14,16 +14,14 @@
   <meta property="og:site_name" content="サイト名">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./images/icon/favicon/favicon.ico" sizes="16x16 32x32 48x48"/>
-  <link rel="preload" href="./images/backgrounds/hero/hero-section-img.jpg" as="image" type="image/jpeg"/>
-  <!-- TODO: 実際に表示させる -->
-  <link rel="preload" href="./images/test.png" as="image" type="image/png"/>
+  <link rel="preload" href="./images/hero/hero-section-img.jpg" as="image" type="image/jpeg"/>
   <link rel="stylesheet" href="./css/reset.css"/>
   <link rel="stylesheet" href="./css/grid-page-layout.css"/>
   <!-- TODO: @mediaのレスポンシブ用css -->
   <link rel="stylesheet" href="./css/style.css"/>
   <script type="module" src="./js/index.js" defer></script>
 </head>
-<body>
+<body class="top-page">
   <header>
     <div class="site-logo-field">
       <a class="nav-link" href="./index.html">
@@ -47,76 +45,8 @@
         <use href="./images/icon/sample/hamburger-menu.svg#hamburger-menu" x="0" y="0" fill="" stroke="none"></use>
       </svg>
     </button>
-  </header>
-  <section id="hero" class="hero">
-    <hgroup class="hero-text">
-      <h2>キャッチコピーやタイトル</h2>
-      <p>サブタイトルや説明文</p>
-    </hgroup>
-    <div class="hero-image">
-      <img src="./images/backgrounds/hero/hero-section-img.jpg" alt="ヒーロー画像の説明" width="300" height="200" decoding="async">
-    </div>
-    <!-- TODO:下スクロールボタンにする -->
-    <svg class="backtotop-arrow-svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <use class="backtotop-arrow" href="./images/icon/sample/backtotop-arrow.svg#backtotop-arrow" x="0" y="0" fill="" stroke="none"></use>
-    </svg>
-  </section>
-  <aside class="sidebar">
-    <search>
-      <form action="./index.html">
-        <label for="query">サイト内を検索</label>
-        <div>
-          <input type="search" name="search" id="query">
-          <button class="submit button--sm" type="submit">検索</button>
-        </div>
-      </form>
-    </search>
-    <nav>
-      <details>
-        <summary class="title">ページ内ナビ</summary>
-        <div class="anchor-field">
-          <a href="#hero">ヒーローセクション</a>
-          <a href="#main-section1">セクション1</a>
-          <a href="#main-section2">セクション2</a>
-          <a href="#main-section3">セクション3</a>
-        </div>
-      </details>
-    </nav>
-    <article>
-      <p>他の人気記事1</p>
-      <img src="https://placehold.jp/200x100.png" alt="他の人気記事" width="200" height="100" loading="lazy" decoding="async">
-    </article>
-    <article>
-      <p>他の人気記事2</p>
-      <img src="https://placehold.jp/200x100.png" alt="他の人気記事" width="200" height="100" loading="lazy" decoding="async">
-    </article>
-  </aside>
-  <main>
-    <section id="main-section1" class="main-section1">
-      <h2>サイトの名前や説明（コピーやタイトル）</h2>
-      <div class="dummyimg">
-        <picture>
-          <source media="(min-width:1000px)" srcset="https://placehold.jp/300x200.png" width="300" height="200">
-          <source media="(min-width:768px)" srcset="https://placehold.jp/200x200.png" width="200" height="200">
-          <source media="(min-width:500px)" srcset="https://placehold.jp/200x100.png" width="200" height="100">
-          <img src="https://placehold.jp/100x100.png" alt="" width="100" height="100" loading="lazy" decoding="async">
-        </picture>
-        <pre>
-          long text long text long text long text long text 
-          long text long text long text long text long text 
-          long text long text long text long text long text 
-          long text long text long text long text long text 
-          long text long text long text long text long text 
-          long text long text long text long text long text 
-          long text long text long text long text long text 
-          long text long text
-        </pre>
-      </div>
-    </section>
-    <hr>
-    <section id="main-section2" class="main-section2">
-      <div role="tablist">
-        <!-- TODO:JS組む -->
+    <!-- TODO: 下記のアクセシビリティを意識した形に変更 -->
+      <!-- <div role="tablist">
         <a href="#tab-panel-1" id="tab1" role="tab" aria-controls="tab-panel-1" aria-selected="true" tabindex="0">タブ1</a>
         <a href="#tab-panel-2" id="tab2" role="tab" aria-controls="tab-panel-2" aria-selected="false" tabindex="-1">タブ2</a>
       </div>
@@ -125,29 +55,100 @@
       </div>
       <div id="tab-panel-2" role="tabpanel" aria-labelledby="tab1" tabindex="0">
         コンテンツ2
-      </div>
-      <dl>
-        <div>
-          <dt>クラウドコンピューティング</dt>
-          <dd>インターネット経由でコンピューターの資源を提供する...</dd>
-        </div>
-        <div>
-          <dt>API</dt>
-          <dd>Application Programming Interfaceの略で、ソフトウェア間で...</dd>
-        </div>
-      </dl>
+      </div> -->
+  </header>
 
-      <div class="svg-field">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <use class="template-id" href="./images/icon/_template.svg#template-id" x="0" y="0" fill="" stroke="none"></use>
-        </svg>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <use class="template-id-red" href="./images/icon/_template.svg#template-id-red" x="0" y="0" fill="" stroke="none"></use>
-        </svg>
-      </div>
-      <img src="./images/test.png" alt="preloadのテスト画像">
+  <section id="hero" class="hero">
+    <hgroup class="hero-text">
+      <h2 class="hero-title">技術を、ビジネスの確かな価値へ。</h2>
+      <p class="hero-subtitle">
+        <span>最先端のWeb制作とシステム開発で、</span>
+        <span>企業のDXと持続可能な成長を伴走サポートします。</span>
+      </p>
+    </hgroup>
+    <div class="hero-image">
+      <img src="./images/hero/hero-section-img.jpg" alt="ヒーロー画像の説明" width="1440" height="800" decoding="async">
+    </div>
+    <!-- TODO: 後々、下スクロールボタン（画像の下中央）追加予定 -->
+    <!-- <svg class="backtotop-arrow-svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <use class="backtotop-arrow" href="./images/icon/sample/backtotop-arrow.svg#backtotop-arrow" x="0" y="0" fill="" stroke="none"></use>
+    </svg> -->
+  </section>
+
+  <main>
+    <section id="main-section-top" class="main-section-top">
+
+      <section id="about-top" class="page-section">
+        <header class="section-header">
+          <h3 class="section-title">事業内容</h3>
+          <p class="section-title section-title--english">SERVICES</p>
+        </header>
+        <div class="services-container">
+          <article class="service-card">
+            <div class="service-card-body">
+              <h4 class="service-card-title">
+                <span class="--en">SERVICES 01</span>
+                <span>Webサイト制作・開発</span>
+              </h4>
+              <p class="service-card-text">
+                <span>コーポレートサイト、ランディングページ、メディアサイトなど、</span>
+                <span>ビジネスの目的に合わせた最適なWebサイトを制作。</span>
+                <span>モダンなUI/UXデザインと、保守性の高いコーディングを提供します。</span>
+              </p>
+              <div class="service-button-field">
+                <button class="button button--outline button--md button--border-circle" type="button">
+                  <a href="./about.html#business-web">
+                    <span>詳しく見る</span>
+                    <svg class="arrow-double-right-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <use class="arrow-double-right" href="./images/icon/sample/arrow-double-right.svg#arrow-double-right" x="0" y="0" fill="" stroke="none"></use>
+                    </svg>
+                  </a>
+                </button>
+              </div>
+            </div>
+            <div class="service-card-image">
+              <img src="./images/contents/business/business-web.jpg" alt="Webサイト制作・開発の画像" width="600" height="400" loading="lazy" decoding="async">
+            </div>
+          </article>
+          <hr>
+          <article class="service-card">
+            <div class="service-card-body">
+              <h4 class="service-card-title">
+                <span class="--en">SERVICES 02</span>
+                <span>アプリケーション開発・システム連携</span>
+              </h4>
+              <p class="service-card-text">
+                <span>業務効率化のためのWebアプリケーション開発や、</span>
+                <span>各種APIを利用したシステム連携を行います。</span>
+                <span>Vanilla JSを用いた軽量かつロジックの堅牢なフロントエンド実装が強みです。</span>
+              </p>
+              <div class="service-button-field">
+                <button class="button button--outline button--md button--border-circle" type="button">
+                  <a href="./about.html#business-development">
+                    <span>詳しく見る</span>
+                    <svg class="arrow-double-right-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <use class="arrow-double-right" href="./images/icon/sample/arrow-double-right.svg#arrow-double-right" x="0" y="0" fill="" stroke="none"></use>
+                    </svg>
+                  </a>
+                </button>
+              </div>
+            </div>
+            <div class="service-card-image">
+              <img src="./images/contents/business/business-development.jpg" alt="アプリケーション開発・システム連携の画像" width="600" height="400" loading="lazy" decoding="async">
+            </div>
+          </article>
+        </div>
+      </section>
+
+        <section id="news-top" class="page-section">
+          <h3>ここにニュースセクション（新着情報）</h3>
+        </section>
+
+        <section id="contact-top" class="page-section">
+          <h3>ここに採用・お問い合わせへの導線（コンバージョンエリア）</h3>
+        </section>
+
     </section>
-    <hr>
   </main>
   <footer>
     <div class="copy">&copy;Company Co., Ltd.</div>
