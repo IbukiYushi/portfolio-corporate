@@ -1,9 +1,40 @@
 import { newsData } from "./news/news-data.js";
+
 /**
  * HTMLのheadの、scriptタグ記入のプロパティ
  * ・defer: 非同期でJSファイルがDL
  * ・type="module": ファイル内定義の変数がグローバル変数として扱われなくなり、他ファイルで同変数名を使用しても名前空間が分離されているのでお互いに影響を与えない（import文を使用するなら必要）
  */
+
+/**
+ * トップページ専用。JSONデータからニュースリストを生成してHTMLに挿入：
+ * テンプレートリテラルでニュースリストごとに該当するターゲットIDのJSONデータを挿入し、HTMLに挿入
+ */
+const renderTopNewsList = () => {
+  const container = document.querySelector('#news-top .news-list');
+  if (!container) return;
+  container.innerHTML = '';
+  const topNewsEntries = Object.entries(newsData).slice(0, 4);
+  if (topNewsEntries.length === 0) {
+    container.innerHTML = `<li class="news-item__no-data">現在、新着情報はございません</li>`;
+    return;
+  }
+  topNewsEntries.forEach(([id, data]) => {
+    const htmlDatetime = data.date.replaceAll('.', '-');
+    const listItem = `
+      <li class="news-item">
+        <a href="./news.html#${id}" class="news-item-link">
+          <div class="news-item-meta">
+            <span class="news-label news-${data.label}">${data.category}</span>
+            <time datetime="${htmlDatetime}" class="news-date">${data.date}</time>
+          </div>
+          <p class="news-item-title">${data.title}</p>
+        </a>
+      </li>
+    `;
+    container.insertAdjacentHTML('beforeend', listItem);
+  });
+};
 
 /**
  * 社員紹介カードのアコーディオン制御：
@@ -371,20 +402,24 @@ const contactThanksMessageButton = () => {
 /**
  * ページネーション
  */
-const pagination = (perPage = 1) => {
+const paginationPerPage = 3;  // 1ページごとのリスト数の初期値設定
+const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
   const containerListUl = document.querySelector('ul.linked-to-pagination');
   if (!containerListUl) return;
   const containerList = containerListUl.querySelectorAll('li');
   const pager = document.querySelector('ul.pager');
   if (!containerList || !pager) return;
   let currentPage = 1; // カレントページ番号
+  if(hashLinkedPage) {
+    hashLinkedPage = Number(hashLinkedPage.replace('news-', '').replace('0', ''));
+    currentPage = Math.ceil(hashLinkedPage / perPage);
+  }
   const itemsPerPage = perPage; // 1ページごとのリスト数
   const totalItems = containerList.length; // リスト合計数
   const totalPage = Math.ceil(totalItems / itemsPerPage); // ページ合計数
 
   // ページリストの表示設定
   const pageListToDisplay = (current = 1) => {
-    // 「リストデータがありませんの表示」
     if (totalItems === 0) {
       const listSection = containerListUl.closest('.page-section');
       if (!listSection) return;
@@ -474,8 +509,8 @@ const pagination = (perPage = 1) => {
   };
 
   // リストの初期表示の処理
-  pageListToDisplay();
-  pagerToDisplay();
+  pageListToDisplay(currentPage);
+  pagerToDisplay(currentPage);
 
   // ページボタン押下時の処理
   pager.addEventListener('click', (event) => {
@@ -541,6 +576,34 @@ const modalOpen = () => {
   if(!modal || !bodyContent || !scrollContainer) return;
   bodyContent.style.overflow = 'hidden';
   scrollContainer.scrollTop = 0;
+};
+
+/**
+ * ニュースページ専用。該当URLハッシュのモーダルを開く処理：
+ * URLのハッシュ（#news-01など）を検知し、該当するモーダルを自動で開く
+ */
+const initHashModalOpen = () => {
+  const hash = window.location.hash;
+  if (!hash) return;
+  const targetId = hash.replace('#', '');
+  pagination(paginationPerPage, targetId);
+  const newsDataList = newsData[targetId];
+  if (!newsDataList) return;
+  const modal = document.querySelector('dialog');
+  if (!modal) return;
+  const modalTitle = modal.querySelector('.modal-title h3');
+  const modalCategory = modal.querySelector('.modal-body-meta .category');
+  const modalTime = modal.querySelector('.modal-body-meta time');
+  const modalDetailInner = modal.querySelector('.modal-body-detail-inner');
+  if (!modalTitle || !modalCategory || !modalTime || !modalDetailInner) return;
+  modalTitle.textContent = newsDataList.title;
+  modalCategory.className = `category ${newsDataList.label}`;
+  modalCategory.textContent = newsDataList.category;
+  modalTime.setAttribute('datetime', newsDataList.date.replaceAll('.', '-'));
+  modalTime.textContent = newsDataList.date;
+  modalDetailInner.textContent = newsDataList.detail;
+  modal.showModal();
+  modalOpen();
 };
 
 /**
@@ -632,6 +695,9 @@ const openModalListButtons = () => {
  * ページ内の全初期化処理をまとめる
  */
 const init = () => {
+  if (document.body.classList.contains('top-page')) {
+    renderTopNewsList();
+  }
   if (document.body.classList.contains('about-page')) {
     memberAccordion();
   }
@@ -650,13 +716,14 @@ const init = () => {
     contactThanksMessageButton();
   }
   if (document.querySelector('.pagination-field')) {
-    pagination(3);
+    pagination(paginationPerPage);
   }
   if (document.querySelector('#faq')) {
     faqAccordion();
   }
   if (document.querySelector('dialog')) {
     modalOpen();
+    initHashModalOpen();
     modalClose();
     modalBodyDetailTopScroll();
     openModalListButtons();

@@ -25,7 +25,7 @@ body footer {
 body.top-page {
   grid-template-rows: 8svh 1fr auto 8svh;
   grid-template-columns: 1fr;
-  grid-template-areas: " header " " hero " " main   " " footer ";
+  grid-template-areas: " header " " hero   " " main   " " footer ";
 }
 body.about-page, body.news-page, body.recruit-page, body.contact-page {
   grid-template-rows: 8svh 1fr 8svh;

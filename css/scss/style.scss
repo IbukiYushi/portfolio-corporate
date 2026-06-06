@@ -132,6 +132,8 @@ body {
       position: absolute;
       top: 15%;
       left: 10%;
+      // right: 20%;
+      // bottom: 20%;
       z-index: 2;
       text-align: left;
       background: rgba(255, 200, 60, 0.6);
@@ -224,29 +226,33 @@ body {
     > section {
       // index.htmlのメインセクション
       &.main-section-top {
+        hr {
+          border: none;
+          height: 1px;
+          background: #aaaaaa;
+          margin-block: 8px;
+        }
         > .page-section {
-          > h3 {
+          > .section-header {
             text-align: center;
-          }
-          &#about-top {
-            > .section-header {
-              text-align: center;
-              padding-block: 80px 40px;
-              > .section-title {
-                color: #222222;
-                font-size: 2.5rem;
-                letter-spacing: 0.08em;
-                &--english {
-                  color: #aaaaaa;
-                  opacity: 0.4;
-                  font-size: 3.5rem;
-                  font-style: italic;
-                  letter-spacing: 0.18em;
-                }
+            padding-block: 80px 40px;
+            > .section-title {
+              color: #222222;
+              font-size: 2.5rem;
+              letter-spacing: 0.08em;
+              &--english {
+                color: #aaaaaa;
+                opacity: 0.4;
+                font-size: 3.5rem;
+                font-style: italic;
+                letter-spacing: 0.18em;
               }
             }
+          }
+          &#about-top {
             > .services-container {
-              max-width: 70svw;
+              padding-block: 0 20px;
+              padding-inline: 15svw;
               margin-inline: auto;
               > .service-card {
                 display: grid;
@@ -255,7 +261,7 @@ body {
                 align-items: center;
                 > .service-card-body {
                   align-self: start;
-                  padding-top: 24px;
+                  padding-block: 24px;
                   > .service-card-title {
                     display: flex;
                     flex-direction: column;
@@ -276,43 +282,188 @@ body {
                     color: #333333;
                     padding-block: 40px;
                     padding-inline: 16px;
-                    span {}
                   }
                   > .service-button-field {
-                    > button {
-                        font-weight: normal;
-                        font-size: 1rem;
-                        border-width: 1px;
-                      > a {
-                        display: flex;
-                        justify-content: center;
-                        gap: 24px;
+                    padding-left: 16px;
+                    width: fit-content;
+                    > a {
+                      display: flex;
+                      justify-content: center;
+                      gap: 24px;
+                      font-weight: normal;
+                      font-size: 1rem;
+                      border-width: 1px;
+                      &:hover {
+                        > svg {
+                          margin-left: 8px;
+                          transition: margin-left 0.2s ease;
+                        }
                       }
                     }
                   }
                 }
                 > .service-card-image {
+                  box-shadow: 12px 12px 20px rgba(41, 40, 38, 0.15);
                   img {
                     width: 100%;
                     height: auto;
                   }
                 }
               }
-              > hr {
-                border: none;
-                height: 1px;
-                background: #888888;
-                margin-block: 8px;
-              }
             }
           }
           &#news-top {
-            background: #07b39b;
-            height: 200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto 1fr;
+            column-gap: 40px;
+            border-top: 2px solid #ccc;
+            padding-inline: 10svw;
+            > .section-header {
+              grid-column: 1 / 2;
+              grid-row: 1 / 2;
+              text-align: left;
+            }
+            > .news-button-field {
+              grid-column: 1 / 2;
+              grid-row: 2 / 3;
+              padding-block: 40px;
+              padding-left: 16px;
+              width: fit-content;
+            }
+            > .news-container {
+              grid-column: 2 / 3;
+              grid-row: 1 / 3;
+              padding-block: 80px;
+              > .news-list {
+                list-style: none;
+                max-width: 800px;
+                border-top: 2px solid #ccc;
+                border-bottom: 2px solid #ccc;
+                padding-block: 8px;
+                padding-inline: 0 16px;
+                > .news-item {
+                  border-top: 2px solid #ccc;
+                  &:first-of-type { border-top: 3px solid #ccc; }
+                  &:last-of-type { border-bottom: 3px solid #ccc; }
+                  > .news-item-link{
+                    display: flex;
+                    align-items: center;
+                    gap: 32px;
+                    padding: 20px;
+                    width: 100%;
+                    text-align: left;
+                    cursor: pointer;
+                    transition: background 0.2s ease;
+                    &:hover {
+                      background: #f9f9f9;
+                      transition: background 0.2s ease;
+                      > .news-item-title {
+                        text-decoration: underline;
+                      }
+                    }
+                    > .news-item-meta {
+                      flex-shrink: 0;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 4px;
+                      width: 120px;
+                      > .news-label {
+                        color: #fff;
+                        font-size: 0.9rem;
+                        padding: 2px 8px;
+                        border-radius: 4px;
+                        &--info { background: #3498db; }
+                        &--recruit { background: #e67e22; }
+                        &--press { background: #95a5a6; }
+                      }
+                      > .news-date {
+                        color: #555;
+                        font-size: 0.9rem;
+                        font-weight: bold;
+                      }
+                    }
+                    > .news-item-title {
+                      text-wrap: wrap;
+                      font-weight: bold;
+                    }
+                  }
+                  &__no-data {
+                    text-align: center;
+                    margin-block: 1svh;
+                    margin-inline: auto;
+                  }
+                }
+              }
+            }
           }
           &#contact-top {
-            background: orange;
-            height: 200px;
+            border-top: 2px solid #ccc;
+            margin-bottom: 80px;
+            > .contact-card {
+              display: flex;
+              background: #ffffff;
+              backdrop-filter: blur(10px);
+              // TODO
+              box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
+              > .conatact-card-main-detail {
+                flex: 1;
+                .map-container {
+                  width: max(330px, 80%);
+                  height: 400px;
+                  margin: 20px auto;
+                  box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+                  iframe {
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+                .address-info {
+                  color: #333;
+                  // text-align: center;
+                  .address {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0;
+                    width: fit-content;
+                    // margin-inline: auto;
+                    margin-bottom: 8px;
+                    > .zip-code {
+                      font-size: 0.8rem;
+                    }
+                    > .address-text {
+                      font-size: 1.1rem;
+                      font-weight: bold;
+                    }
+                  }
+                  .tel a {
+                    display: inline-block;
+                    background: inherit;
+                    transition: background 0.3s ease;
+                    margin: 0 auto 8px auto;
+                    padding: 8px;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    border-radius: 8px;
+                    text-decoration: underline solid rgb(0, 128, 0);
+                    text-decoration-thickness: 4px;
+                    text-underline-offset: 4px;
+                    &:hover {
+                      background: lime;
+                    }
+                  }
+                }
+                > .conatact-button-field {
+                  width: fit-content;
+                }
+              }
+              > .conatact-card-recruit {
+                flex: 1;
+                > .conatact-button-field {
+                  width: fit-content;
+                }
+              }
+            }
           }
         }
       }
@@ -930,6 +1081,7 @@ body {
                   transition: background 0.2s ease;
                   &:hover {
                     background: #f9f9f9;
+                    transition: background 0.2s ease;
                     > .news-content {
                       > .news-title {
                         text-decoration: underline;
@@ -947,9 +1099,11 @@ body {
                       font-size: 0.9rem;
                       padding: 2px 8px;
                       border-radius: 4px;
-                      &.label-info { background: #3498db; }
-                      &.label-recruit { background: #e67e22; }
-                      &.label-press { background: #95a5a6; }
+                      &.label {
+                        &--info { background: #3498db; }
+                        &--recruit { background: #e67e22; }
+                        &--press { background: #95a5a6; }
+                      }
                     }
                     > time {
                       color: #555;
@@ -1295,7 +1449,9 @@ body {
                       line-height: 1.8;
                       margin-bottom: 40px;
                     }
-                    > button {}
+                    > button {
+                      margin-inline: auto;
+                    }
                   }
                 }
                 > .image-container {
@@ -1346,6 +1502,7 @@ body {
               margin-bottom: 40px;
             }
             > button {
+              margin-inline: auto;
               @include active-state (
                 $color: #444444,
                 $background: #dddddd
@@ -1830,7 +1987,8 @@ select {
 }
 
 // ボタン
-button {
+button, a {
+  display: block;
   border: none;
   background: none;
   padding: 0;

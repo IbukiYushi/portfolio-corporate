@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="./css/style.css"/>
   <script type="module" src="./js/index.js" defer></script>
 </head>
+
 <body class="top-page">
   <header>
     <div class="site-logo-field">
@@ -96,14 +97,12 @@
                 <span>モダンなUI/UXデザインと、保守性の高いコーディングを提供します。</span>
               </p>
               <div class="service-button-field">
-                <button class="button button--outline button--md button--border-circle" type="button">
-                  <a href="./about.html#business-web">
-                    <span>詳しく見る</span>
-                    <svg class="arrow-double-right-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <use class="arrow-double-right" href="./images/icon/sample/arrow-double-right.svg#arrow-double-right" x="0" y="0" fill="" stroke="none"></use>
-                    </svg>
-                  </a>
-                </button>
+                <a href="./about.html#business-web" class="button button--outline button--md button--border-circle">
+                  <span>詳しく見る</span>
+                  <svg class="arrow-double-right-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <use class="arrow-double-right" href="./images/icon/sample/arrow-double-right.svg#arrow-double-right" x="0" y="0" fill="" stroke="none"></use>
+                  </svg>
+                </a>
               </div>
             </div>
             <div class="service-card-image">
@@ -123,14 +122,12 @@
                 <span>Vanilla JSを用いた軽量かつロジックの堅牢なフロントエンド実装が強みです。</span>
               </p>
               <div class="service-button-field">
-                <button class="button button--outline button--md button--border-circle" type="button">
-                  <a href="./about.html#business-development">
-                    <span>詳しく見る</span>
-                    <svg class="arrow-double-right-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <use class="arrow-double-right" href="./images/icon/sample/arrow-double-right.svg#arrow-double-right" x="0" y="0" fill="" stroke="none"></use>
-                    </svg>
-                  </a>
-                </button>
+                <a href="./about.html#business-development" class="button button--outline button--md button--border-circle">
+                  <span>詳しく見る</span>
+                  <svg class="arrow-double-right-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <use class="arrow-double-right" href="./images/icon/sample/arrow-double-right.svg#arrow-double-right" x="0" y="0" fill="" stroke="none"></use>
+                  </svg>
+                </a>
               </div>
             </div>
             <div class="service-card-image">
@@ -140,13 +137,63 @@
         </div>
       </section>
 
-        <section id="news-top" class="page-section">
-          <h3>ここにニュースセクション（新着情報）</h3>
-        </section>
+      <section id="news-top" class="page-section">
+        <header class="section-header">
+          <h3 class="section-title">新着情報</h3>
+          <p class="section-title section-title--english">NEWS</p>
+        </header>
+        <div class="news-button-field">
+          <a href="./news.html" class="button button--lift button--outline button--md button--border-circle">
+            <span>ニュース一覧を見る</span>
+          </a>
+        </div>
+        <div class="news-container">
+          <ul class="news-list">
+            <!-- <li class="news-item">
+              <a href="./news.html#news-01" class="news-item-link">
+                <div class="news-item-meta">
+                  <span class="news-label news-label--default">カテゴリーラベル</span>
+                  <time datetime="2000-00-00" class="news-date">2000.00.00</time>
+                </div>
+                <p class="news-item-title">タイトル</p>
+              </a>
+            </li> -->
+          </ul>
+        </div>
+      </section>
 
-        <section id="contact-top" class="page-section">
-          <h3>ここに採用・お問い合わせへの導線（コンバージョンエリア）</h3>
-        </section>
+      <section id="contact-top" class="page-section">
+        <header class="section-header">
+          <h3 class="section-title">お問い合わせ</h3>
+          <p class="section-title section-title--english">CONTACT</p>
+        </header>
+        <article class="contact-card">
+          <div class="conatact-card-main-detail">
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.831946129619!2d139.7644864764289!3d35.68113977258713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1767952654874!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="address-info">
+              <div class="address">
+                <p class="zip-code">〒000-0000</p>
+                <p class="address-text">東京都〇〇区△△ 1-2-3 〇〇ビル 5F</p>
+              </div>
+              <p class="tel">TEL: <a href="tel:0312345678">03-1234-5678</a></p>
+            </div>
+            <div class="conatact-button-field">
+              <a href="./contact.html" class="button button--outline button--lift button--md">
+                <span>問い合わせフォームはこちら</span>
+              </a>
+            </div>
+          </div>
+          <div class="conatact-card-recruit">
+            <div class="conatact-button-field">
+              <a href="./recruit.html" class="button button--outline button--lift button--md">
+                <span>採用情報はこちら</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
 
     </section>
   </main>
