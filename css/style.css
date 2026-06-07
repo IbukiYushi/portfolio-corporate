@@ -353,30 +353,34 @@ body > main > section.main-section-top > .page-section#news-top > .news-containe
 body > main > section.main-section-top > .page-section#contact-top {
   border-top: 2px solid #ccc;
   margin-bottom: 80px;
+  overflow: hidden;
 }
 body > main > section.main-section-top > .page-section#contact-top > .contact-card {
   display: flex;
   background: #ffffff;
   backdrop-filter: blur(10px);
   box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
+  padding-block: 40px 80px;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail {
   flex: 1;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail .map-container {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .map-container {
   width: max(330px, 80%);
   height: 400px;
-  margin: 20px auto;
   box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+  margin: 20px auto;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail .map-container iframe {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .map-container iframe {
   width: 100%;
   height: 100%;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail .address-info {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .address-info {
   color: #333;
+  width: max(330px, 80%);
+  margin-inline: auto;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail .address-info .address {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .address-info .address {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -384,40 +388,86 @@ body > main > section.main-section-top > .page-section#contact-top > .contact-ca
   width: fit-content;
   margin-bottom: 8px;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail .address-info .address > .zip-code {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .address-info .address > .zip-code {
   font-size: 0.8rem;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail .address-info .address > .address-text {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .address-info .address > .address-text {
   font-size: 1.1rem;
   font-weight: bold;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail .address-info .tel a {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .address-info .tel {
+  margin-left: 16px;
+}
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .address-info .tel a {
   display: inline-block;
   background: inherit;
-  transition: background 0.3s ease;
-  margin: 0 auto 8px auto;
-  padding: 8px;
+  padding-inline: 8px;
   font-size: 1.5rem;
   font-weight: bold;
-  border-radius: 8px;
-  -webkit-text-decoration: underline solid rgb(0, 128, 0);
-          text-decoration: underline solid rgb(0, 128, 0);
-  text-decoration-thickness: 4px;
-  text-underline-offset: 4px;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail .address-info .tel a:hover {
-  background: lime;
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail .address-info .tel a:hover {
+  -webkit-text-decoration: underline solid #444444;
+          text-decoration: underline solid #444444;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-main-detail > .conatact-button-field {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail > .contact-button-field {
+  position: relative;
+  margin-top: 40px;
+  padding-block: 20px;
+  isolation: isolate;
+}
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail > .contact-button-field > .button {
+  background: orange;
   width: -moz-fit-content;
   width: fit-content;
+  margin-inline: auto;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-recruit {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-main-detail > .contact-button-field::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ccc;
+  background-image: linear-gradient(150deg, #ccc 80%, #fff 80%);
+  width: 135%;
+  height: 84px;
+  z-index: -1;
+}
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-recruit {
   flex: 1;
 }
-body > main > section.main-section-top > .page-section#contact-top > .contact-card > .conatact-card-recruit > .conatact-button-field {
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-recruit > .sub-header {
+  color: #aaaaaa;
+  opacity: 0.4;
+  font-size: 4rem;
+  font-style: italic;
+  font-weight: lighter;
+  letter-spacing: 0.04em;
+  text-align: right;
+  margin-top: 136px;
+  margin-inline: auto 7.5%;
+}
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-recruit > .contact-button-field {
+  position: relative;
+  margin-top: 24px;
+  padding-block: 20px;
+  isolation: isolate;
+}
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-recruit > .contact-button-field > .button {
+  background: orange;
   width: -moz-fit-content;
   width: fit-content;
+  margin-inline: auto 20%;
+}
+body > main > section.main-section-top > .page-section#contact-top > .contact-card > .contact-card-recruit > .contact-button-field::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ccc;
+  background-image: linear-gradient(-25deg, #ccc 80%, #fff 80%);
+  width: 105%;
+  height: 84px;
+  z-index: -1;
 }
 body > main > section.main-section-about {
   margin-block-end: 80px;
@@ -441,6 +491,7 @@ body > main > section.main-section-about > .page-section-field > .page-section {
   background: #ffffff;
   border-radius: 8px;
   padding: 40px 10svw;
+  box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
 }
 body > main > section.main-section-about > .page-section-field > .page-section > h3 {
   text-align: center;
@@ -460,6 +511,9 @@ body > main > section.main-section-about > .page-section-field > .page-section#g
   -o-object-fit: cover;
      object-fit: cover;
   margin-inline: auto;
+}
+body > main > section.main-section-about > .page-section-field > .page-section#greeting > figure img {
+  box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
 }
 body > main > section.main-section-about > .page-section-field > .page-section#business {
   padding: 40px 0;
@@ -494,6 +548,9 @@ body > main > section.main-section-about > .page-section-field > .page-section#b
 body > main > section.main-section-about > .page-section-field > .page-section#business > .section-container > .business-item.split-content > .content-image {
   flex: 1;
 }
+body > main > section.main-section-about > .page-section-field > .page-section#business > .section-container > .business-item.split-content > .content-image img {
+  box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+}
 body > main > section.main-section-about > .page-section-field > .page-section#business > .section-container > .business-item.split-content--reversed {
   flex-direction: row-reverse;
 }
@@ -521,6 +578,9 @@ body > main > section.main-section-about > .page-section-field > .page-section#b
 }
 body > main > section.main-section-about > .page-section-field > .page-section#business > .section-container > .business-item.split-content--reversed > .content-image {
   flex: 5.5;
+}
+body > main > section.main-section-about > .page-section-field > .page-section#business > .section-container > .business-item.split-content--reversed > .content-image img {
+  box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
 }
 body > main > section.main-section-about > .page-section-field > .page-section#business > .section-container hr {
   margin: 4px;
@@ -638,6 +698,7 @@ body > main > section.main-section-about > .page-section-field > .page-section#c
   width: 100%;
   height: 100%;
   border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(41, 40, 38, 0.15);
 }
 body > main > section.main-section-about > .page-section-field > .page-section#company-info > .section-container > .company-info-item.company-highlight-data .highlight-card.stats-access .address-info {
   color: #333;
@@ -1138,7 +1199,7 @@ body > main > section.main-section-recruit > .page-section-field > .page-section
   padding-block: 12px;
   padding-left: 80px;
   background: #eee;
-  background-image: linear-gradient(150deg, #eee 30%, #ccc 30% 100%);
+  background-image: linear-gradient(150deg, #eee 30%, #ccc 30%);
 }
 body > main > section.main-section-recruit > .page-section-field > .page-section#message > .message-contents {
   display: flex;
@@ -1170,6 +1231,9 @@ body > main > section.main-section-recruit > .page-section-field > .page-section
   min-height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+body > main > section.main-section-recruit > .page-section-field > .page-section#details {
+  box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
 }
 body > main > section.main-section-recruit > .page-section-field > .page-section#details > .detail-contents {
   padding-block: 40px;
@@ -1366,6 +1430,9 @@ body > main > section.main-section-contact > .page-title-field {
 body > main > section.main-section-contact > .contact-form {
   margin-inline: auto;
   width: 80svw;
+}
+body > main > section.main-section-contact > .contact-form > .form-card {
+  box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
 }
 body > main > section.main-section-contact > .thanks-message {
   display: none;

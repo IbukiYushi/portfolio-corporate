@@ -400,19 +400,20 @@ body {
           &#contact-top {
             border-top: 2px solid #ccc;
             margin-bottom: 80px;
+            overflow: hidden;
             > .contact-card {
               display: flex;
               background: #ffffff;
               backdrop-filter: blur(10px);
-              // TODO
               box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
-              > .conatact-card-main-detail {
+              padding-block: 40px 80px;
+              > .contact-card-main-detail {
                 flex: 1;
                 .map-container {
                   width: max(330px, 80%);
                   height: 400px;
-                  margin: 20px auto;
                   box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+                  margin: 20px auto;
                   iframe {
                     width: 100%;
                     height: 100%;
@@ -420,13 +421,13 @@ body {
                 }
                 .address-info {
                   color: #333;
-                  // text-align: center;
+                  width: max(330px, 80%);
+                  margin-inline: auto;
                   .address {
                     display: flex;
                     flex-direction: column;
                     gap: 0;
                     width: fit-content;
-                    // margin-inline: auto;
                     margin-bottom: 8px;
                     > .zip-code {
                       font-size: 0.8rem;
@@ -436,31 +437,85 @@ body {
                       font-weight: bold;
                     }
                   }
+                  .tel {
+                    margin-left: 16px;
+                  }
                   .tel a {
                     display: inline-block;
                     background: inherit;
-                    transition: background 0.3s ease;
-                    margin: 0 auto 8px auto;
-                    padding: 8px;
+                    padding-inline: 8px;
                     font-size: 1.5rem;
                     font-weight: bold;
-                    border-radius: 8px;
-                    text-decoration: underline solid rgb(0, 128, 0);
-                    text-decoration-thickness: 4px;
-                    text-underline-offset: 4px;
                     &:hover {
-                      background: lime;
+                      text-decoration: underline solid #444444;
                     }
                   }
                 }
-                > .conatact-button-field {
-                  width: fit-content;
+                > .contact-button-field {
+                  position: relative;
+                  margin-top: 40px;
+                  padding-block: 20px;
+                  isolation: isolate;
+                  > .button {
+                    background: orange;
+                    width: fit-content;
+                    margin-inline: auto;
+                  }
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: #ccc;
+                    background-image: linear-gradient(
+                      150deg,
+                      #ccc 80%,
+                      #fff 80%
+                      );
+                    width: 135%;
+                    height: 84px;
+                    z-index: -1;
+                  }
                 }
               }
-              > .conatact-card-recruit {
+              > .contact-card-recruit {
                 flex: 1;
-                > .conatact-button-field {
-                  width: fit-content;
+                > .sub-header {
+                  color: #aaaaaa;
+                  opacity: 0.4;
+                  font-size: 4.0rem;
+                  font-style: italic;
+                  font-weight: lighter;
+                  letter-spacing: 0.04em;
+                  text-align: right;
+                  margin-top: 136px;
+                  margin-inline: auto 7.5%;
+                }
+                > .contact-button-field {
+                  position: relative;
+                  margin-top: 24px;
+                  padding-block: 20px;
+                  isolation: isolate;
+                  > .button {
+                    background: orange;
+                    width: fit-content;
+                    margin-inline: auto 20%;
+                  }
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background: #ccc;
+                    background-image: linear-gradient(
+                      -25deg,
+                      #ccc 80%,
+                      #fff 80%
+                      );
+                    width: 105%;
+                    height: 84px;
+                    z-index: -1;
+                  }
                 }
               }
             }
@@ -490,6 +545,7 @@ body {
             background: #ffffff;
             border-radius: 8px;
             padding: 40px 10svw;
+            box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
             > h3 {
               text-align: center;
             }
@@ -507,7 +563,9 @@ body {
                 aspect-ratio: 9/16;
                 object-fit: cover;
                 margin-inline: auto;
-                img {}
+                img {
+                  box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+                }
               }
             }
             &#business {
@@ -544,6 +602,9 @@ body {
                     }
                     > .content-image {
                       flex: 1;
+                      img {
+                        box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+                      }
                     }
                   }
                   &.split-content--reversed {
@@ -570,6 +631,9 @@ body {
                     }
                     > .content-image {
                       flex: 5.5;
+                      img {
+                        box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+                      }
                     }
                   }
                 }
@@ -697,6 +761,7 @@ body {
                             width: 100%;
                             height: 100%;
                             border-radius: 4px;
+                            box-shadow: 0 2px 6px rgba(41, 40, 38, 0.15);
                           }
                         }
                         .address-info {
@@ -1240,7 +1305,7 @@ body {
               background-image: linear-gradient(
                 150deg,
                 #eee 30%,
-                #ccc 30% 100%
+                #ccc 30%
               );
             }
             &#message {
@@ -1279,6 +1344,7 @@ body {
               }
             }
             &#details {
+              box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
               > h3 {}
               > .detail-contents {
                 padding-block: 40px;
@@ -1471,7 +1537,6 @@ body {
       // contact.htmlのメインセクション
       &.main-section-contact {
         > .page-title-field {
-          // text-align: center;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -1480,6 +1545,9 @@ body {
         > .contact-form {
           margin-inline: auto;
           width: 80svw;
+          > .form-card {
+            box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
+          }
         }
         > .thanks-message {
           display: none;
