@@ -37,6 +37,21 @@ const renderTopNewsList = () => {
 };
 
 /**
+ * トップページ専用。メインセクション群へのダウンスクロールボタンの処理：
+ * メインセクション群トップの「ダウンスクロールボタン」押下で、HEROセクションからメインセクション群トップへ飛ばすスクロール。
+ */
+const toMainScroll = () => {
+  const toMainScrollButton = document.querySelector('.to-main-arrow-button');
+  const mainSectionTop = document.querySelector('#main-section-top');
+  if (!toMainScrollButton || !mainSectionTop) return;
+
+  toMainScrollButton.addEventListener('click', () => {
+    const targetPosition = mainSectionTop.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+  });
+};
+
+/**
  * 社員紹介カードのアコーディオン制御：
  * 詳細ボタンのクリックにより、対応するフッターエリアの開閉状態（is-openクラス）を切り替える
  */
@@ -579,6 +594,36 @@ const modalOpen = () => {
 };
 
 /**
+ * リスト一覧のボタン化された各リスト押下による連動モーダル表示：
+ * 各ボタン化されたリストのクリックにより、情報連動させたモーダルを表示させる
+ */
+const openModalListButtons = () => {
+  const listButtons = document.querySelectorAll('.open-modal-button');
+  const modal = document.querySelector('dialog');
+  if (!listButtons || !modal) return;
+  const modalTitle = modal.querySelector('.modal-title h3');
+  const modalCategory = modal.querySelector('.modal-body-meta .category');
+  const modalTime = modal.querySelector('.modal-body-meta time');
+  const modalDetailInner = modal.querySelector('.modal-body-detail-inner');
+  listButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.modalTarget;
+      const newsDataList = newsData[targetId];
+      if (newsDataList) {
+        modalTitle.textContent = newsDataList.title;
+        modalCategory.className = `category ${newsDataList.label}`;
+        modalCategory.textContent = newsDataList.category;
+        modalTime.setAttribute('datetime', newsDataList.date.replaceAll('.', '-'));
+        modalTime.textContent = newsDataList.date;
+        modalDetailInner.textContent = newsDataList.detail;
+        modal.showModal();
+        modalOpen();
+      }
+    });
+  });
+};
+
+/**
  * ニュースページ専用。該当URLハッシュのモーダルを開く処理：
  * URLのハッシュ（#news-01など）を検知し、該当するモーダルを自動で開く
  */
@@ -662,31 +707,42 @@ const modalBodyDetailTopScroll = () => {
 };
 
 /**
- * リスト一覧のボタン化された各リスト押下による連動モーダル表示：
- * 各ボタン化されたリストのクリックにより、情報連動させたモーダルを表示させる
+ * 汎用的なトップスクロールボタンの処理：
+ * 「トップスクロールボタン」の押下でページ内の最上部まで戻る。
  */
-const openModalListButtons = () => {
-  const listButtons = document.querySelectorAll('.open-modal-button');
-  const modal = document.querySelector('dialog');
-  if (!listButtons || !modal) return;
-  const modalTitle = modal.querySelector('.modal-title h3');
-  const modalCategory = modal.querySelector('.modal-body-meta .category');
-  const modalTime = modal.querySelector('.modal-body-meta time');
-  const modalDetailInner = modal.querySelector('.modal-body-detail-inner');
-  listButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.dataset.modalTarget;
-      const newsDataList = newsData[targetId];
-      if (newsDataList) {
-        modalTitle.textContent = newsDataList.title;
-        modalCategory.className = `category ${newsDataList.label}`;
-        modalCategory.textContent = newsDataList.category;
-        modalTime.setAttribute('datetime', newsDataList.date.replaceAll('.', '-'));
-        modalTime.textContent = newsDataList.date;
-        modalDetailInner.textContent = newsDataList.detail;
-        modal.showModal();
-        modalOpen();
+const commonTopScroll = (scrollContainerEl = null) => {
+  const topScrollButton = document.querySelector('.backtotop-arrow-svg-button');
+  if (!topScrollButton) return;
+
+const getTargetSettings = () => {
+    if (scrollContainerEl) {
+      const el = document.querySelector(scrollContainerEl);
+      if (el) {
+        const absoluteTop = el.getBoundingClientRect().top + window.pageYOffset;
+        return {
+          activeThreshold: absoluteTop + 100,
+          scrollToPosition: absoluteTop
+        };
       }
+    }
+    return {
+      activeThreshold: 100,
+      scrollToPosition: 0
+    };
+  };
+
+  const getScrollTop = () => {
+    return window.pageYOffset || document.documentElement.scrollTop;
+  };
+
+  window.addEventListener('scroll', () => {
+    topScrollButton.classList.toggle('active', getScrollTop() > getTargetSettings().activeThreshold);
+  });
+
+  topScrollButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: getTargetSettings().scrollToPosition,
+      behavior: 'smooth'
     });
   });
 };
@@ -697,15 +753,19 @@ const openModalListButtons = () => {
 const init = () => {
   if (document.body.classList.contains('top-page')) {
     renderTopNewsList();
+    toMainScroll();
+    commonTopScroll('#main-section-top');
   }
   if (document.body.classList.contains('about-page')) {
     memberAccordion();
+    commonTopScroll();
   }
   if (document.body.classList.contains('news-page')) {
     renderNewsList();
   }
   if (document.body.classList.contains('recruit-page')) {
     entryDetailActive();
+    commonTopScroll();
   }
   if (document.querySelector('.entry-form')) {
     handleEntryForm();
@@ -723,10 +783,10 @@ const init = () => {
   }
   if (document.querySelector('dialog')) {
     modalOpen();
+    openModalListButtons();
     initHashModalOpen();
     modalClose();
     modalBodyDetailTopScroll();
-    openModalListButtons();
   }
 };
 init();
