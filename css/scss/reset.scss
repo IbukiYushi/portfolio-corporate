@@ -6,15 +6,20 @@
   box-sizing: border-box;
 }
 
-* {
+*:not(dialog) {
   margin: 0;
 }
 
-html {
-  text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
 }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
 
 body {
   line-height: 1.5;
@@ -24,16 +29,16 @@ body {
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
-  height: auto;
+  // ※widthが100%を超える各要素 → max-width: revert;
 }
 
 input, button, textarea, select {
   font: inherit;
-  border: none;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+  // hyphens: auto;
 }
 
 p {

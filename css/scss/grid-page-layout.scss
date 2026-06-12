@@ -30,7 +30,7 @@ body {
 
 // 各ページごと
   &.top-page {
-    grid-template-rows: 8svh 1fr auto 8svh;
+    grid-template-rows: 80px 1fr auto 8svh;
     grid-template-columns: 1fr;
     grid-template-areas: 
       " header "

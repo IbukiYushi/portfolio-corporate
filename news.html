@@ -21,26 +21,26 @@
 </head>
 
 <body class="news-page">
-  <header>
+  <header class="site-header">
     <div class="site-logo-field">
       <a class="nav-link" href="./index.html">
-        <svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
           <use class="site-logo" href="./images/icon/sample/site-logo.svg#site-logo" x="0" y="0" fill="" stroke="none"></use>
         </svg>
         <h1 class="site-name">サイト名</h1>
       </a>
     </div>
-    <div class="global-nav">
-      <nav class="nav-link-field">
-        <a class="nav-link" href="./index.html">ホーム</a>
-        <a class="nav-link" href="./about.html">企業案内</a>
-        <a class="nav-link" href="./news.html">ニュース</a>
-        <a class="nav-link" href="./recruit.html">採用情報</a>
-        <a class="nav-link" href="./contact.html">お問い合わせ</a>
-      </nav>
-    </div>
-    <button class="hamburger-menu-button" type="button">
-      <svg class="hamburger-menu-svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+    <nav class="global-nav" aria-label="メインナビゲーション">
+      <ul class="nav-link-field">
+        <li class="nav-item"><a class="nav-link" href="./index.html">ホーム</a></li>
+        <li class="nav-item"><a class="nav-link" href="./about.html">企業案内</a></li>
+        <li class="nav-item"><a class="nav-link" href="./news.html">ニュース</a></li>
+        <li class="nav-item"><a class="nav-link" href="./recruit.html">採用情報</a></li>
+        <li class="nav-item"><a class="nav-link" href="./contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger-menu-button" type="button" aria-controls="header-hamburger-menu-modal" aria-expanded="false" aria-label="メニューを開く">
+      <svg class="hamburger-menu-svg" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
         <use href="./images/icon/sample/hamburger-menu.svg#hamburger-menu" x="0" y="0" fill="" stroke="none"></use>
       </svg>
     </button>
@@ -114,6 +114,33 @@
   <footer>
     <div class="copy">&copy;Company Co., Ltd.</div>
   </footer>
+
+  <dialog id="header-hamburger-menu-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <button type="button" class="modal-close-icon-button" aria-label="閉じる">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <use class="close-icon" href="./images/icon/sample/close-icon.svg#close-icon" x="0" y="0" fill="" stroke="none"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body-detail">
+          <div class="modal-body-detail-inner">
+            <nav class="global-nav" aria-label="メインナビゲーション">
+              <ul class="nav-link-field">
+                <li class="nav-item"><a class="nav-link" href="./index.html">ホーム</a></li>
+                <li class="nav-item"><a class="nav-link" href="./about.html">企業案内</a></li>
+                <li class="nav-item"><a class="nav-link" href="./news.html">ニュース</a></li>
+                <li class="nav-item"><a class="nav-link" href="./recruit.html">採用情報</a></li>
+                <li class="nav-item"><a class="nav-link" href="./contact.html">お問い合わせ</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
   <dialog id="news-modal">
     <div class="modal-card">

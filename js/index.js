@@ -565,6 +565,35 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
 };
 
 /**
+ * ページ内リンクの表示ボタンの制御：
+ * ページ内リンクの表示ボタンのクリックにより、対応するエリアの開閉状態（is-openクラス）を切り替える
+ */
+const toggleInPageLinkNavigation = () => {
+  const accordionRightIconField = document.querySelector('.accordion-right-icon-field');
+  if(!accordionRightIconField) return;
+  accordionRightIconField.addEventListener('click', () => {
+    const inPageLinkContainer = accordionRightIconField.closest('.inpage-link');
+    if (inPageLinkContainer) {
+      inPageLinkContainer.classList.toggle('is-open');
+    }
+  });
+
+  // トップページのみ、ヒーローセクションをスクロールで過ぎてから表示
+  if (document.body.classList.contains('top-page')) {
+    const scrollContainerEl = document.querySelector('main');
+    if (!scrollContainerEl) return;
+    const noActiveThreshold = scrollContainerEl.getBoundingClientRect().top + window.pageYOffset;
+    if (!noActiveThreshold) return;
+    const getScrollTop = () => {
+      return window.pageYOffset || document.documentElement.scrollTop;
+    };
+    window.addEventListener('scroll', () => {
+      accordionRightIconField.classList.toggle('no-active', getScrollTop() <= noActiveThreshold);
+    });
+  }
+};
+
+/**
  * FAQのアコーディオン：
  * FAQの質問エリアのクリックにより、対応する回答エリアの開閉状態（is-openクラス）を切り替える
  */
@@ -584,7 +613,7 @@ const faqAccordion = () => {
  * モーダルが開いているときの処理：
  * 背後のコンテンツをスクロールさせない。
  */
-const modalOpen = () => {
+const modalOpenState = () => {
   const modal = document.querySelector('dialog[open]');
   const bodyContent = document.querySelector('body');
   const scrollContainer = document.querySelector('.modal-body-detail-inner');
@@ -594,12 +623,26 @@ const modalOpen = () => {
 };
 
 /**
+ * ヘッダーのハンバーガーメニュー押下による連動モーダル表示：
+ * ハンバーガーメニューのクリックにより、連動させた下層ページリンクのモーダルを表示させる
+ */
+const openModalHeaderHamburgerMenu = () => {
+  const humburgerMenuButton= document.querySelector('.hamburger-menu-button');
+  const modal = document.querySelector('dialog[id="header-hamburger-menu-modal"]');
+  if (!humburgerMenuButton || !modal) return;
+  humburgerMenuButton.addEventListener('click', () => {
+    modal.showModal();
+    modalOpenState();
+  });
+};
+
+/**
  * リスト一覧のボタン化された各リスト押下による連動モーダル表示：
  * 各ボタン化されたリストのクリックにより、情報連動させたモーダルを表示させる
  */
 const openModalListButtons = () => {
   const listButtons = document.querySelectorAll('.open-modal-button');
-  const modal = document.querySelector('dialog');
+  const modal = document.querySelector('dialog[id="news-modal"]');
   if (!listButtons || !modal) return;
   const modalTitle = modal.querySelector('.modal-title h3');
   const modalCategory = modal.querySelector('.modal-body-meta .category');
@@ -617,7 +660,7 @@ const openModalListButtons = () => {
         modalTime.textContent = newsDataList.date;
         modalDetailInner.textContent = newsDataList.detail;
         modal.showModal();
-        modalOpen();
+        modalOpenState();
       }
     });
   });
@@ -634,7 +677,7 @@ const initHashModalOpen = () => {
   pagination(paginationPerPage, targetId);
   const newsDataList = newsData[targetId];
   if (!newsDataList) return;
-  const modal = document.querySelector('dialog');
+  const modal = document.querySelector('dialog[id="news-modal"]');
   if (!modal) return;
   const modalTitle = modal.querySelector('.modal-title h3');
   const modalCategory = modal.querySelector('.modal-body-meta .category');
@@ -648,7 +691,7 @@ const initHashModalOpen = () => {
   modalTime.textContent = newsDataList.date;
   modalDetailInner.textContent = newsDataList.detail;
   modal.showModal();
-  modalOpen();
+  modalOpenState();
 };
 
 /**
@@ -656,34 +699,36 @@ const initHashModalOpen = () => {
  * モーダルカード内の「右上×印ボタン・モーダルカード外の黒背景部分・最下部の閉じるボタン」の押下でモーダルが閉じる。
  */
 const modalClose = () => {
-  const modal = document.querySelector('dialog');
+  const modals = document.querySelectorAll('dialog');
   const bodyContent = document.querySelector('body');
-  const topScrollButton = document.querySelector('.backtotop-arrow-svg-button');
-  if (!modal || !bodyContent || !topScrollButton) return;
-  modal.addEventListener('close', () => {
-    bodyContent.style.overflow = 'visible';
-    topScrollButton.classList.remove('active');
-  });
-  // 黒背景部分の押下
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
+  if (!modals || !bodyContent) return;
+  modals.forEach(modal => {
+    modal.addEventListener('close', () => {
+      bodyContent.style.overflow = 'visible';
+      const topScrollButton = document.querySelector('.backtotop-arrow-svg-button');
+      if(topScrollButton) topScrollButton.classList.remove('active');
+    });
+    // 黒背景部分の押下
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.close();
+      }
+    });
+    // ×印ボタンの押下
+    const modalCloseIconButton = modal.querySelector('.modal-close-icon-button');
+    if (!modalCloseIconButton) return;
+      modalCloseIconButton.addEventListener('click', () => {
       modal.close();
-    }
+    });
+    // 閉じるボタンの押下
+    // const modalCloseForm = modal.querySelector('.modal-body-button-form');
+    // if (!modalCloseForm) return;
+    // const modalCloseFormButton = modalCloseForm.querySelector('button');
+    // if (!modalCloseFormButton) return;
+    //   modalCloseFormButton.addEventListener('click', () => {
+    //     // ここに処理
+    // });
   });
-  // ×印ボタンの押下
-  const modalCloseIconButton = modal.querySelector('.modal-close-icon-button');
-  if (!modalCloseIconButton) return;
-    modalCloseIconButton.addEventListener('click', () => {
-    modal.close();
-  });
-  // 閉じるボタンの押下
-  // const modalCloseForm = modal.querySelector('.modal-body-button-form');
-  // if (!modalCloseForm) return;
-  // const modalCloseFormButton = modalCloseForm.querySelector('button');
-  // if (!modalCloseFormButton) return;
-  //   modalCloseFormButton.addEventListener('click', () => {
-  //     // ここに処理
-  // });
 };
 
 /**
@@ -714,7 +759,7 @@ const commonTopScroll = (scrollContainerEl = null) => {
   const topScrollButton = document.querySelector('.backtotop-arrow-svg-button');
   if (!topScrollButton) return;
 
-const getTargetSettings = () => {
+  const getTargetSettings = () => {
     if (scrollContainerEl) {
       const el = document.querySelector(scrollContainerEl);
       if (el) {
@@ -778,11 +823,15 @@ const init = () => {
   if (document.querySelector('.pagination-field')) {
     pagination(paginationPerPage);
   }
+  if (document.querySelector('#inPageLink')) {
+    toggleInPageLinkNavigation();
+  }
   if (document.querySelector('#faq')) {
     faqAccordion();
   }
   if (document.querySelector('dialog')) {
-    modalOpen();
+    modalOpenState();
+    openModalHeaderHamburgerMenu();
     openModalListButtons();
     initHashModalOpen();
     modalClose();

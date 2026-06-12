@@ -53,12 +53,9 @@ $header-height: 80px;
 /**************************************
   DOMツリー構造に沿ったスタイル
 **************************************/
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-    scroll-padding-top: $header-height;
-    scroll-behavior: smooth;
-  }
+html {
+  scroll-padding-top: $header-height;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -69,20 +66,18 @@ body {
   color: #000;
 
   > header {
-    position: sticky;
-    top: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    max-width: 100%;
     height: $header-height;
     background-color: #888888;
-    padding: 20px 4svw;
-    z-index: 10000;
     > .site-logo-field {
       display: flex;
       align-items: center;
       gap: 1svw;
+      width: fit-content;
+      height: 100%;
+      margin-inline-start: 4svw;
       cursor: pointer;
       > a {
         display: contents;
@@ -94,13 +89,16 @@ body {
     }
     > .global-nav {
       color: #fff;
-      margin-inline: auto 2svw;
-      > .nav-link-field {
+      margin-inline-end: calc(8svw + 64px);
+      margin-inline-end: 10svw;
+      > ul[class='nav-link-field'] {
         display: flex;
         gap: 2svw;
-        > .nav-link {
-          &:hover {
-            &:nth-child(3) {
+        list-style: none;
+        padding-inline-start: 0;
+        > li[class='nav-item'] {
+          &:nth-child(3) {
+            &:hover {
               letter-spacing: -0.02em;
             }
           }
@@ -108,7 +106,10 @@ body {
       }
     }
     > .hamburger-menu-button {
+      position: fixed;
+      inset: 16px 4svw auto auto;
       color: #D9D9D9;
+      z-index: 10000;
       &:hover {
         color: #B7B7B7;
         outline: 4px solid #606060;
@@ -170,7 +171,7 @@ body {
       > img {
         height: calc(100svh - 80px);
         width: 100%;
-        // max-width: 100%; TODO:レスポンシブ対応時
+        // max-width: 100%; // TODO:レスポンシブ対応時
         object-fit: cover;
         margin-inline: auto;
         filter: brightness(140%);
@@ -221,6 +222,12 @@ body {
   > main {
     position: relative;
     background-color: antiquewhite;
+    > .list-circle-icon-svg {
+      position: fixed;
+      inset: auto 4svw 16svh auto;
+      width: max-content;
+      z-index: 10000;
+    }
     > .to-main-arrow-button {
       position: absolute;
       inset: -16px 0 auto 0;
@@ -539,8 +546,12 @@ body {
             padding-left: 16px;
           }
           > .anchor-field {
-            display: flex;
-            gap: 1.5svw;
+            > ul[class='anchor-list'] {
+              display: flex;
+              gap: 1.5svw;
+              list-style: none;
+              > li[class='anchor-item'] {}
+            }
           }
         }
         > .page-section-field {
@@ -1266,8 +1277,12 @@ body {
             padding-left: 16px;
           }
           > .anchor-field {
-            display: flex;
-            gap: 1.5svw;
+            > ul[class='anchor-list'] {
+              display: flex;
+              gap: 1.5svw;
+              list-style: none;
+              > li[class='anchor-item'] {}
+            }
           }
         }
         > .page-section-field {
@@ -1646,10 +1661,84 @@ body {
       border: 1px solid #404040;
       width: 100%;
     }
+    > .inpage-link {
+      position: fixed;
+      inset: 65svh auto auto 0;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: start;
+      align-items: start;
+      max-width: min(90svw, 160px);
+      z-index: 10000;
+      > .accordion-right-icon-field {
+        display: flex;
+        align-items: center;
+        background: #999999;
+        border-radius: 0 8px 8px 0;
+        padding-inline: 4px;
+        // min-width: 32px;
+        height: 80px;
+        cursor: pointer;
+        transition:
+          visibility 0.8s ease,
+          opacity 0.4s,
+          width 0.2s ease;
+        > .accordion-right-icon-svg {
+          transition: all 1.2s ease;
+        }
+        &.no-active {
+          visibility: hidden;
+          opacity: 0;
+          width: 0;
+          + .anchor-field {
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+          }
+        }
+      }
+      > .anchor-field {
+        background: rgb(255, 255, 248);
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+        min-height: 120px;
+        border-bottom-right-radius: 8px;
+        overflow: hidden;
+        transition:
+          opacity 0.8s ease,
+          visibility 0.4s,
+          width 0.4s ease;
+        > ul[class='anchor-list'] {
+          list-style: none;
+          padding-inline-start: 0;
+          margin-block: 16px 32px;
+          margin-inline: 16px;
+          white-space: nowrap;
+          width: 128px;
+          > li[class='anchor-item'] {
+            font-size: 0.9rem;
+            padding-block: 8px;
+          }
+        }
+      }
+      &.is-open {
+        > .accordion-right-icon-field {
+          > .accordion-right-icon-svg {
+            transform: rotateY(180deg);
+          }
+        }
+        > .anchor-field {
+          opacity: 0.9;
+          visibility: visible;
+          width: 100%;
+        }
+      }
+    }
     > .backtotop-arrow-svg-button {
       position: fixed;
-      right: 2svw;
-      bottom: 2svh;
+      right: 4svw;
+      bottom: 4svh;
       opacity: 0;
       pointer-events: none; 
       transition: opacity 0.4s ease;
@@ -1797,6 +1886,43 @@ body {
             &:hover {
               background: #ccc;
               transition: background 0.2s;
+            }
+          }
+        }
+      }
+    }
+    // ヘッダーナンバーガーメニュー用モーダル
+    &#header-hamburger-menu-modal {
+      > .modal-card {
+        max-width: min(90svw, 200px);
+        margin-inline-end: 6svw;
+        animation: slideInLeftModalCard 0.4s ease-out forwards;
+        @keyframes slideInLeftModalCard {
+          from { opacity: 0; transform: translateX(120px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        > .modal-header {
+          min-height: 40px;
+        }
+        > .modal-body {
+          > .modal-body-detail {
+            position: static;
+            > .modal-body-detail-inner {
+              white-space: normal;
+              padding: 0;
+              border: none;
+              background: white;
+              margin-block: 0 32px;
+              margin-inline: 32px;
+              > .global-nav {
+                > ul[class='nav-link-field'] {
+                  list-style: none;
+                  padding-inline-start: 0;
+                  > li[class='nav-item'] {
+                    padding-block: 16px;
+                  }
+                }
+              }
             }
           }
         }

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="アコーディオンの右へ開くアイコン">
+  <defs>
+    <symbol id="accordion-right-icon" viewBox="0 0 8 16" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M6.77137 8.47401L3.00004 12.2453L2.05737 11.3027L5.35737 8.00268L2.05737 4.70268L3.00004 3.76001L6.77137 7.53134C6.89635 7.65636 6.96656 7.8259 6.96656 8.00268C6.96656 8.17945 6.89635 8.34899 6.77137 8.47401Z" fill="#eeeeee"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 呼び出し側 -->
+<svg class="accordion-right-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <use class="accordion-right-icon" href="./images/icon/sample/accordion-right-icon.svg#accordion-right-icon" x="0" y="0" fill="" stroke="none"></use>
+</svg>

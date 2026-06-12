@@ -6,13 +6,11 @@
 /**************************************
   DOMツリー構造に沿ったスタイル
 **************************************/
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-    scroll-padding-top: 80px;
-    scroll-behavior: smooth;
-  }
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
 }
+
 body {
   position: relative;
   margin: auto;
@@ -21,21 +19,20 @@ body {
   color: #000;
 }
 body > header {
-  position: sticky;
-  top: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  max-width: 100%;
   height: 80px;
   background-color: #888888;
-  padding: 20px 4svw;
-  z-index: 10000;
 }
 body > header > .site-logo-field {
   display: flex;
   align-items: center;
   gap: 1svw;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  margin-inline-start: 4svw;
   cursor: pointer;
 }
 body > header > .site-logo-field > a {
@@ -46,17 +43,23 @@ body > header > .site-logo-field > a > .site-name {
 }
 body > header > .global-nav {
   color: #fff;
-  margin-inline: auto 2svw;
+  margin-inline-end: calc(8svw + 64px);
+  margin-inline-end: 10svw;
 }
-body > header > .global-nav > .nav-link-field {
+body > header > .global-nav > ul[class=nav-link-field] {
   display: flex;
   gap: 2svw;
+  list-style: none;
+  padding-inline-start: 0;
 }
-body > header > .global-nav > .nav-link-field > .nav-link:hover:nth-child(3) {
+body > header > .global-nav > ul[class=nav-link-field] > li[class=nav-item]:nth-child(3):hover {
   letter-spacing: -0.02em;
 }
 body > header > .hamburger-menu-button {
+  position: fixed;
+  inset: 16px 4svw auto auto;
   color: #D9D9D9;
+  z-index: 10000;
 }
 body > header > .hamburger-menu-button:hover {
   color: #B7B7B7;
@@ -169,6 +172,13 @@ body > aside[class=sidebar] > nav > details > .anchor-field {
 body > main {
   position: relative;
   background-color: antiquewhite;
+}
+body > main > .list-circle-icon-svg {
+  position: fixed;
+  inset: auto 4svw 16svh auto;
+  width: -moz-max-content;
+  width: max-content;
+  z-index: 10000;
 }
 body > main > .to-main-arrow-button {
   position: absolute;
@@ -489,9 +499,10 @@ body > main > section.main-section-about > .page-title-anchor-field > .title-fie
   border-left: 4px solid orange;
   padding-left: 16px;
 }
-body > main > section.main-section-about > .page-title-anchor-field > .anchor-field {
+body > main > section.main-section-about > .page-title-anchor-field > .anchor-field > ul[class=anchor-list] {
   display: flex;
   gap: 1.5svw;
+  list-style: none;
 }
 body > main > section.main-section-about > .page-section-field > .page-section {
   margin-block: 20px;
@@ -1168,9 +1179,10 @@ body > main > section.main-section-recruit > .page-title-anchor-field > .title-f
   border-left: 4px solid orange;
   padding-left: 16px;
 }
-body > main > section.main-section-recruit > .page-title-anchor-field > .anchor-field {
+body > main > section.main-section-recruit > .page-title-anchor-field > .anchor-field > ul[class=anchor-list] {
   display: flex;
   gap: 1.5svw;
+  list-style: none;
 }
 body > main > section.main-section-recruit > .page-section-field > .page-section {
   margin-block: 40px;
@@ -1524,10 +1536,73 @@ body > main > hr {
   border: 1px solid #404040;
   width: 100%;
 }
+body > main > .inpage-link {
+  position: fixed;
+  inset: 65svh auto auto 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+  align-items: start;
+  max-width: min(90svw, 160px);
+  z-index: 10000;
+}
+body > main > .inpage-link > .accordion-right-icon-field {
+  display: flex;
+  align-items: center;
+  background: #999999;
+  border-radius: 0 8px 8px 0;
+  padding-inline: 4px;
+  height: 80px;
+  cursor: pointer;
+  transition: visibility 0.8s ease, opacity 0.4s, width 0.2s ease;
+}
+body > main > .inpage-link > .accordion-right-icon-field > .accordion-right-icon-svg {
+  transition: all 1.2s ease;
+}
+body > main > .inpage-link > .accordion-right-icon-field.no-active {
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+}
+body > main > .inpage-link > .accordion-right-icon-field.no-active + .anchor-field {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+}
+body > main > .inpage-link > .anchor-field {
+  background: rgb(255, 255, 248);
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  min-height: 120px;
+  border-bottom-right-radius: 8px;
+  overflow: hidden;
+  transition: opacity 0.8s ease, visibility 0.4s, width 0.4s ease;
+}
+body > main > .inpage-link > .anchor-field > ul[class=anchor-list] {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-block: 16px 32px;
+  margin-inline: 16px;
+  white-space: nowrap;
+  width: 128px;
+}
+body > main > .inpage-link > .anchor-field > ul[class=anchor-list] > li[class=anchor-item] {
+  font-size: 0.9rem;
+  padding-block: 8px;
+}
+body > main > .inpage-link.is-open > .accordion-right-icon-field > .accordion-right-icon-svg {
+  transform: rotateY(180deg);
+}
+body > main > .inpage-link.is-open > .anchor-field {
+  opacity: 0.9;
+  visibility: visible;
+  width: 100%;
+}
 body > main > .backtotop-arrow-svg-button {
   position: fixed;
-  right: 2svw;
-  bottom: 2svh;
+  right: 4svw;
+  bottom: 4svh;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
@@ -1692,6 +1767,42 @@ body > dialog[open] > .modal-card > .modal-body > .modal-body-button-form {
 body > dialog[open] > .modal-card > .modal-body > .modal-body-button-form button:hover {
   background: #ccc;
   transition: background 0.2s;
+}
+body > dialog[open]#header-hamburger-menu-modal > .modal-card {
+  max-width: min(90svw, 200px);
+  margin-inline-end: 6svw;
+  animation: slideInLeftModalCard 0.4s ease-out forwards;
+}
+@keyframes slideInLeftModalCard {
+  from {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+body > dialog[open]#header-hamburger-menu-modal > .modal-card > .modal-header {
+  min-height: 40px;
+}
+body > dialog[open]#header-hamburger-menu-modal > .modal-card > .modal-body > .modal-body-detail {
+  position: static;
+}
+body > dialog[open]#header-hamburger-menu-modal > .modal-card > .modal-body > .modal-body-detail > .modal-body-detail-inner {
+  white-space: normal;
+  padding: 0;
+  border: none;
+  background: white;
+  margin-block: 0 32px;
+  margin-inline: 32px;
+}
+body > dialog[open]#header-hamburger-menu-modal > .modal-card > .modal-body > .modal-body-detail > .modal-body-detail-inner > .global-nav > ul[class=nav-link-field] {
+  list-style: none;
+  padding-inline-start: 0;
+}
+body > dialog[open]#header-hamburger-menu-modal > .modal-card > .modal-body > .modal-body-detail > .modal-body-detail-inner > .global-nav > ul[class=nav-link-field] > li[class=nav-item] {
+  padding-block: 16px;
 }
 
 /**************************************
