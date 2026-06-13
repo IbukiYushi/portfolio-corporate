@@ -1783,6 +1783,9 @@ body {
       from { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); }
       to { background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); }
     }
+    // &::backdrop {
+    //   background: rgba(0, 0, 0, 0.5);
+    // }
 
     > .modal-card {
       background: #fff;
@@ -1891,7 +1894,7 @@ body {
         }
       }
     }
-    // ヘッダーナンバーガーメニュー用モーダル
+    // ヘッダーハンバーガーメニュー用モーダル
     &#header-hamburger-menu-modal {
       > .modal-card {
         max-width: min(90svw, 200px);

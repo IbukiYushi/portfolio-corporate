@@ -577,19 +577,18 @@ const toggleInPageLinkNavigation = () => {
       inPageLinkContainer.classList.toggle('is-open');
     }
   });
-
   // トップページのみ、ヒーローセクションをスクロールで過ぎてから表示
   if (document.body.classList.contains('top-page')) {
     const scrollContainerEl = document.querySelector('main');
     if (!scrollContainerEl) return;
-    const noActiveThreshold = scrollContainerEl.getBoundingClientRect().top + window.pageYOffset;
-    if (!noActiveThreshold) return;
-    const getScrollTop = () => {
-      return window.pageYOffset || document.documentElement.scrollTop;
+    const getScrollTop = () =>  window.pageYOffset || document.documentElement.scrollTop;
+    const checkScrollPosition = () => {
+      const rect = scrollContainerEl.getBoundingClientRect();
+      const absoluteTop = rect.top + window.pageYOffset;
+      accordionRightIconField.classList.toggle('no-active', getScrollTop() < absoluteTop);
     };
-    window.addEventListener('scroll', () => {
-      accordionRightIconField.classList.toggle('no-active', getScrollTop() <= noActiveThreshold);
-    });
+    window.addEventListener('scroll', checkScrollPosition);
+    window.addEventListener('DOMContentLoaded', checkScrollPosition);
   }
 };
 
@@ -627,12 +626,16 @@ const modalOpenState = () => {
  * ハンバーガーメニューのクリックにより、連動させた下層ページリンクのモーダルを表示させる
  */
 const openModalHeaderHamburgerMenu = () => {
-  const humburgerMenuButton= document.querySelector('.hamburger-menu-button');
+  const hamburgerMenuButton= document.querySelector('.hamburger-menu-button');
   const modal = document.querySelector('dialog[id="header-hamburger-menu-modal"]');
-  if (!humburgerMenuButton || !modal) return;
-  humburgerMenuButton.addEventListener('click', () => {
+  if (!hamburgerMenuButton || !modal) return;
+  hamburgerMenuButton.addEventListener('click', () => {
     modal.showModal();
+    hamburgerMenuButton.setAttribute('aria-expanded', 'true');
     modalOpenState();
+  });
+  modal.addEventListener('close', () => {
+    hamburgerMenuButton.setAttribute('aria-expanded', 'false');
   });
 };
 
