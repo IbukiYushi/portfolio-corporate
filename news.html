@@ -13,15 +13,13 @@
   <meta property="og:site_name" content="サイト名">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./images/icon/favicon/favicon.ico" sizes="16x16 32x32 48x48"/>
-  <link rel="stylesheet" href="./css/reset.css"/>
-  <link rel="stylesheet" href="./css/grid-page-layout.css"/>
   <!-- TODO: @mediaのレスポンシブ用css -->
   <link rel="stylesheet" href="./css/style.css"/>
   <script type="module" src="./js/index.js" defer></script>
 </head>
 
-<body class="news-page">
-  <header class="site-header">
+<body class="news-page l-grid-container">
+  <header class="l-header">
     <div class="site-logo-field">
       <a class="nav-link" href="./index.html">
         <svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -46,7 +44,7 @@
     </button>
   </header>
 
-  <main>
+  <main class="l-main">
     <section id="main-section-news" class="main-section-news">
 
       <div class="page-title-field">
@@ -111,22 +109,22 @@
     </section>
   </main>
 
-  <footer>
-    <div class="copy">&copy;Company Co., Ltd.</div>
+  <footer class="l-footer">
+    <div class="l-footer__copy">&copy;Company Co., Ltd.</div>
   </footer>
 
-  <dialog id="header-hamburger-menu-modal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <button type="button" class="modal-close-icon-button" aria-label="閉じる">
+  <dialog id="header-hamburger-menu-modal" class="c-modal--hamburger">
+    <div class="c-modal__card">
+      <div class="c-modal__header">
+        <button type="button" class="c-modal__close-btn" aria-label="閉じる">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
             <use class="close-icon" href="./images/icon/sample/close-icon.svg#close-icon" x="0" y="0" fill="" stroke="none"></use>
           </svg>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="modal-body-detail">
-          <div class="modal-body-detail-inner">
+      <div class="c-modal__body">
+        <div class="c-modal__detail">
+          <div class="c-modal__detail-inner">
             <nav class="global-nav" aria-label="メインナビゲーション">
               <ul class="nav-link-field">
                 <li class="nav-item"><a class="nav-link" href="./index.html">ホーム</a></li>
@@ -142,33 +140,33 @@
     </div>
   </dialog>
 
-  <dialog id="news-modal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div class="modal-title">
+  <dialog id="news-modal" class="c-modal">
+    <div class="c-modal__card">
+      <div class="c-modal__header">
+        <div class="c-modal__title">
           <h3>モーダルのタイトル</h3>
         </div>
-        <button type="button" class="modal-close-icon-button" aria-label="閉じる">
+        <button type="button" class="c-modal__close-btn" aria-label="閉じる">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
             <use class="close-icon" href="./images/icon/sample/close-icon.svg#close-icon" x="0" y="0" fill="" stroke="none"></use>
           </svg>
         </button>
       </div>
-      <hr class="modal-hr">
-      <div class="modal-body">
-        <div class="modal-body-meta">
-          <span class="category label-default">カテゴリーラベル</span>
-          <time datetime="0000-00-00">0000.00.00</time>
+      <hr class="c-modal__hr">
+      <div class="c-modal__body">
+        <div class="c-modal__meta">
+          <span class="c-modal__category label-default">カテゴリーラベル</span>
+          <time class="c-modal__time" datetime="0000-00-00">0000.00.00</time>
         </div>
-        <div class="modal-body-detail">
-          <div class="modal-body-detail-inner">本文</div>
-          <button class="backtotop-arrow-svg-button">
+        <div class="c-modal__detail">
+          <div class="c-modal__detail-inner">本文</div>
+          <button class="c-back-to-top--news">
             <svg class="backtotop-arrow-svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
               <use class="backtotop-arrow" href="./images/icon/sample/backtotop-arrow.svg#backtotop-arrow" x="0" y="0" fill="" stroke="none"></use>
             </svg>
           </button>
         </div>
-        <form class="modal-body-button-form" method="dialog">
+        <form class="c-modal__footer-form" method="dialog">
           <button class="button button--outline button--md button--border-circle">閉じる</button>
         </form>
       </div>

@@ -1,0 +1,74 @@
+@use "sass:map";
+
+/**************************************
+  ブレイクポイント・メディアクエリ設定
+**************************************/
+$breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 1200px,
+) !default;
+
+/**
+ * 指定したブレイクポイント以下（max-width）のスタイルを適用するMixin
+ * 使用例：@include mq(md) { ... }
+ */
+@mixin mq($breakpoint-name) {
+  $width: map.get($breakpoints, $breakpoint-name);
+  @if $width {
+    @media screen and (max-width: #{$width}) {
+      @content;
+    }
+  } @else {
+    @error "指定されたブレイクポイント「#{$breakpoint-name}」は定義されていません。定義済みのキー（sm, md, lg）を使用してください。";
+  }
+}
+
+/**************************************
+  インタラクション・ステート制御Mixin
+**************************************/
+
+// 擬似クラス:hover
+@mixin hover-state(
+  $outline-color: #606060
+) {
+  &:hover {
+      outline: 2px solid $outline-color;
+      outline-offset: -1px;
+  }
+}
+
+// 擬似クラス:focus-visible
+@mixin focus-visible-state(
+  $outline-color: #606060,
+  $outline-offset: 2px,
+  $border-radius: 8px
+) {
+  &:focus-visible {
+    outline: 2px solid $outline-color;
+    outline-offset: $outline-offset;
+    border-radius: $border-radius;
+  }
+}
+// 擬似クラス:active
+@mixin active-state(
+  $color: #ffffff,
+  $background: none,
+  $brightness: 0.8
+) {
+  &:active {
+    color: $color;
+    background: $background;
+    filter: brightness($brightness);
+  }
+}
+// 擬似クラス:disabled
+@mixin disabled-state(
+  $opacity: 0.4
+) {
+  &:disabled {
+    opacity: $opacity;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

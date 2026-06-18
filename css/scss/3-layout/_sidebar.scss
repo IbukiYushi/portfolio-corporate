@@ -1,0 +1,31 @@
+.l-sidebar {
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  align-items: center;
+  row-gap: 24px;
+  background-color: aqua;
+  padding-top: 24px;
+  &__search-form {
+    display: initial;
+    .search-inner {
+      display: flex;
+      flex-direction: initial;
+      justify-content: start;
+      align-items: center;
+      column-gap: 4px;
+      > input {
+        max-width: 160px;
+      }
+    }
+  }
+  &__nav {
+    width: 200px;
+    .anchor-field {
+      display: flex;
+      flex-flow: column;
+      justify-content: start;
+      align-items: flex-start;
+    }
+  }
+}

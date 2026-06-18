@@ -1,0 +1,299 @@
+section {
+  &.main-section-top {
+    hr {
+      border: none;
+      height: 1px;
+      background: #aaaaaa;
+      margin-block: 8px;
+    }
+    > .page-section {
+      > .section-header {
+        text-align: center;
+        padding-block: 80px 40px;
+        > .section-title {
+          color: #222222;
+          font-size: 2.5rem;
+          letter-spacing: 0.08em;
+          &--english {
+            color: #aaaaaa;
+            opacity: 0.4;
+            font-size: 3.5rem;
+            font-style: italic;
+            letter-spacing: 0.18em;
+          }
+        }
+      }
+      &#about-top {
+        > .services-container {
+          padding-block: 0 20px;
+          padding-inline: 15svw;
+          margin-inline: auto;
+          > .service-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 40px;
+            align-items: center;
+            > .service-card-body {
+              align-self: start;
+              padding-block: 24px;
+              > .service-card-title {
+                display: flex;
+                flex-direction: column;
+                span {
+                  font-size: 1.5rem;
+                  &.--en {
+                    font-size: 1.0rem;
+                    color: #aaaaaa;
+                    border-left: 4px solid orange;
+                    padding-left: 8px;
+                  }
+                }
+              }
+              > .service-card-text {
+                display: flex;
+                flex-direction: column;
+                justify-content:space-between;
+                color: #333333;
+                padding-block: 40px;
+                padding-inline: 16px;
+              }
+              > .service-button-field {
+                padding-left: 16px;
+                width: fit-content;
+                > a {
+                  display: flex;
+                  justify-content: center;
+                  gap: 24px;
+                  font-weight: normal;
+                  font-size: 1rem;
+                  border-width: 1px;
+                  &:hover {
+                    > svg {
+                      margin-left: 8px;
+                      transition: margin-left 0.2s ease;
+                    }
+                  }
+                }
+              }
+            }
+            > .service-card-image {
+              box-shadow: 12px 12px 20px rgba(41, 40, 38, 0.15);
+              img {
+                width: 100%;
+                height: auto;
+              }
+            }
+          }
+        }
+      }
+      &#news-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        column-gap: 40px;
+        border-top: 2px solid #ccc;
+        padding-inline: 10svw;
+        > .section-header {
+          grid-column: 1 / 2;
+          grid-row: 1 / 2;
+          text-align: left;
+        }
+        > .news-button-field {
+          grid-column: 1 / 2;
+          grid-row: 2 / 3;
+          padding-block: 40px;
+          padding-left: 16px;
+          width: fit-content;
+        }
+        > .news-container {
+          grid-column: 2 / 3;
+          grid-row: 1 / 3;
+          padding-block: 80px;
+          > .news-list {
+            list-style: none;
+            max-width: 800px;
+            border-top: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+            padding-block: 8px;
+            padding-inline: 0 16px;
+            > .news-item {
+              border-top: 2px solid #ccc;
+              &:first-of-type { border-top: 3px solid #ccc; }
+              &:last-of-type { border-bottom: 3px solid #ccc; }
+              > .news-item-link{
+                display: flex;
+                align-items: center;
+                gap: 32px;
+                padding: 20px;
+                width: 100%;
+                text-align: left;
+                cursor: pointer;
+                transition: background 0.2s ease;
+                &:hover {
+                  background: #f9f9f9;
+                  transition: background 0.2s ease;
+                  > .news-item-title {
+                    text-decoration: underline;
+                  }
+                }
+                > .news-item-meta {
+                  flex-shrink: 0;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 4px;
+                  width: 120px;
+                  > .news-label {
+                    color: #fff;
+                    font-size: 0.9rem;
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    &.info { background: #3498db; }
+                    &.recruit { background: #e67e22; }
+                    &.press { background: #95a5a6; }
+                  }
+                  > .news-date {
+                    color: #555;
+                    font-size: 0.9rem;
+                    font-weight: bold;
+                  }
+                }
+                > .news-item-title {
+                  text-wrap: wrap;
+                  font-weight: bold;
+                }
+              }
+              &__no-data {
+                text-align: center;
+                margin-block: 1svh;
+                margin-inline: auto;
+              }
+            }
+          }
+        }
+      }
+      &#contact-top {
+        border-top: 2px solid #ccc;
+        margin-bottom: 80px;
+        overflow: hidden;
+        > .contact-card {
+          display: flex;
+          background: #ffffff;
+          backdrop-filter: blur(10px);
+          box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
+          padding-block: 40px 80px;
+          > .contact-card-main-detail {
+            flex: 1;
+            .map-container {
+              width: max(330px, 80%);
+              height: 400px;
+              box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+              margin: 20px auto;
+              iframe {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .address-info {
+              color: #333;
+              width: max(330px, 80%);
+              margin-inline: auto;
+              .address {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                width: fit-content;
+                margin-bottom: 8px;
+                > .zip-code {
+                  font-size: 0.8rem;
+                }
+                > .address-text {
+                  font-size: 1.1rem;
+                  font-weight: bold;
+                }
+              }
+              .tel {
+                margin-left: 16px;
+              }
+              .tel a {
+                display: inline-block;
+                background: inherit;
+                padding-inline: 8px;
+                font-size: 1.5rem;
+                font-weight: bold;
+                &:hover {
+                  text-decoration: underline solid #444444;
+                }
+              }
+            }
+            > .contact-button-field {
+              position: relative;
+              margin-top: 40px;
+              padding-block: 20px;
+              isolation: isolate;
+              > .button {
+                background: orange;
+                width: fit-content;
+                margin-inline: auto;
+              }
+              &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: #ccc;
+                background-image: linear-gradient(
+                  150deg,
+                  #ccc 80%,
+                  #fff 80%
+                  );
+                width: 135%;
+                height: 84px;
+                z-index: -1;
+              }
+            }
+          }
+          > .contact-card-recruit {
+            flex: 1;
+            > .sub-header {
+              color: #aaaaaa;
+              opacity: 0.4;
+              font-size: 4.0rem;
+              font-style: italic;
+              font-weight: lighter;
+              letter-spacing: 0.04em;
+              text-align: right;
+              margin-top: 136px;
+              margin-inline: auto 7.5%;
+            }
+            > .contact-button-field {
+              position: relative;
+              margin-top: 24px;
+              padding-block: 20px;
+              isolation: isolate;
+              > .button {
+                background: orange;
+                width: fit-content;
+                margin-inline: auto 20%;
+              }
+              &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: #ccc;
+                background-image: linear-gradient(
+                  -25deg,
+                  #ccc 80%,
+                  #fff 80%
+                  );
+                width: 105%;
+                height: 84px;
+                z-index: -1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

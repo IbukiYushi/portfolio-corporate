@@ -1,0 +1,24 @@
+.c-back-to-top {
+  position: fixed;
+  right: 4svw;
+  bottom: 4svh;
+  opacity: 0;
+  pointer-events: none; 
+  transition: opacity 0.4s ease;
+  &.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  &--news {
+    position: absolute;
+    right: 36px;
+    bottom: 1svh;
+    opacity: 0;
+    pointer-events: none; 
+    transition: opacity 0.4s ease;
+    &.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}

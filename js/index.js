@@ -25,7 +25,7 @@ const renderTopNewsList = () => {
       <li class="news-item">
         <a href="./news.html#${id}" class="news-item-link">
           <div class="news-item-meta">
-            <span class="news-label news-${data.label}">${data.category}</span>
+            <span class="news-label ${data.label}">${data.category}</span>
             <time datetime="${htmlDatetime}" class="news-date">${data.date}</time>
           </div>
           <p class="news-item-title">${data.title}</p>
@@ -41,7 +41,7 @@ const renderTopNewsList = () => {
  * メインセクション群トップの「ダウンスクロールボタン」押下で、HEROセクションからメインセクション群トップへ飛ばすスクロール。
  */
 const toMainScroll = () => {
-  const toMainScrollButton = document.querySelector('.to-main-arrow-button');
+  const toMainScrollButton = document.querySelector('.c-btn-to-main');
   const mainSectionTop = document.querySelector('#main-section-top');
   if (!toMainScrollButton || !mainSectionTop) return;
 
@@ -569,10 +569,10 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
  * ページ内リンクの表示ボタンのクリックにより、対応するエリアの開閉状態（is-openクラス）を切り替える
  */
 const toggleInPageLinkNavigation = () => {
-  const accordionRightIconField = document.querySelector('.accordion-right-icon-field');
+  const accordionRightIconField = document.querySelector('.c-inpage-nav__trigger');
   if(!accordionRightIconField) return;
   accordionRightIconField.addEventListener('click', () => {
-    const inPageLinkContainer = accordionRightIconField.closest('.inpage-link');
+    const inPageLinkContainer = accordionRightIconField.closest('.c-inpage-nav');
     if (inPageLinkContainer) {
       inPageLinkContainer.classList.toggle('is-open');
     }
@@ -585,7 +585,7 @@ const toggleInPageLinkNavigation = () => {
     const checkScrollPosition = () => {
       const rect = scrollContainerEl.getBoundingClientRect();
       const absoluteTop = rect.top + window.pageYOffset;
-      accordionRightIconField.classList.toggle('no-active', getScrollTop() < absoluteTop);
+      accordionRightIconField.classList.toggle('is-inactive', getScrollTop() < absoluteTop);
     };
     window.addEventListener('scroll', checkScrollPosition);
     window.addEventListener('DOMContentLoaded', checkScrollPosition);
@@ -615,7 +615,7 @@ const faqAccordion = () => {
 const modalOpenState = () => {
   const modal = document.querySelector('dialog[open]');
   const bodyContent = document.querySelector('body');
-  const scrollContainer = document.querySelector('.modal-body-detail-inner');
+  const scrollContainer = document.querySelector('.c-modal__detail-inner');
   if(!modal || !bodyContent || !scrollContainer) return;
   bodyContent.style.overflow = 'hidden';
   scrollContainer.scrollTop = 0;
@@ -647,17 +647,17 @@ const openModalListButtons = () => {
   const listButtons = document.querySelectorAll('.open-modal-button');
   const modal = document.querySelector('dialog[id="news-modal"]');
   if (!listButtons || !modal) return;
-  const modalTitle = modal.querySelector('.modal-title h3');
-  const modalCategory = modal.querySelector('.modal-body-meta .category');
-  const modalTime = modal.querySelector('.modal-body-meta time');
-  const modalDetailInner = modal.querySelector('.modal-body-detail-inner');
+  const modalTitle = modal.querySelector('.c-modal__title h3');
+  const modalCategory = modal.querySelector('.c-modal__meta .c-modal__category');
+  const modalTime = modal.querySelector('.c-modal__meta .c-modal__time');
+  const modalDetailInner = modal.querySelector('.c-modal__detail-inner');
   listButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const targetId = btn.dataset.modalTarget;
       const newsDataList = newsData[targetId];
       if (newsDataList) {
         modalTitle.textContent = newsDataList.title;
-        modalCategory.className = `category ${newsDataList.label}`;
+        modalCategory.className = `c-modal__category ${newsDataList.label}`;
         modalCategory.textContent = newsDataList.category;
         modalTime.setAttribute('datetime', newsDataList.date.replaceAll('.', '-'));
         modalTime.textContent = newsDataList.date;
@@ -682,13 +682,13 @@ const initHashModalOpen = () => {
   if (!newsDataList) return;
   const modal = document.querySelector('dialog[id="news-modal"]');
   if (!modal) return;
-  const modalTitle = modal.querySelector('.modal-title h3');
-  const modalCategory = modal.querySelector('.modal-body-meta .category');
-  const modalTime = modal.querySelector('.modal-body-meta time');
-  const modalDetailInner = modal.querySelector('.modal-body-detail-inner');
+  const modalTitle = modal.querySelector('.c-modal__title h3');
+  const modalCategory = modal.querySelector('.c-modal__meta .c-modal__category');
+  const modalTime = modal.querySelector('.c-modal__meta .c-modal__time');
+  const modalDetailInner = modal.querySelector('.c-modal__detail-inner');
   if (!modalTitle || !modalCategory || !modalTime || !modalDetailInner) return;
   modalTitle.textContent = newsDataList.title;
-  modalCategory.className = `category ${newsDataList.label}`;
+  modalCategory.className = `c-modal__category ${newsDataList.label}`;
   modalCategory.textContent = newsDataList.category;
   modalTime.setAttribute('datetime', newsDataList.date.replaceAll('.', '-'));
   modalTime.textContent = newsDataList.date;
@@ -708,8 +708,8 @@ const modalClose = () => {
   modals.forEach(modal => {
     modal.addEventListener('close', () => {
       bodyContent.style.overflow = 'visible';
-      const topScrollButton = document.querySelector('.backtotop-arrow-svg-button');
-      if(topScrollButton) topScrollButton.classList.remove('active');
+      const topScrollButton = document.querySelector('.c-back-to-top--news');
+      if(topScrollButton) topScrollButton.classList.remove('is-active');
     });
     // 黒背景部分の押下
     modal.addEventListener('click', (event) => {
@@ -718,13 +718,13 @@ const modalClose = () => {
       }
     });
     // ×印ボタンの押下
-    const modalCloseIconButton = modal.querySelector('.modal-close-icon-button');
+    const modalCloseIconButton = modal.querySelector('.c-modal__close-btn');
     if (!modalCloseIconButton) return;
       modalCloseIconButton.addEventListener('click', () => {
       modal.close();
     });
     // 閉じるボタンの押下
-    // const modalCloseForm = modal.querySelector('.modal-body-button-form');
+    // const modalCloseForm = modal.querySelector('.c-modal__footer-form');
     // if (!modalCloseForm) return;
     // const modalCloseFormButton = modalCloseForm.querySelector('button');
     // if (!modalCloseFormButton) return;
@@ -739,14 +739,16 @@ const modalClose = () => {
  * モーダルカード内の「トップスクロールボタン」の押下で詳細文の最上部まで戻る。
  */
 const modalBodyDetailTopScroll = () => {
-  const modalBodyDetail = document.querySelector('.modal-body-detail');
+  const modal = document.querySelector('.c-modal');
+  if (!modal) return;
+  const modalBodyDetail = modal.querySelector('.c-modal__detail');
   if (!modalBodyDetail) return;
-  const scrollContainer = modalBodyDetail.querySelector('.modal-body-detail-inner');
-  const topScrollButton = modalBodyDetail.querySelector('.backtotop-arrow-svg-button');
+  const scrollContainer = modalBodyDetail.querySelector('.c-modal__detail-inner');
+  const topScrollButton = modalBodyDetail.querySelector('.c-back-to-top--news');
   if (!scrollContainer || !topScrollButton) return;
 
   scrollContainer.addEventListener('scroll', () => {
-    topScrollButton.classList.toggle('active', scrollContainer.scrollTop > 100);
+    topScrollButton.classList.toggle('is-active', scrollContainer.scrollTop > 100);
   });
 
   topScrollButton.addEventListener('click', () => {
@@ -759,7 +761,7 @@ const modalBodyDetailTopScroll = () => {
  * 「トップスクロールボタン」の押下でページ内の最上部まで戻る。
  */
 const commonTopScroll = (scrollContainerEl = null) => {
-  const topScrollButton = document.querySelector('.backtotop-arrow-svg-button');
+  const topScrollButton = document.querySelector('.c-back-to-top');
   if (!topScrollButton) return;
 
   const getTargetSettings = () => {
@@ -784,7 +786,7 @@ const commonTopScroll = (scrollContainerEl = null) => {
   };
 
   window.addEventListener('scroll', () => {
-    topScrollButton.classList.toggle('active', getScrollTop() > getTargetSettings().activeThreshold);
+    topScrollButton.classList.toggle('is-active', getScrollTop() > getTargetSettings().activeThreshold);
   });
 
   topScrollButton.addEventListener('click', () => {

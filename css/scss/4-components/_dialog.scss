@@ -1,0 +1,176 @@
+@keyframes fadeInModalBg {
+  from { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); }
+  to { background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); }
+}
+@keyframes slideInDownCard {
+  from { opacity: 0.5; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeftCard {
+  from { opacity: 0; transform: translateX(120px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+dialog {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: none;
+  max-height: none;
+}
+
+.c-modal {
+  &[open] {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100svw;
+    height: 100svh;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    animation: fadeInModalBg 0.4s ease forwards;
+    // &::backdrop {
+    //   background: rgba(0, 0, 0, 0.5);
+    // }
+  }
+  &__card {
+    background: #fff;
+    width: max(400px, 40svw);
+    height: auto;
+    margin-block: 16svh auto;
+    margin-inline: auto;
+    border-radius: 8px;
+    animation: slideInDownCard 0.8s ease-out forwards;
+  }
+  &__header {
+    position: relative;
+  }
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 16px;
+    h3 {
+      text-align: center;
+      width: 80%;
+    }
+  }
+  &__close-btn {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    &:hover {
+      border-radius: 4px;
+      background: #ccc;
+      transition: background 0.2s;
+    }
+  }
+  &__hr {
+    width: 96%;
+    margin-inline: auto;
+    border: 1px solid #404040;
+  }
+  // &__body {}
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding-block: 8px 4px;
+    padding-inline: 16px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 24px;
+  }
+  &__category {
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 2px 16px;
+    border-radius: 4px;
+    &.info { background: #3498db; }
+    &.recruit { background: #e67e22; }
+    &.press { background: #95a5a6; }
+    &.default { background: #333; }
+  }
+  &__time {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  &__detail {
+    position: relative;
+  }
+  &__detail-inner {
+    white-space: pre-wrap;
+    min-height: 20svh;
+    max-height: 40svh;
+    overflow-y: auto;
+    padding-block: 16px 48px;
+    padding-inline: 8px 16px;
+    border: 2px solid #404040;
+    border-radius: 8px;
+    margin-inline: 16px;
+    background: #fcfcfc;
+  }
+  &__footer-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block: 24px 32px;
+    button:hover {
+      background: #ccc;
+      transition: background 0.2s;
+    }
+  }
+
+  // ヘッダーハンバーガーメニュー用モーダル
+  &--hamburger {
+    &[open] {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      width: 100svw;
+      height: 100svh;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      animation: fadeInModalBg 0.4s ease forwards;
+      // &::backdrop {
+      //   background: rgba(0, 0, 0, 0.5);
+      // }
+    }
+    .c-modal__card {
+      max-width: min(90svw, 200px);
+      margin-inline-end: 6svw;
+      animation: slideInLeftCard 0.4s ease-out forwards;
+    }
+    .c-modal__header {
+      min-height: 40px;
+    }
+    .c-modal__detail {
+      position: static;
+    }
+    .c-modal__detail-inner {
+      white-space: normal;
+      padding: 0;
+      border: none;
+      background: white;
+      margin-block: 0 32px;
+      margin-inline: 32px;
+      // TODO: ヘッダー・ハンバーガーメニューモーダル・ページ内リンクモーダル
+      > .global-nav {
+        > ul[class='nav-link-field'] {
+          list-style: none;
+          padding-inline-start: 0;
+          > li[class='nav-item'] {
+            padding-block: 16px;
+          }
+        }
+      }
+    }
+  }
+}

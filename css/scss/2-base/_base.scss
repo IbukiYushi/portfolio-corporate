@@ -1,0 +1,387 @@
+@use "../1-abstracts/variables" as v;
+@use "../1-abstracts/mixins" as m;
+
+html {
+  scroll-padding-top: v.$header-height;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  margin: auto;
+  background-color: #fff;
+  width: 100%;
+  color: #000;
+}
+
+main {
+  position: relative;
+  background-color: antiquewhite;
+}
+
+hr {
+  border: 1px solid #404040;
+  width: 100%;
+}
+/**************************************
+  汎用的コンポーネント
+**************************************/
+
+
+// 折りたたみボックス
+details {
+  > summary {
+    @include m.focus-visible-state(
+      $border-radius: 0px
+    );
+  }
+  > .anchor-field {
+    a {
+        &:hover {
+          text-decoration: underline;
+        }
+        @include m.focus-visible-state(
+          $outline-color: #606060,
+          $outline-offset: 0,
+          $border-radius: 4px
+      );
+    }
+  }
+}
+
+// アンカーリンク
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
+  @include m.focus-visible-state(
+    $border-radius: 4px
+  );
+  // &:active {}
+  // &:disabled {}
+}
+
+// フォーム
+form {
+  > .form-header {
+    text-align: center;
+  }
+  > .form-card {
+  display: grid;
+  gap: 8px;
+  margin: 40px 0;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 40px 16px;
+    > div {
+      display: flex;
+      flex-direction: column;
+      &.form-item {
+        >.error-message-field {
+          display: flex;
+          align-items: baseline;
+          visibility: hidden;
+          opacity: 0;
+          color: #ff0000;
+          min-height: 18px;
+          transition: opacity 0.3s ease;
+          > .asterisk-mark {
+            font-size: 0.625rem;
+          }
+          > .error-message {
+            font-size: 0.75rem;
+          }
+        }
+        &.is-error {
+          > input, textarea {
+            border: 2px solid #ff0000;
+            background: #fce8e6;
+            // &:not(:placeholder-shown) {
+            //   border: 2px solid #008000; 
+            //   background: #ffffff;
+            // }
+          }
+          > .error-message-field {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+      &.form-button-field {
+        align-items: center;
+      }
+    }
+  }
+  > fieldset {
+    > .form-group-outer {
+      display: flex;
+      margin-bottom: 16px;
+      > .form-group {
+        &.radio-field, &.checkbox-field {
+          width: 50%;
+          display: flex;
+          flex-flow: column;
+          justify-content: start;
+        }
+      }
+    }
+    > .form-group {
+      &.button-field {
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+// ラベル
+label {
+  span {
+    color: #ffffff;
+    font-size: 0.625rem;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    margin-left: 8px;
+    padding: 2px 4px;
+    &.required {
+      background: #ff0000;
+    }
+    &.optional {
+      background: #aaaaaa;
+    }
+  }
+}
+
+// 入力欄・テキストエリア・リストボックス
+input, textarea, select {
+  width: 100%;
+  cursor: pointer;
+  @include m.focus-visible-state(
+    $outline-color: #606060,
+    $outline-offset: -2px,
+    $border-radius: 4px
+  );
+}
+// 入力欄
+input {
+  font-size: 1rem;
+  background: #ffffff;
+  padding: 0.25em 0.5em;
+  border: 1px solid #888888;
+  border-radius: 0.25em;
+  &[readonly] {
+    color: #555;
+    background: #ccc;
+    pointer-events: none;
+  }
+
+  // テキスト入力系
+  // &[type="text"] {}
+  // &[type="password"] {}
+  // &[type="email"] {}
+  // &[type="tel"] {}
+  // &[type="url"] {}
+  // &[type="search"] {}
+  // &[type="number"] {}
+  // 日付・時刻系
+  // TODO: min,maxの設定（ブラウザ確認）
+  // &[type="date"] {}
+  // &[type="datetime-local"] {}
+  // &[type="month"] {}
+  // &[type="week"] {}
+  // &[type="time"] {}
+  // 選択・ボタン系
+  &[type="radio"], &[type="checkbox"] {
+    width: initial;
+  }
+  // &[type="radio"] {}
+  // &[type="checkbox"] {}
+
+  &[type="submit"], &[type="reset"], &[type="button"] {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+    color: #444444;
+    background: #dddddd;
+    border: 2px solid #444444;
+    border-radius: 0.25em;
+    padding: 0.75em 1.5em;
+    // cursor: pointer; ※親要素に指定すべき
+    @include m.hover-state;
+    @include m.focus-visible-state;
+    @include m.active-state;
+    @include m.disabled-state;
+  }
+  &[type="submit"] {
+    background: #dddddd;
+  }
+  &[type="reset"] {
+    background: #ffffff;
+
+  }
+  &[type="button"] {
+    background: #2c6ebd;
+  }
+  // その他
+  // &[type="file"] {}
+  // &[type="color"] {}
+  // &[type="range"] {}
+  &[type="image"] {
+    width: initial;
+  }
+}
+// テキストエリア
+textarea {
+  font-size: 1rem;
+  background: #ffffff;
+  padding: 0.25em 0.5em;
+  border: 1px solid #888888;
+  border-radius: 0.25em;
+}
+// リストボックス
+select {
+  font-size: 1rem;
+  background: #ffffff;
+  padding: 0.25em 0.5em;
+  border: 1px solid #888888;
+  border-radius: 0.25em;
+  // option {}
+}
+
+// ボタン
+button, a {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  &.button {
+    font-weight: bold;
+    line-height: 1;
+    color: #ffffff;
+    background: #2c6ebd;
+    border: 2px solid #444444;
+    border-radius: 0.5em;
+    @include m.hover-state;
+    @include m.focus-visible-state;
+    @include m.active-state(
+      $background: #2c6ebd
+    );
+    @include m.disabled-state;
+  }
+  &.button {
+    &--sm {
+      padding: 0.25em 0.5em;
+      font-size: 1.0rem;
+    }
+    &--md {
+      padding: 0.5em 1.0em;
+      font-size: 1.25rem;
+    }
+    &--lg {
+      padding: 0.75em 1.5em;
+      font-size: 1.5rem;
+    }
+  }
+  &.button {
+    &--border-circle {
+      border-radius: 100vmax;
+      @include m.focus-visible-state(
+        $border-radius: 100vmax
+      );
+    }
+  }
+  &.button {
+    &--outline {
+      color: #444444;
+      background: transparent;
+      border: 2px solid #444444;
+      @include m.active-state(
+        $background: #888888
+      );
+    }
+    &--lift {
+      box-shadow: 0 2px 0 #444444;
+      transition: box-shadow 0.1s,
+                  transform 0.1s;
+      &:focus-visible {
+        box-shadow: 0 1px 1px 0 #444444;
+      }
+      &:active {
+        box-shadow: 0 1px 0 #444444;
+        transform: translateY(1px) scaleY(0.98);
+      }
+    }
+    &--gradient {
+      color: #ffffff;
+      background: #2c6ebd;
+      $gradient-rainbow: linear-gradient(
+        120deg,
+        #f79533,
+        #f37055,
+        #ef4e7b,
+        #a166ab,
+        #2c6ebd,
+        #1098ad,
+        #07b39b,
+        #6fba82
+      );
+      background-image: $gradient-rainbow;
+      @include m.active-state(
+        $background: $gradient-rainbow
+      );
+    }
+    &--shadow {
+      box-shadow: 0px 4px 8px 1px #444444;
+    }
+    &--square-circle {
+      line-height: 1.25;
+      > span {
+        display: flex;
+        flex-flow: column wrap;
+      }
+      &.button--sm {
+        width: 64px;
+        height: 64px;
+        padding: 0;
+        font-size: 1.0rem;
+      }
+      &.button--md {
+        width: 80px;
+        height: 80px;
+        padding: 0;
+        font-size: 1.25rem;
+      }
+      &.button--lg {
+        width: 112px;
+        height: 112px;
+        padding: 0;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  &.submit {
+    color: #444444;
+    background: #dddddd;
+    border: 1px solid #444444;
+    border-radius: 0.25em;
+    @include m.hover-state;
+    @include m.focus-visible-state(
+      $outline-offset: 1px,
+      $border-radius: 4px
+    );
+    // TODO: --width100がindex.html修正後に一つしか使われていなかったら.submitに統合
+    &--width100 {
+      color: #333333;
+      width: 100%;
+      border-width: 2px;
+      @include m.active-state (
+        $color: #444444,
+        $background: #dddddd
+      );
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.c-inpage-nav {
+  position: fixed;
+  inset: 65svh auto auto 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+  align-items: start;
+  max-width: min(90svw, 160px);
+  z-index: 10000;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    background: #999999;
+    border-radius: 0 8px 8px 0;
+    padding-inline: 4px;
+    // min-width: 32px;
+    height: 80px;
+    cursor: pointer;
+    transition:
+      visibility 0.8s ease,
+      opacity 0.4s,
+      width 0.2s ease;
+
+    &.is-inactive {
+      visibility: hidden;
+      opacity: 0;
+      width: 0;
+    }
+  }
+
+  &__trigger.is-inactive + &__panel {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+  }
+
+  &__icon {
+    transition: all 1.2s ease;
+  }
+
+  &__panel {
+    background: rgb(255, 255, 248);
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    min-height: 120px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+    transition:
+      opacity 0.8s ease,
+      visibility 0.4s,
+      width 0.4s ease;
+  }
+  &__list {
+    list-style: none;
+    padding-inline-start: 0;
+    margin-block: 16px 32px;
+    margin-inline: 16px;
+    white-space: nowrap;
+    width: 128px;
+  }
+  &__item {
+    font-size: 0.9rem;
+    padding-block: 8px;
+  }
+
+  &.is-open {
+    .c-inpage-nav__icon {
+      transform: rotateY(180deg);
+    }
+    > .c-inpage-nav__panel {
+      opacity: 0.9;
+      visibility: visible;
+      width: 100%;
+    }
+    .c-inpage-nav__trigger.is-inactive + .c-inpage-nav__panel {
+      opacity: 0;
+      visibility: hidden;
+      width: 0;
+    }
+  }
+}

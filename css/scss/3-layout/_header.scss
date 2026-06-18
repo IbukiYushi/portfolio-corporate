@@ -1,0 +1,60 @@
+@use "../1-abstracts/variables" as v;
+@use "../1-abstracts/mixins" as m;
+
+.l-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: v.$header-height;
+  background-color: #888888;
+  > .site-logo-field {
+    display: flex;
+    align-items: center;
+    gap: 1svw;
+    width: fit-content;
+    height: 100%;
+    margin-inline-start: 4svw;
+    cursor: pointer;
+    > a {
+      display: contents;
+      > .site-name {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  // TODO: ヘッダー・ハンバーガーメニューモーダル・ページ内リンクモーダル
+  > .global-nav {
+    color: #fff;
+    margin-inline-end: calc(8svw + 64px);
+    margin-inline-end: 10svw;
+    > ul[class='nav-link-field'] {
+      display: flex;
+      gap: 2svw;
+      list-style: none;
+      padding-inline-start: 0;
+      > li[class='nav-item'] {
+        &:nth-child(3) {
+          &:hover {
+            letter-spacing: -0.02em;
+          }
+        }
+      }
+    }
+  }
+  > .hamburger-menu-button {
+    position: fixed;
+    inset: 16px 4svw auto auto;
+    color: #D9D9D9;
+    z-index: 10000;
+    &:hover {
+      color: #B7B7B7;
+      outline: 4px solid #606060;
+      outline-offset: -4px;
+      border-radius: 8px;
+    }
+    @include m.focus-visible-state;
+    &:active {
+      color: #606060;
+    }
+  }
+}

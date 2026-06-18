@@ -1,0 +1,14 @@
+.l-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #888888;
+  &__copy {
+    color: #fff;
+    // padding: 20px 0;
+    
+    font-size: 12px;
+  }
+}

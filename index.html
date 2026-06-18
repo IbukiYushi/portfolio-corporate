@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
   <title>サイト名</title>
   <meta name="description" content="サイトの説明">
   <meta property="og:title" content="サイトタイトル">
@@ -15,15 +14,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./images/icon/favicon/favicon.ico" sizes="16x16 32x32 48x48"/>
   <link rel="preload" href="./images/hero/hero-section-img.jpg" as="image" type="image/jpeg"/>
-  <link rel="stylesheet" href="./css/reset.css"/>
-  <link rel="stylesheet" href="./css/grid-page-layout.css"/>
   <!-- TODO: @mediaのレスポンシブ用css -->
   <link rel="stylesheet" href="./css/style.css"/>
   <script type="module" src="./js/index.js" defer></script>
 </head>
 
-<body class="top-page">
-  <header class="site-header">
+<body class="top-page l-grid-container">
+  <header class="l-header">
     <div class="site-logo-field">
       <a class="nav-link" href="./index.html">
         <svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -48,24 +45,24 @@
     </button>
   </header>
 
-  <section id="hero" class="hero">
-    <hgroup class="hero-text">
-      <h2 class="hero-title">
+  <section id="hero" class="l-hero">
+    <hgroup class="l-hero__text">
+      <h2 class="l-hero__title">
         <span>技術を、</span>
         <span>ビジネスの確かな価値へ。</span>
       </h2>
-      <p class="hero-subtitle">
+      <p class="l-hero__subtitle">
         <span>最先端のWeb制作とシステム開発で、</span>
         <span>企業のDXと持続可能な成長を伴走サポートします。</span>
       </p>
     </hgroup>
-    <div class="hero-image">
+    <div class="l-hero__image">
       <img src="./images/hero/hero-section-img.jpg" alt="ヒーロー画像の説明" width="1440" height="800" decoding="async">
     </div>
   </section>
 
-  <main>
-    <button class="to-main-arrow-button">
+  <main class="l-main">
+    <button class="c-btn-to-main">
       <svg class="accordion-icon-svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
         <use class="accordion-icon" href="./images/icon/sample/accordion-icon.svg#accordion-icon" x="0" y="0" fill="" stroke="none"></use>
       </svg>
@@ -147,7 +144,7 @@
               <a href="./news.html#news-01" class="news-item-link">
                 <div class="news-item-meta">
                   <span class="news-label news-label--default">カテゴリーラベル</span>
-                  <time datetime="2000-00-00" class="news-date">2000.00.00</time>
+                  <time class="c-modal__time" datetime="2000-00-00" class="news-date">2000.00.00</time>
                 </div>
                 <p class="news-item-title">タイトル</p>
               </a>
@@ -194,22 +191,22 @@
 
     </section>
 
-    <div id="inPageLink" class="inpage-link">
-      <div class="accordion-right-icon-field no-active">
-        <svg class="accordion-right-icon-svg" width="24" height="32" viewBox="0 0 24 32" fill="none">
+    <div id="inPageLink" class="c-inpage-nav">
+      <div class="c-inpage-nav__trigger is-inactive">
+        <svg class="accordion-right-icon-svg c-inpage-nav__icon" width="24" height="32" viewBox="0 0 24 32" fill="none">
           <use class="accordion-right--icon" href="./images/icon/sample/accordion-right-icon.svg#accordion-right-icon" x="0" y="0" fill="" stroke="none"></use>
         </svg>
       </div>
-      <nav class="anchor-field" aria-label="トップページ ページ内メニュー">
-        <ul class="anchor-list">
-          <li class="anchor-item"><a href="#about-top-h3">事業内容</a></li>
-          <li class="anchor-item"><a href="#news-top">新着情報</a></li>
-          <li class="anchor-item"><a href="#contact-top">お問い合わせ</a></li>
+      <nav class="c-inpage-nav__panel" aria-label="トップページ ページ内メニュー">
+        <ul class="c-inpage-nav__list">
+          <li class="c-inpage-nav__item"><a href="#about-top-h3">事業内容</a></li>
+          <li class="c-inpage-nav__item"><a href="#news-top">新着情報</a></li>
+          <li class="c-inpage-nav__item"><a href="#contact-top">お問い合わせ</a></li>
         </ul>
       </nav>
     </div>
 
-    <button class="backtotop-arrow-svg-button">
+    <button class="c-back-to-top">
       <svg class="backtotop-arrow-svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
         <use class="backtotop-arrow" href="./images/icon/sample/backtotop-arrow.svg#backtotop-arrow" x="0" y="0" fill="" stroke="none"></use>
       </svg>
@@ -217,22 +214,22 @@
 
   </main>
 
-  <footer>
-    <div class="copy">&copy;Company Co., Ltd.</div>
+  <footer class="l-footer">
+    <div class="l-footer__copy">&copy;Company Co., Ltd.</div>
   </footer>
 
-  <dialog id="header-hamburger-menu-modal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <button type="button" class="modal-close-icon-button" aria-label="閉じる">
+  <dialog id="header-hamburger-menu-modal" class="c-modal--hamburger">
+    <div class="c-modal__card">
+      <div class="c-modal__header">
+        <button type="button" class="c-modal__close-btn" aria-label="閉じる">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
             <use class="close-icon" href="./images/icon/sample/close-icon.svg#close-icon" x="0" y="0" fill="" stroke="none"></use>
           </svg>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="modal-body-detail">
-          <div class="modal-body-detail-inner">
+      <div class="c-modal__body">
+        <div class="c-modal__detail">
+          <div class="c-modal__detail-inner">
             <nav class="global-nav" aria-label="モーダル内メインナビゲーション">
               <ul class="nav-link-field">
                 <li class="nav-item"><a class="nav-link" href="./index.html">ホーム</a></li>

@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
   <title>サイト名</title>
   <meta name="description" content="サイトの説明">
   <meta property="og:title" content="サイトタイトル">
@@ -14,14 +13,13 @@
   <meta property="og:site_name" content="サイト名">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./images/icon/favicon/favicon.ico" sizes="16x16 32x32 48x48"/>
-  <link rel="stylesheet" href="./css/reset.css"/>
-  <link rel="stylesheet" href="./css/grid-page-layout.css"/>
   <!-- TODO: @mediaのレスポンシブ用css -->
   <link rel="stylesheet" href="./css/style.css"/>
   <script type="module" src="./js/index.js" defer></script>
 </head>
-<body class="recruit-page">
-  <header class="site-header">
+
+<body class="recruit-page l-grid-container ">
+  <header class="l-header">
     <div class="site-logo-field">
       <a class="nav-link" href="./index.html">
         <svg class="site-logo-svg" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -46,7 +44,7 @@
     </button>
   </header>
 
-  <main>
+  <main class="l-main">
     <section id="main-section-recruit" class="main-section-recruit">
 
       <div class="page-title-anchor-field">
@@ -397,22 +395,22 @@
 
     </section>
 
-    <div id="inPageLink" class="inpage-link">
-      <div class="accordion-right-icon-field">
-        <svg class="accordion-right-icon-svg" width="24" height="32" viewBox="0 0 24 32" fill="none">
+    <div id="inPageLink" class="c-inpage-nav">
+      <div class="c-inpage-nav__trigger">
+        <svg class="accordion-right-icon-svg c-inpage-nav__icon" width="24" height="32" viewBox="0 0 24 32" fill="none">
           <use class="accordion-right--icon" href="./images/icon/sample/accordion-right-icon.svg#accordion-right-icon" x="0" y="0" fill="" stroke="none"></use>
         </svg>
       </div>
-      <nav class="anchor-field" aria-label="採用情報 ページ内メニュー">
-        <ul class="anchor-list">
-          <li class="anchor-item"><a href="#message">メッセージ</a></li>
-          <li class="anchor-item"><a href="#details">募集要項</a></li>
-          <li class="anchor-item"><a href="#entry">エントリー</a></li>
+      <nav class="c-inpage-nav__panel" aria-label="採用情報 ページ内メニュー">
+        <ul class="c-inpage-nav__list">
+          <li class="c-inpage-nav__item"><a href="#message">メッセージ</a></li>
+          <li class="c-inpage-nav__item"><a href="#details">募集要項</a></li>
+          <li class="c-inpage-nav__item"><a href="#entry">エントリー</a></li>
         </ul>
       </nav>
     </div>
 
-    <button class="backtotop-arrow-svg-button">
+    <button class="c-back-to-top">
       <svg class="backtotop-arrow-svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
         <use class="backtotop-arrow" href="./images/icon/sample/backtotop-arrow.svg#backtotop-arrow" x="0" y="0" fill="" stroke="none"></use>
       </svg>
@@ -420,22 +418,22 @@
 
   </main>
 
-  <footer>
-    <div class="copy">&copy;Company Co., Ltd.</div>
+  <footer class="l-footer">
+    <div class="l-footer__copy">&copy;Company Co., Ltd.</div>
   </footer>
 
-  <dialog id="header-hamburger-menu-modal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <button type="button" class="modal-close-icon-button" aria-label="閉じる">
+  <dialog id="header-hamburger-menu-modal" class="c-modal--hamburger">
+    <div class="c-modal__card">
+      <div class="c-modal__header">
+        <button type="button" class="c-modal__close-btn" aria-label="閉じる">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
             <use class="close-icon" href="./images/icon/sample/close-icon.svg#close-icon" x="0" y="0" fill="" stroke="none"></use>
           </svg>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="modal-body-detail">
-          <div class="modal-body-detail-inner">
+      <div class="c-modal__body">
+        <div class="c-modal__detail">
+          <div class="c-modal__detail-inner">
             <nav class="global-nav" aria-label="メインナビゲーション">
               <ul class="nav-link-field">
                 <li class="nav-item"><a class="nav-link" href="./index.html">ホーム</a></li>
