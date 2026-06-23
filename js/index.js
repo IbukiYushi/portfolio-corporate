@@ -59,7 +59,7 @@ const memberAccordion = () => {
   const accordionButtons = document.querySelectorAll('.career-button');
   accordionButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const footer = btn.closest('.card-column__footer');
+      const footer = btn.closest('.p-about__member-footer');
       if (footer) {
         footer.classList.toggle('is-open');
       }
@@ -600,7 +600,7 @@ const faqAccordion = () => {
   const accordionQuestions = document.querySelectorAll('.faq-question');
   accordionQuestions.forEach(dt => {
     dt.addEventListener('click', () => {
-      const answers = dt.closest('.faq-item');
+      const answers = dt.closest('.p-about__faq-item');
       if (answers) {
         answers.classList.toggle('is-open');
       }

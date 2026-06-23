@@ -18,7 +18,7 @@
   <script type="module" src="./js/index.js" defer></script>
 </head>
 
-<body class="about-page l-grid-container ">
+<body class="about-page l-grid-container">
   <header class="l-header">
     <div class="site-logo-field">
       <a class="nav-link" href="./index.html">
@@ -45,9 +45,9 @@
   </header>
 
   <main class="l-main">
-    <section id="main-section-about" class="main-section-about">
+    <section id="main-section-about" class="p-about">
 
-      <div class="page-title-anchor-field">
+      <div class="p-about__nav-field">
         <div class="title-field">
           <h2>企業案内</h2>
         </div>
@@ -55,7 +55,7 @@
           <ul class="anchor-list">
             <li class="anchor-item"><a href="#greeting">ご挨拶と理念</a></li>
             <li class="anchor-item"><a href="#business">事業内容</a></li>
-            <li class="anchor-item"><a href="#company-info">会社概要</a></li>
+            <li class="anchor-item"><a href="#company">会社概要</a></li>
             <li class="anchor-item"><a href="#history">沿革</a></li>
             <li class="anchor-item"><a href="#members">社員紹介</a></li>
             <li class="anchor-item"><a href="#faq">よくある質問</a></li>
@@ -64,7 +64,7 @@
       </div>
 
       <div class="page-section-field">
-        <section id="greeting" class="page-section">
+        <section id="greeting" class="p-about__section p-about__greeting">
           <h3>ご挨拶と理念</h3>
           <blockquote class="vision-quote">
             「技術と創造性で、未来の課題を解決する」<br>
@@ -80,10 +80,10 @@
           </p>
         </section>
 
-        <section id="business" class="page-section">
+        <section id="business" class="p-about__section p-about__business">
           <h3>事業内容</h3>
           <div class="section-container">
-            <article id="business-web" class="business-item split-content">
+            <article id="business-web" class="p-about__business-card">
               <div class="content-text">
                 <h4>Webサイト制作・開発</h4>
                 <p>
@@ -107,7 +107,7 @@
               </div>
             </article>
             <hr>
-            <article id="business-development" class="business-item split-content split-content--reversed">
+            <article id="business-development" class="p-about__business-card p-about__business-card--reversed">
               <div class="content-text">
                 <h4>アプリケーション開発・システム連携</h4>
                 <p>
@@ -129,11 +129,11 @@
           </div>
         </section>
 
-        <section id="company-info" class="page-section">
+        <section id="company" class="p-about__section p-about__company">
           <h3>会社概要</h3>
           <div class="section-container">
             <div class="company-info-item company-basic-data">
-              <dl>
+              <dl class="p-about__table">
                 <dt>商号</dt>
                 <dd>サンプル株式会社</dd>
                 <dt>設立</dt>
@@ -148,8 +148,8 @@
                 <dd>赤色銀行、青色銀行</dd>
               </dl>
             </div>
-            <div class="company-info-item company-highlight-data">
-              <div class="highlight-card stats-employees">
+            <div class="company-info-item p-about__highlight-grid">
+              <div class="p-about__highlight-card p-about__highlight-card--employees">
                 <h4>従業員数</h4>
                 <div class="stats-body">
                   <svg class="users-icon-svg" width="100%" height="24" viewBox="20 0 72 24" fill="none">
@@ -160,7 +160,7 @@
                     <p class="stats-number">1,234<span>名</span></p>
                 </div>
               </div>
-              <div class="highlight-card stats-performance">
+              <div class="p-about__highlight-card p-about__highlight-card--performance">
                 <h4>業績</h4>
                 <div class="stats-grid">
                   <div class="stats-item">
@@ -178,7 +178,7 @@
                   </svg>
                 </div>
               </div>
-              <div class="highlight-card stats-access">
+              <div class="p-about__highlight-card p-about__highlight-card--access">
                 <h4>所在地（アクセスマップ）</h4>
                 <div class="map-container">
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.831946129619!2d139.7644864764289!3d35.68113977258713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1767952654874!5m2!1sja!2sjp" width="100%" height="100%" title="Googleマップ（アクセスマップ）" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -195,10 +195,10 @@
           </div>
         </section>
 
-        <section id="history" class="page-section">
+        <section id="history" class="p-about__section p-about__history">
           <h3>沿革</h3>
           <div class="section-container">
-            <div class="history-timeline">
+            <div class="p-about__timeline">
               <dl>
                 <dt>2020年 4月</dt>
                 <dd>東京都千代田区にてサンプル株式会社を設立</dd>
@@ -215,11 +215,11 @@
           </div>
         </section>
 
-        <section id="members" class="page-section">
+        <section id="members" class="p-about__section p-about__members">
           <h3>社員紹介</h3>
-          <div class="cards-field">
-            <div class="card">
-              <div class="card-column__main">
+          <div class="p-about__member-grid">
+            <div class="p-about__member-card">
+              <div class="p-about__member-main">
                 <div class="text-container">
                   <p class="position">
                     <span>ディレクター</span>
@@ -236,8 +236,8 @@
                   <img src="./images/contents/members/member-1.jpg" alt="社員1" width="100" height="150" loading="lazy" decoding="async">
                 </figure>
               </div>
-              <hr class="card-column__hr">
-              <div class="card-column__footer">
+              <hr class="p-about__member-hr">
+              <div class="p-about__member-footer">
                 <button class="career-button">
                   <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <use class="accordion-icon" href="./images/icon/sample/accordion-icon.svg#accordion-icon" x="0" y="0" fill="" stroke="none"></use>
@@ -254,8 +254,8 @@
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-column__main">
+            <div class="p-about__member-card">
+              <div class="p-about__member-main">
                 <div class="text-container">
                   <p class="position">
                     <span>Webデザイナー</span>
@@ -270,8 +270,8 @@
                   <img src="./images/contents/members/member-2.jpg" alt="社員2" width="100" height="150" loading="lazy" decoding="async">
                 </figure>
               </div>
-              <hr class="card-column__hr">
-              <div class="card-column__footer">
+              <hr class="p-about__member-hr">
+              <div class="p-about__member-footer">
                 <button class="career-button">
                   <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <use class="accordion-icon" href="./images/icon/sample/accordion-icon.svg#accordion-icon" x="0" y="0" fill="" stroke="none"></use>
@@ -286,8 +286,8 @@
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-column__main">
+            <div class="p-about__member-card">
+              <div class="p-about__member-main">
                 <div class="text-container">
                   <p class="position">
                     <span>コンサル</span>
@@ -301,8 +301,8 @@
                   <img src="./images/contents/members/member-3.jpg" alt="社員3" width="100" height="150" loading="lazy" decoding="async">
                 </figure>
               </div>
-              <hr class="card-column__hr">
-              <div class="card-column__footer">
+              <hr class="p-about__member-hr">
+              <div class="p-about__member-footer">
                 <button class="career-button">
                   <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <use class="accordion-icon" href="./images/icon/sample/accordion-icon.svg#accordion-icon" x="0" y="0" fill="" stroke="none"></use>
@@ -321,10 +321,10 @@
           </div>
         </section>
 
-        <section id="faq" class="page-section">
+        <section id="faq" class="p-about__section p-about__faq">
           <h3>よくある質問</h3>
-          <div class="faq-list">
-            <dl class="faq-item">
+          <div class="p-about__faq-list">
+            <dl class="p-about__faq-item">
               <dt class="faq-question">
                 <p class="question-text">
                   <span>
@@ -343,7 +343,7 @@
                 </p>
               </dd>
             </dl>
-            <dl class="faq-item">
+            <dl class="p-about__faq-item">
               <dt class="faq-question">
                 <p class="question-text">
                   <span>
@@ -362,7 +362,7 @@
                 </p>
               </dd>
             </dl>
-            <dl class="faq-item">
+            <dl class="p-about__faq-item">
               <dt class="faq-question">
                 <p class="question-text">
                   <span>
@@ -396,7 +396,7 @@
         <ul class="c-inpage-nav__list">
           <li class="c-inpage-nav__item"><a href="#greeting">ご挨拶と理念</a></li>
           <li class="c-inpage-nav__item"><a href="#business">事業内容</a></li>
-          <li class="c-inpage-nav__item"><a href="#company-info">会社概要</a></li>
+          <li class="c-inpage-nav__item"><a href="#company">会社概要</a></li>
           <li class="c-inpage-nav__item"><a href="#history">沿革</a></li>
           <li class="c-inpage-nav__item"><a href="#members">社員紹介</a></li>
           <li class="c-inpage-nav__item"><a href="#faq">よくある質問</a></li>
