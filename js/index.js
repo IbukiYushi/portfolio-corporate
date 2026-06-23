@@ -52,22 +52,6 @@ const toMainScroll = () => {
 };
 
 /**
- * 社員紹介カードのアコーディオン制御：
- * 詳細ボタンのクリックにより、対応するフッターエリアの開閉状態（is-openクラス）を切り替える
- */
-const memberAccordion = () => {
-  const accordionButtons = document.querySelectorAll('.career-button');
-  accordionButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const footer = btn.closest('.p-about__member-footer');
-      if (footer) {
-        footer.classList.toggle('is-open');
-      }
-    });
-  });
-};
-
-/**
  * JSONデータからニュースリストを生成してHTMLに挿入：
  * テンプレートリテラルでニュースリストごとに該当するターゲットIDのJSONデータを挿入し、HTMLに挿入
  */
@@ -415,6 +399,21 @@ const contactThanksMessageButton = () => {
 };
 
 /**
+ * アコーディオン
+ */
+const accordion = () => {
+  const accordionTriggers = document.querySelectorAll('.js-accordion-trigger');
+  accordionTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const accordionParent = trigger.closest('.js-accordion');
+      if (accordionParent) {
+        accordionParent.classList.toggle('is-open');
+      }
+    });
+  });
+};
+
+/**
  * ページネーション
  */
 const paginationPerPage = 3;  // 1ページごとのリスト数の初期値設定
@@ -590,22 +589,6 @@ const toggleInPageLinkNavigation = () => {
     window.addEventListener('scroll', checkScrollPosition);
     window.addEventListener('DOMContentLoaded', checkScrollPosition);
   }
-};
-
-/**
- * FAQのアコーディオン：
- * FAQの質問エリアのクリックにより、対応する回答エリアの開閉状態（is-openクラス）を切り替える
- */
-const faqAccordion = () => {
-  const accordionQuestions = document.querySelectorAll('.faq-question');
-  accordionQuestions.forEach(dt => {
-    dt.addEventListener('click', () => {
-      const answers = dt.closest('.p-about__faq-item');
-      if (answers) {
-        answers.classList.toggle('is-open');
-      }
-    });
-  });
 };
 
 /**
@@ -807,7 +790,6 @@ const init = () => {
     commonTopScroll('#main-section-top');
   }
   if (document.body.classList.contains('about-page')) {
-    memberAccordion();
     commonTopScroll();
   }
   if (document.body.classList.contains('news-page')) {
@@ -825,14 +807,14 @@ const init = () => {
     handleContactForm();
     contactThanksMessageButton();
   }
+  if (document.querySelector('.js-accordion-trigger')) {
+    accordion();
+  }
   if (document.querySelector('.pagination-field')) {
     pagination(paginationPerPage);
   }
   if (document.querySelector('#inPageLink')) {
     toggleInPageLinkNavigation();
-  }
-  if (document.querySelector('#faq')) {
-    faqAccordion();
   }
   if (document.querySelector('dialog')) {
     modalOpenState();
