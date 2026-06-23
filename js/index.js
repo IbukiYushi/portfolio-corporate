@@ -11,24 +11,24 @@ import { newsData } from "./news/news-data.js";
  * テンプレートリテラルでニュースリストごとに該当するターゲットIDのJSONデータを挿入し、HTMLに挿入
  */
 const renderTopNewsList = () => {
-  const container = document.querySelector('#news-top .news-list');
+  const container = document.querySelector('#news-top .p-top__news-list');
   if (!container) return;
   container.innerHTML = '';
   const topNewsEntries = Object.entries(newsData).slice(0, 4);
   if (topNewsEntries.length === 0) {
-    container.innerHTML = `<li class="news-item__no-data">現在、新着情報はございません</li>`;
+    container.innerHTML = `<li class="p-top__news-item--no-data">現在、新着情報はございません</li>`;
     return;
   }
   topNewsEntries.forEach(([id, data]) => {
     const htmlDatetime = data.date.replaceAll('.', '-');
     const listItem = `
-      <li class="news-item">
-        <a href="./news.html#${id}" class="news-item-link">
-          <div class="news-item-meta">
-            <span class="news-label ${data.label}">${data.category}</span>
-            <time datetime="${htmlDatetime}" class="news-date">${data.date}</time>
+      <li class="p-top__news-item">
+        <a href="./news.html#${id}" class="p-top__news-link">
+          <div class="p-top__news-meta">
+            <span class="p-top__news-label p-top__news-label--${data.label}">${data.category}</span>
+            <time datetime="${htmlDatetime}" class="p-top__news-date">${data.date}</time>
           </div>
-          <p class="news-item-title">${data.title}</p>
+          <p class="p-top__news-title">${data.title}</p>
         </a>
       </li>
     `;
