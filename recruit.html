@@ -45,9 +45,9 @@
   </header>
 
   <main class="l-main">
-    <section id="main-section-recruit" class="main-section-recruit">
+    <section id="main-section-recruit" class="p-recruit">
 
-      <div class="page-title-anchor-field">
+      <div class="p-recruit__nav-field">
         <div class="title-field">
           <h2>採用情報</h2>
         </div>
@@ -61,7 +61,7 @@
       </div>
 
       <div class="page-section-field">
-        <section id="message" class="page-section">
+        <section id="message" class="p-recruit__section p-recruit__message">
           <h3>メッセージ</h3>
           <div class="message-contents">
             <div class="message-body">
@@ -87,21 +87,21 @@
           </div>
         </section>
 
-        <section id="details" class="page-section">
-          <nav class="tab-recruitment-type-field">
-            <button class="tab-recruitment-type-btn active" data-target="engineer">エンジニア</button>
-            <button class="tab-recruitment-type-btn" data-target="designer">デザイナー</button>
-            <button class="tab-recruitment-type-btn" data-target="consultant">コンサルタント</button>
+        <section id="details" class="p-recruit__section p-recruit__details">
+          <nav class="p-recruit__tab-field">
+            <button class="p-recruit__tab-btn is-active" data-target="engineer">エンジニア</button>
+            <button class="p-recruit__tab-btn" data-target="designer">デザイナー</button>
+            <button class="p-recruit__tab-btn" data-target="consultant">コンサルタント</button>
           </nav>
           <h3>募集要項</h3>
           <div class="detail-contents">
-            <div class="detail-content active" id="detail-content__engineer">
+            <div class="p-recruit__detail-content is-active" id="detail-content__engineer">
               <div class="detail-content-header">
                 <h4>ITエンジニア</h4>
                 <p>技術で未来を実装する</p>
               </div>
               <div class="detail-content-body">
-                <table class="recruit-table">
+                <table class="p-recruit__table">
                   <tbody>
                     <tr>
                       <th>応募資格</th>
@@ -160,13 +160,13 @@
                 </figure>
               </div>
             </div>
-            <div class="detail-content" id="detail-content__designer">
+            <div class="p-recruit__detail-content" id="detail-content__designer">
               <div class="detail-content-header">
                 <h4>Webデザイナー</h4>
                 <p>価値を形にする</p>
               </div>
               <div class="detail-content-body">
-                <table class="recruit-table">
+                <table class="p-recruit__table">
                   <tbody>
                     <tr>
                       <th>応募資格</th>
@@ -225,13 +225,13 @@
                 </figure>
               </div>
             </div>
-            <div class="detail-content" id="detail-content__consultant">
+            <div class="p-recruit__detail-content" id="detail-content__consultant">
               <div class="detail-content-header">
                 <h4>コンサルタント</h4>
                 <p>伴走して課題を解決する</p>
               </div>
               <div class="detail-content-body">
-                <table class="recruit-table">
+                <table class="p-recruit__table">
                   <tbody>
                     <tr>
                       <th>応募資格</th>
@@ -293,15 +293,15 @@
           </div>
         </section>
 
-        <section id="entry" class="page-section">
-          <nav class="tab-recruitment-type-field">
-            <button class="tab-recruitment-type-btn active" data-target="engineer">エンジニア</button>
-            <button class="tab-recruitment-type-btn" data-target="designer">デザイナー</button>
-            <button class="tab-recruitment-type-btn" data-target="consultant">コンサルタント</button>
+        <section id="entry" class="p-recruit__section p-recruit__entry">
+          <nav class="p-recruit__tab-field">
+            <button class="p-recruit__tab-btn is-active" data-target="engineer">エンジニア</button>
+            <button class="p-recruit__tab-btn" data-target="designer">デザイナー</button>
+            <button class="p-recruit__tab-btn" data-target="consultant">コンサルタント</button>
           </nav>
           <h3>エントリー</h3>
           <div class="entry-contents">
-            <form method="post" class="entry-form" autocomplete="on" novalidate>
+            <form method="post" class="p-recruit__form" autocomplete="on" novalidate>
               <p class="entry-form-lead">
                   必要事項を入力し、送信ボタンを押してください。<br>
                   後ほど担当者よりメールにてご連絡いたします。
@@ -376,7 +376,7 @@
                 </div>
               </div>
             </form>
-            <div id="thanks-message" class="thanks-message">
+            <div id="thanks-message" class="p-recruit__thanks">
               <div class="thanks-content">
                 <h4>エントリーありがとうございました！</h4>
                 <p>

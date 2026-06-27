@@ -91,25 +91,25 @@ const renderNewsList = () => {
  * 募集要項・エントリー両エリア左上の職種別ボタンのクリックにより、対応する職種による表示（activeクラス）を切り替える
  */
 const entryDetailActive = () => {
-  const tabRecruitDetailButtons = document.querySelectorAll('.tab-recruitment-type-btn');
+  const tabRecruitDetailButtons = document.querySelectorAll('.p-recruit__tab-btn');
   tabRecruitDetailButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       // クリックされたナビゲーションタブの職種にのみ.activeをクラス付与
       tabRecruitDetailButtons.forEach((element) => {
-        element.classList.remove('active');
+        element.classList.remove('is-active');
       });
       const someBtnClassElements = document.querySelectorAll(`button[data-target="${btn.dataset.target}"]`);
       someBtnClassElements.forEach((element) => {
-        element.classList.add('active');
+        element.classList.add('is-active');
       });
       // クリックされたナビゲーションタブの職種に連動して、該当する職種の募集要項の内容にのみ.activeをクラス付与
-      const recruitDetailContent = document.querySelectorAll('.detail-content');
+      const recruitDetailContent = document.querySelectorAll('.p-recruit__detail-content');
       recruitDetailContent.forEach((element) => {
-        element.classList.remove('active');
+        element.classList.remove('is-active');
       });
       const targetId = btn.dataset.target;
       const targetRecruitDetailContent = document.getElementById(`detail-content__${targetId}`);
-      targetRecruitDetailContent.classList.add('active');
+      targetRecruitDetailContent.classList.add('is-active');
       // クリックされたナビゲーションタブの職種に連動して、該当するエントリーフォームの希望職種フォームのテキストを変更
       const btnText = btn.textContent;
       const recruitEntrySelectedJob = document.getElementById('selected-job');
@@ -124,7 +124,7 @@ const entryDetailActive = () => {
  * 採用情報エントリーフォーム内のボタンのクリックにより、バリデーションチェックを行いエラー該当のものにメッセージを出す
  */
 const handleEntryForm = () => {
-  const entryForm = document.querySelector('.entry-form');
+  const entryForm = document.querySelector('.p-recruit__form');
   if (!entryForm) return;
   entryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -206,7 +206,7 @@ const handleEntryForm = () => {
       console.log("サーバーからのレスポンス:", data.message);
       if (data.status === "success") {
         (function showThanksMessage() {
-          const form = document.querySelector('.entry-form');
+          const form = document.querySelector('.p-recruit__form');
           const thanks = document.getElementById('thanks-message');
           form.style.transition = 'opacity 0.5s ease';
           form.style.opacity = '0';
@@ -231,7 +231,7 @@ const handleEntryForm = () => {
  * 「フォームに戻る」ボタン押下で、サンクスメッセージがフェードアウトし、フォームがフェードインする。
  */
 const entryThanksMessageButton = () => {
-  const entryForm = document.querySelector('.entry-form');
+  const entryForm = document.querySelector('.p-recruit__form');
   if (!entryForm) return;
   const submitBtn = entryForm.querySelector('button[type="submit"]');
   const thanksMessage = document.getElementById('thanks-message');
@@ -804,7 +804,7 @@ const init = () => {
     entryDetailActive();
     commonTopScroll();
   }
-  if (document.querySelector('.entry-form')) {
+  if (document.querySelector('.p-recruit__form')) {
     handleEntryForm();
     entryThanksMessageButton();
   }

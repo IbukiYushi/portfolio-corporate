@@ -1,285 +1,257 @@
-section {
-  &.main-section-recruit {
-    margin-block-end: 80px;
-    > .page-title-anchor-field {
+@keyframes fadeInEntryForm {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInThanksMessage {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.p-recruit {
+  margin-block-end: 80px;
+
+  &__nav-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 20px;
+    margin-inline: calc(2svw + 20px);
+    .title-field {
+      border-left: 4px solid orange;
+      padding-left: 16px;
+    }
+    .anchor-list {
+      display: flex;
+      gap: 1.5svw;
+      list-style: none;
+    }
+  }
+
+  &__section {
+    margin-block: 40px;
+    background: #fff;
+    > h3 {
+      font-size: 2rem;
+      padding-block: 12px;
+      padding-left: 80px;
+      background: #eee;
+      background-image: linear-gradient(150deg, #eee 30%, #ccc 30%);
+    }
+  }
+
+  &__tab-field {
+    display: flex;
+    margin-left: 8px;
+  }
+  &__tab-btn {
+    margin-inline: 1px;
+    padding-inline: 8px;
+    color: #fff;
+    background: #ddd;
+    clip-path: polygon(5% 0, 95% 0, 100% 100%, 0% 100%);
+    &.is-active {
+      color: #111;
+      background: orange;
+      font-weight: bold;
+    }
+  }
+
+  // メッセージセクション
+  &__message {
+    padding-top: 24px;
+    margin-top: 16px;
+    .message-contents {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      margin-top: 20px;
-      margin-inline: calc(2svw + 20px);
-      > .title-field {
-        border-left: 4px solid orange;
-        padding-left: 16px;
+      align-items: center;
+      gap: 2svw;
+      margin-inline: 10svw;
+      padding-block: 40px;
+    }
+    .message-body {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .slogan {
+      font-size: 2.5rem;
+      letter-spacing: 0.02em;
+    }
+    .messages {
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+      .message { padding-bottom: 20px; }
+    }
+    .image-container img {
+      aspect-ratio: 15/10;
+      min-height: 400px;
+      object-fit: cover;
+    }
+  }
+
+  // 募集要項セクション
+  &__details {
+    margin-inline: 20px;
+    border-end-start-radius: 8px;
+    border-end-end-radius: 8px;
+    box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
+    .detail-contents {
+      padding-block: 40px;
+    }
+  }
+  &__detail-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    &.is-active {
+      display: block;
+      opacity: 1;
+      @starting-style {
+        opacity: 0;
       }
-      > .anchor-field {
-        > ul[class='anchor-list'] {
-          display: flex;
-          gap: 1.5svw;
-          list-style: none;
+    }
+    .detail-content-header {
+      display: flex;
+      align-items: baseline;
+      margin-left: 40px;
+      margin-bottom: 20px;
+      h4 {
+        font-size: 2rem;
+        letter-spacing: 0.02em;
+      }
+      p {
+        color: #333;
+        padding-left: 8px;
+        font-size: 1.25rem;
+        font-style: italic;
+        &::before, &::after { content: "〜"; }
+      }
+    }
+    .detail-content-body {
+      display: flex;
+      justify-content: space-between;
+      gap: 2svw;
+      margin-inline: 10svw;
+    }
+    .image-container img {
+      aspect-ratio: 15/10;
+      min-height: 400px;
+      object-fit: cover;
+      border-radius: 40px;
+    }
+  }
+  &__table {
+    position: relative;
+    border-collapse: collapse;
+    width: 50svw;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: orange;
+      border-radius: 4px;
+      z-index: 1;
+    }
+    tbody tr {
+      &:first-child th, &:first-child td { border-top: 2px solid #ccc; }
+      &:last-child th, &:last-child td { border-bottom: 2px solid #ccc; }
+      th, td { border-bottom: 1px solid #ccc; }
+      th {
+        background: #f9f9f9;
+        padding: 16px 40px 16px 20px;
+        text-align: left;
+        white-space: nowrap;
+      }
+      td {
+        position: relative;
+        padding: 16px 20px;
+        border-right: 2px solid #ccc;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 5%;
+          left: 0;
+          width: 2px;
+          height: 90%;
+          background: #ccc;
+          border-radius: 4px;
+          z-index: 1;
+        }
+        span {
+          display: block;
+          &:not(:last-child) { margin-bottom: 16px; }
         }
       }
     }
-    > .page-section-field {
-      > .page-section {
-        margin-block: 40px;
-        background: #fff;
-        &:nth-child(1) {
-          padding-top: 24px;
-          margin-top: 16px;
+  }
+
+  // エントリーセクション
+  &__entry {
+    .entry-contents {
+      display: flex;
+      justify-content: space-between;
+      gap: 2svw;
+      margin-inline: 40px;
+      padding-block: 40px;
+    }
+    .image-container {
+      margin-top: 80px;
+      img {
+        aspect-ratio: 15/10;
+        min-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  &__form {
+    animation: fadeInEntryForm 0.8s ease forwards;
+    .entry-form-lead {
+      height: 60px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 0.01em;
+      margin-bottom: 20px;
+    }
+    .form-card {
+      background: #eee;
+      width: 50svw;
+      margin: 0;
+      .form-button-field {
+        padding-top: 40px;
+        button {
+          color: #222;
+          background: orange;
         }
-        &:nth-child(2) {
-          margin-inline: 20px;
-          border-end-start-radius: 8px;
-          border-end-end-radius: 8px;
-        }
-        &:not(:nth-child(1)) {
-          > .tab-recruitment-type-field {
-            display: flex;
-            margin-left: 8px;
-            > .tab-recruitment-type-btn {
-              margin-inline: 1px;
-              padding-inline: 8px;
-              color: #fff;
-              background: #ddd;
-              clip-path: polygon(5% 0, 95% 0, 100% 100%, 0% 100%);
-              &.active {
-                color: #111;
-                background: orange;
-                font-weight: bold;
-              }
-            }
-          }
-        }
-        > h3 {
-          font-size: 2rem;
-          padding-block: 12px;
-          padding-left: 80px;
-          background: #eee;
-          background-image: linear-gradient(
-            150deg,
-            #eee 30%,
-            #ccc 30%
-          );
-        }
-        &#message {
-          > .message-contents {
-            display: flex;
-            justify-content:space-between;
-            align-items: center;
-            gap: 2svw;
-            margin-inline: 10svw;
-            padding-block: 40px;
-            > .message-body {
-              display: flex;
-              flex-direction: column;
-              gap: 40px;
-              > .slogan {
-                font-size: 2.5rem;
-                letter-spacing: 0.02em;
-              }
-              > .messages {
-                font-size: 1.1rem;
-                letter-spacing: 0.01em;
-                line-height: 1.6;
-                > .message {
-                  padding-bottom: 20px;
-                }
-              }
-            }
-            > .image-container {
-              img {
-                aspect-ratio: 15/10;
-                min-height: 400px;
-                object-fit: cover;
-              }
-            }
-          }
-        }
-        &#details {
-          box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
-          > .detail-contents {
-            padding-block: 40px;
-            > .detail-content {
-              display: none;
-              opacity: 0;
-              transition: opacity 0.3s ease-in;
-              &.active {
-                display: block;
-                opacity: 1;
-                @starting-style {
-                  opacity: 0;
-                }
-              }
-              > .detail-content-header {
-                display: flex;
-                align-items: baseline;
-                margin-left: 40px;
-                margin-bottom: 20px;
-                > h4 {
-                  font-size: 2rem;
-                  letter-spacing: 0.02em;
-                }
-                > p {
-                  color: #333;
-                  padding-left: 8px;
-                  font-size: 1.25rem;
-                  font-style: italic;
-                  &::before, &::after {
-                    content: "〜";
-                  }
-                }
-              }
-              > .detail-content-body {
-                display: flex;
-                justify-content: space-between;
-                gap: 2svw;
-                margin-inline: 10svw;
-                > .recruit-table {
-                  position: relative;
-                  border-collapse: collapse;
-                  width: 50svw;
-                  &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 4px;
-                    height: 100%;
-                    background: orange;
-                    border-radius: 4px;
-                    z-index: 1;
-                  }
-                  > tbody {
-                    > tr {
-                      &:first-child {
-                        > th, > td {
-                          border-top: 2px solid #ccc;
-                        }
-                      }
-                      &:last-child {
-                        > th, > td {
-                          border-bottom: 2px solid #ccc;
-                        }
-                      }
-                      > th, td {
-                        border-bottom: 1px solid #ccc;
-                      }
-                      > th {
-                        background: #f9f9f9;
-                        padding: 16px 40px 16px 20px;
-                        text-align: left;
-                        white-space: nowrap;
-                      }
-                      > td {
-                        position: relative;
-                        padding: 16px;
-                        padding-left: 20px;
-                        padding: 16px 20px;
-                        border-right: 2px solid #ccc;
-                        &::before {
-                          content: "";
-                          position: absolute;
-                          top: 5%;
-                          left: 0;
-                          width: 2px;
-                          height: 90%;
-                          background: #ccc;
-                          border-radius: 4px;
-                          z-index: 1;
-                        }
-                        span {
-                          display: block;
-                          &:not(:last-child) {
-                            margin-bottom: 16px;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-                > .image-container {
-                  img {
-                    aspect-ratio: 15/10;
-                    min-height: 400px;
-                    object-fit: cover;
-                    border-radius: 40px;
-                  }
-                }
-              }
-            }
-          }
-        }
-        &#entry {
-          > .entry-contents {
-            display: flex;
-            justify-content: space-between;
-            gap: 2svw;
-            margin-inline: 40px;
-            padding-block: 40px;
-            > .entry-form {
-              animation: fadeInEntryForm 0.8s ease forwards;
-              @keyframes fadeInEntryForm {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-              }
-              > .entry-form-lead {
-                height: 60px;
-                font-size: 1.2rem;
-                font-weight: bold;
-                text-align: center;
-                letter-spacing: 0.01em;
-                margin-bottom: 20px;
-              }
-              > .form-card {
-                background: #eee;
-                width: 50svw;
-                margin: 0;
-                > .form-button-field {
-                  padding-top: 40px;
-                  > button {
-                    color: #222;
-                    background: orange;
-                  }
-                }
-              }
-            }
-            > .thanks-message {
-              display: none;
-              padding-block: 80px;
-              text-align: center;
-              animation: fadeInThanksMessage 0.8s ease forwards;
-              @keyframes fadeInThanksMessage {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-              }
-              > .thanks-content {
-              width: 50svw;
-                > h4 {
-                  font-size: 2rem;
-                  color: orange;
-                  margin-bottom: 20px;
-                }
-                > p {
-                  font-size: 1.2rem;
-                  line-height: 1.8;
-                  margin-bottom: 40px;
-                }
-                > button {
-                  margin-inline: auto;
-                }
-              }
-            }
-            > .image-container {
-              margin-top: 80px;
-              img {
-                aspect-ratio: 15/10;
-                min-height: 400px;
-                object-fit: cover;
-                border-radius: 8px;
-              }
-            }
-          }
-        }
+      }
+    }
+  }
+
+  &__thanks {
+    display: none;
+    padding-block: 80px;
+    text-align: center;
+    animation: fadeInThanksMessage 0.8s ease forwards;
+    .thanks-content {
+      width: 50svw;
+      h4 {
+        font-size: 2rem;
+        color: orange;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 40px;
+      }
+      button {
+        margin-inline: auto;
       }
     }
   }
