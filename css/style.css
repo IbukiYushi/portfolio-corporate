@@ -2155,26 +2155,7 @@ dialog {
   margin-inline: auto;
 }
 
-section.main-section-contact > .page-title-field {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-section.main-section-contact > .contact-form {
-  margin-inline: auto;
-  width: 80svw;
-}
-section.main-section-contact > .contact-form > .form-card {
-  box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
-}
-section.main-section-contact > .thanks-message {
-  display: none;
-  padding-block: 80px;
-  text-align: center;
-  animation: fadeInThanksMessage 0.8s ease forwards;
-}
-@keyframes fadeInThanksMessage {
+@keyframes fadeInContactThanks {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -2184,20 +2165,39 @@ section.main-section-contact > .thanks-message {
     transform: translateY(0);
   }
 }
-section.main-section-contact > .thanks-message > .thanks-content > h4 {
+.p-contact__title-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.p-contact__form-field {
+  margin-inline: auto;
+  width: 80svw;
+}
+.p-contact__form-field .form-card {
+  box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
+}
+.p-contact__thanks {
+  display: none;
+  padding-block: 80px;
+  text-align: center;
+  animation: fadeInContactThanks 0.8s ease forwards;
+}
+.p-contact__thanks-content h4 {
   font-size: 2rem;
   color: darkorange;
   margin-bottom: 20px;
 }
-section.main-section-contact > .thanks-message > .thanks-content > p {
+.p-contact__thanks-content p {
   font-size: 1.2rem;
   line-height: 1.8;
   margin-bottom: 40px;
 }
-section.main-section-contact > .thanks-message > .thanks-content > button {
+.p-contact__back-btn {
   margin-inline: auto;
 }
-section.main-section-contact > .thanks-message > .thanks-content > button:active {
+.p-contact__back-btn:active {
   color: #444444;
   background: #dddddd;
   filter: brightness(0.8);

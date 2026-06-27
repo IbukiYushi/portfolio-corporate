@@ -1,49 +1,49 @@
-// @use "../1-abstracts/variables" as v;
 @use "../1-abstracts/mixins" as m;
 
-section {
-  &.main-section-contact {
-    > .page-title-field {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
+@keyframes fadeInContactThanks {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.p-contact {
+  &__title-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__form-field {
+    margin-inline: auto;
+    width: 80svw;
+    .form-card {
+      box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
     }
-    > .contact-form {
-      margin-inline: auto;
-      width: 80svw;
-      > .form-card {
-        box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
-      }
+  }
+
+  &__thanks {
+    display: none;
+    padding-block: 80px;
+    text-align: center;
+    animation: fadeInContactThanks 0.8s ease forwards;
+  }
+  &__thanks-content {
+    h4 {
+      font-size: 2rem;
+      color: darkorange;
+      margin-bottom: 20px;
     }
-    > .thanks-message {
-      display: none;
-      padding-block: 80px;
-      text-align: center;
-      animation: fadeInThanksMessage 0.8s ease forwards;
-      @keyframes fadeInThanksMessage {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      > .thanks-content {
-        > h4 {
-          font-size: 2rem;
-          color: darkorange;
-          margin-bottom: 20px;
-        }
-        > p {
-          font-size: 1.2rem;
-          line-height: 1.8;
-          margin-bottom: 40px;
-        }
-        > button {
-          margin-inline: auto;
-          @include m.active-state (
-            $color: #444444,
-            $background: #dddddd
-          );
-        }
-      }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
     }
+  }
+  &__back-btn {
+    margin-inline: auto;
+    @include m.active-state (
+      $color: #444444,
+      $background: #dddddd
+    );
   }
 }

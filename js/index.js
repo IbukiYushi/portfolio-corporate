@@ -270,14 +270,14 @@ const entryThanksMessageButton = () => {
  * お問合せフォーム内のボタンのクリックにより、バリデーションチェックを行いエラー該当のものにメッセージを出す
  */
 const handleContactForm = () => {
-  const contactForm = document.querySelector('.contact-form');
+  const contactForm = document.querySelector('.js-contact-form');
   if (!contactForm) return;
   contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     let hasError = false;
     const inputs = contactForm.querySelectorAll('input, textarea');
     inputs.forEach((input) => {
-      const formItem = input.closest('.form-item');
+      const formItem = input.closest('.js-form-item');
       const val = input.value.trim();
       let isItemError = false;
       // 必須チェック
@@ -314,7 +314,7 @@ const handleContactForm = () => {
     if (hasError) return;
 
     // 送信処理
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const submitBtn = contactForm.querySelector('.js-form-submit');
     try {
       submitBtn.disabled = true;
       submitBtn.textContent = "送信中...";
@@ -330,7 +330,7 @@ const handleContactForm = () => {
             ok: true,
             json: () => Promise.resolve({
               status: "success",
-              message: `【擬似成功】${formData.get('name')}様、${formData.get('job')}へのエントリーを受け付けました！`
+              message: "成功"
             })
           });
         }, 300);
@@ -341,15 +341,13 @@ const handleContactForm = () => {
       //   // 必要に応じて headers（.then(), .catch(), .finally()）なども追加
       // });
       // HTTPステータスチェック
-      if (!mockResponse.ok) {
-        throw new Error('応答エラー');
-      }
+      if (!mockResponse.ok) throw new Error('応答エラー');
       const data = await mockResponse.json();
       console.log("サーバーからのレスポンス:", data.message);
       if (data.status === "success") {
         (function showThanksMessage() {
-          const form = document.querySelector('.contact-form');
-          const thanks = document.getElementById('thanks-message');
+          const form = document.querySelector('.js-contact-form');
+          const thanks = document.querySelector('.js-thanks-message');
           form.style.transition = 'opacity 0.5s ease';
           form.style.opacity = '0';
           setTimeout(() => {
@@ -373,12 +371,12 @@ const handleContactForm = () => {
  * 「フォームに戻る」ボタン押下で、サンクスメッセージがフェードアウトし、フォームがフェードインする。
  */
 const contactThanksMessageButton = () => {
-  const contactForm = document.querySelector('.contact-form');
-  if (!contactForm) return;
-  const submitBtn = contactForm.querySelector('button[type="submit"]');
-  const thanksMessage = document.getElementById('thanks-message');
-  if (!thanksMessage) return;
-  const thanksMessageButton = thanksMessage.querySelector('button');
+  const contactForm = document.querySelector('.js-contact-form');
+    const thanksMessage = document.querySelector('.js-thanks-message');
+  if (!contactForm || !thanksMessage) return;
+  const submitBtn = contactForm.querySelector('.js-form-submit');
+  const thanksMessageButton = thanksMessage.querySelector('.js-back-btn');
+  if (!submitBtn || !thanksMessageButton) return;
   thanksMessageButton.addEventListener('click', () => {
     // サンクスメッセージがフェードアウト&フォームがフェードイン
     (function showContactForm() {
@@ -393,7 +391,7 @@ const contactThanksMessageButton = () => {
         // フォーム値リセット
         contactForm.reset();
         // エラー表示（is-errorクラス）全削除
-        const formItems = contactForm.querySelectorAll('.form-item');
+        const formItems = contactForm.querySelectorAll('.js-form-item');
         formItems.forEach(item => item.classList.remove('is-error'));
       }, 200);
       // 問い合わせフォーム側のボタンの状態を復元
@@ -808,7 +806,7 @@ const init = () => {
     handleEntryForm();
     entryThanksMessageButton();
   }
-  if (document.querySelector('.contact-form')) {
+  if (document.querySelector('.js-contact-form')) {
     handleContactForm();
     contactThanksMessageButton();
   }
