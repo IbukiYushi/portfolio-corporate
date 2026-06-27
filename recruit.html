@@ -301,23 +301,23 @@
           </nav>
           <h3>エントリー</h3>
           <div class="entry-contents">
-            <form method="post" class="p-recruit__form" autocomplete="on" novalidate>
+            <form method="post" class="p-recruit__form js-recruit-form" autocomplete="on" novalidate>
               <p class="entry-form-lead">
                   必要事項を入力し、送信ボタンを押してください。<br>
                   後ほど担当者よりメールにてご連絡いたします。
               </p>
               <div class="form-card">
-                <div class="form-item">
+                <div class="form-item js-form-item">
                   <label for="selected-job">
                     希望職種
                   </label>
-                  <input type="text" id="selected-job" name="job" value="エンジニア" tabindex="-1" readonly>
+                  <input type="text" id="selected-job" class="js-selected-job" name="job" value="エンジニア" tabindex="-1" readonly>
                   <span class="error-message-field">
                     <span class="asterisk-mark">※</span>
                     <span class="error-message">読取専用です。左上の該当する職種タブを選択し直してください。</span>
                   </span>
                 </div>
-                <div class="form-item">
+                <div class="form-item js-form-item">
                   <label for="user-name">
                     お名前
                     <span class="required">必須</span>
@@ -328,7 +328,7 @@
                     <span class="error-message">必須項目です</span>
                   </span>
                 </div>
-                <div class="form-item">
+                <div class="form-item js-form-item">
                   <label for="user-email">
                     メールアドレス
                     <span class="required">必須</span>
@@ -339,7 +339,7 @@
                     <span class="error-message">必須項目です<!-- メールアドレスの形式でご入力ください --></span>
                   </span>
                 </div>
-                <div class="form-item">
+                <div class="form-item js-form-item">
                   <label for="user-tel">
                     電話番号
                     <span class="optional">任意</span>
@@ -350,7 +350,7 @@
                     <span class="error-message"></span>
                   </span>
                 </div>
-                <!-- <div class="form-item">
+                <!-- <div class="form-item js-form-item">
                   <label for="subject">
                     件名
                     <span class="required">必須</span>
@@ -360,7 +360,7 @@
                     <span class="asterisk-mark"></span>
                   </span>
                 </div> -->
-                <div class="form-item">
+                <div class="form-item js-form-item">
                   <label for="user-message">
                     メッセージ
                     <span class="required">必須</span>
@@ -372,18 +372,18 @@
                   </span>
                 </div>
                 <div class="form-button-field">
-                  <button type="submit" class="button button--lift button--lg">この職種にエントリーする</button>
+                  <button type="submit" class="button button--lift button--lg js-recruit-submit">この職種にエントリーする</button>
                 </div>
               </div>
             </form>
-            <div id="thanks-message" class="p-recruit__thanks">
+            <div id="thanks-message" class="p-recruit__thanks js-recruit-thanks">
               <div class="thanks-content">
                 <h4>エントリーありがとうございました！</h4>
                 <p>
                   内容を確認の上、3営業日以内に<br>
                   担当者よりメールにてご連絡させていただきます。
                 </p>
-                <button type="button" class="button button--lift button--lg">フォームに戻る</button>
+                <button type="button" class="button button--lift button--lg js-recruit-back-btn">フォームに戻る</button>
               </div>
             </div>
             <figure class="image-container">

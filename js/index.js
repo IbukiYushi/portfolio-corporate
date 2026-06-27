@@ -124,14 +124,14 @@ const entryDetailActive = () => {
  * 採用情報エントリーフォーム内のボタンのクリックにより、バリデーションチェックを行いエラー該当のものにメッセージを出す
  */
 const handleEntryForm = () => {
-  const entryForm = document.querySelector('.p-recruit__form');
+  const entryForm = document.querySelector('.js-recruit-form');
   if (!entryForm) return;
   entryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     let hasError = false;
     const inputs = entryForm.querySelectorAll('input, textarea');
     inputs.forEach((input) => {
-      const formItem = input.closest('.form-item');
+      const formItem = input.closest('.js-form-item');
       const val = input.value.trim();
       let isItemError = false;
       // 読取専用の不正チェック
@@ -141,7 +141,8 @@ const handleEntryForm = () => {
       // 必須チェック
       if (input.hasAttribute('required') && val === "") {
         isItemError = true;
-        const errorText = formItem.querySelector('.error-message'); errorText.innerText = "必須項目です";
+        const errorText = formItem.querySelector('.error-message');
+        if (errorText) errorText.innerText = "必須項目です";
       }
       // メール形式チェック
       if (input.type === 'email' && val !== "") {
@@ -172,7 +173,7 @@ const handleEntryForm = () => {
     if (hasError) return;
 
     // 送信処理
-    const submitBtn = entryForm.querySelector('button[type="submit"]');
+    const submitBtn = entryForm.querySelector('.js-recruit-submit');
     try {
       submitBtn.disabled = true;
       submitBtn.textContent = "送信中...";
@@ -188,7 +189,7 @@ const handleEntryForm = () => {
             ok: true,
             json: () => Promise.resolve({
               status: "success",
-              message: `【擬似成功】${formData.get('name')}様、${formData.get('job')}へのエントリーを受け付けました！`
+              message: "成功"
             })
           });
         }, 300);
@@ -199,15 +200,13 @@ const handleEntryForm = () => {
       //   // 必要に応じて headers（.then(), .catch(), .finally()）なども追加
       // });
       // HTTPステータスチェック
-      if (!mockResponse.ok) {
-        throw new Error('応答エラー');
-      }
+      if (!mockResponse.ok) throw new Error('応答エラー');
       const data = await mockResponse.json();
       console.log("サーバーからのレスポンス:", data.message);
       if (data.status === "success") {
         (function showThanksMessage() {
-          const form = document.querySelector('.p-recruit__form');
-          const thanks = document.getElementById('thanks-message');
+          const form = document.querySelector('.js-recruit-form');
+          const thanks = document.querySelector('.js-recruit-thanks');
           form.style.transition = 'opacity 0.5s ease';
           form.style.opacity = '0';
           setTimeout(() => {
@@ -231,14 +230,13 @@ const handleEntryForm = () => {
  * 「フォームに戻る」ボタン押下で、サンクスメッセージがフェードアウトし、フォームがフェードインする。
  */
 const entryThanksMessageButton = () => {
-  const entryForm = document.querySelector('.p-recruit__form');
-  if (!entryForm) return;
-  const submitBtn = entryForm.querySelector('button[type="submit"]');
-  const thanksMessage = document.getElementById('thanks-message');
-  if (!thanksMessage) return;
-  const thanksMessageButton = thanksMessage.querySelector('button');
-  const selectedJobInput = document.getElementById('selected-job');
-  if (!selectedJobInput) return;
+  const entryForm = document.querySelector('.js-recruit-form');
+  const thanksMessage = document.querySelector('.js-recruit-thanks');
+  if (!entryForm || !thanksMessage) return;
+  const submitBtn = entryForm.querySelector('.js-recruit-submit');
+  const thanksMessageButton = thanksMessage.querySelector('.js-recruit-back-btn');
+  const selectedJobInput = entryForm.querySelector('.js-selected-job');
+  if (!submitBtn || !thanksMessageButton || !selectedJobInput) return;
   thanksMessageButton.addEventListener('click', () => {
     // サンクスメッセージがフェードアウト&フォームがフェードイン
     (function showEntryForm() {
@@ -255,7 +253,7 @@ const entryThanksMessageButton = () => {
         entryForm.reset();
         selectedJobInput.value = currentJob;
         // エラー表示（is-errorクラス）全削除
-        const formItems = entryForm.querySelectorAll('.form-item');
+        const formItems = entryForm.querySelectorAll('.js-form-item');
         formItems.forEach(item => item.classList.remove('is-error'));
       }, 200);
       // エントリーフォーム側のボタンの状態を復元
@@ -283,7 +281,8 @@ const handleContactForm = () => {
       // 必須チェック
       if (input.hasAttribute('required') && val === "") {
         isItemError = true;
-        const errorText = formItem.querySelector('.error-message'); errorText.innerText = "必須項目です";
+        const errorText = formItem.querySelector('.error-message');
+        if (errorText) errorText.innerText = "必須項目です";
       }
       // メール形式チェック
       if (input.type === 'email' && val !== "") {
@@ -802,7 +801,7 @@ const init = () => {
     entryDetailActive();
     commonTopScroll();
   }
-  if (document.querySelector('.p-recruit__form')) {
+  if (document.querySelector('.js-recruit-form')) {
     handleEntryForm();
     entryThanksMessageButton();
   }
