@@ -1747,20 +1747,20 @@ dialog {
   border-end-end-radius: 16px;
 }
 
-section.main-section-news {
+.p-news {
   margin-block-end: 80px;
 }
-section.main-section-news > .page-title-field {
+.p-news__title-field {
   margin-inline: 2svw;
   border-left: 4px solid orange;
   padding-left: 16px;
 }
-section.main-section-news > .page-section-field > .page-section {
+.p-news__section {
   margin-block: 20px;
   padding-bottom: 40px;
   border-top: 2px solid #ccc;
 }
-section.main-section-news > .page-section-field > .page-section > .list {
+.p-news__list {
   list-style: none;
   margin-top: 40px;
   margin-inline: auto;
@@ -1769,16 +1769,24 @@ section.main-section-news > .page-section-field > .page-section > .list {
   border-bottom: 2px solid #ccc;
   padding: 8px 16px;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item {
+.p-news__list--no-data {
+  text-align: center;
+  margin-block: 10svh;
+  margin-inline: auto;
+  font-size: 2rem;
+  font-weight: bold;
+  max-width: 800px;
+}
+.p-news__item {
   border-top: 2px solid #ccc;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item:first-of-type {
+.p-news__item:first-of-type {
   border-top: 3px solid #ccc;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item:last-of-type {
+.p-news__item:last-of-type {
   border-bottom: 3px solid #ccc;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link {
+.p-news__link {
   display: flex;
   align-items: center;
   gap: 32px;
@@ -1788,49 +1796,49 @@ section.main-section-news > .page-section-field > .page-section > .list > .list-
   cursor: pointer;
   transition: background 0.2s ease;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link:hover {
+.p-news__link:hover {
   background: #f9f9f9;
-  transition: background 0.2s ease;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link:hover > .news-content > .news-title {
+.p-news__link:hover .p-news__item-title {
   text-decoration: underline;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-meta {
+.p-news__meta {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 4px;
   width: 120px;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-meta > .category {
+.p-news__meta time {
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.p-news__label {
   color: #fff;
   font-size: 0.9rem;
   padding: 2px 8px;
   border-radius: 4px;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-meta > .category.info {
+.p-news__label--info {
   background: #3498db;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-meta > .category.recruit {
+.p-news__label--recruit {
   background: #e67e22;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-meta > .category.press {
+.p-news__label--press {
   background: #95a5a6;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-meta > time {
-  color: #555;
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-content {
+.p-news__content {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-content > .news-title {
+.p-news__item-title {
   text-wrap: wrap;
+  font-weight: bold;
 }
-section.main-section-news > .page-section-field > .page-section > .list > .list-item > .news-link > .news-content > .news-detail {
+.p-news__item-detail {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -1838,18 +1846,10 @@ section.main-section-news > .page-section-field > .page-section > .list > .list-
   -webkit-line-clamp: 2;
   color: #333;
 }
-section.main-section-news > .page-section-field > .page-section > .list__no-data {
-  text-align: center;
-  margin-block: 10svh;
-  margin-inline: auto;
-  font-size: 2rem;
-  font-weight: bold;
-  max-width: 800px;
-}
-section.main-section-news > .page-section-field > .page-section > .pagination-field {
+.p-news .pagination {
   margin-top: 40px;
 }
-section.main-section-news > .page-section-field > .page-section > .pagination-field > .pager {
+.p-news .pager {
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -1861,7 +1861,7 @@ section.main-section-news > .page-section-field > .page-section > .pagination-fi
   border-bottom: 4px solid #ccc;
   border-radius: 100vmax;
 }
-section.main-section-news > .page-section-field > .page-section > .pagination-field > .pager > .page-list {
+.p-news .page-item {
   box-sizing: border-box;
   min-width: 24px;
   margin-block: 2px;
@@ -1870,18 +1870,15 @@ section.main-section-news > .page-section-field > .page-section > .pagination-fi
   border: 2px solid antiquewhite;
   border-radius: 4px;
 }
-section.main-section-news > .page-section-field > .page-section > .pagination-field > .pager > .page-list:hover:not(.page-list__ellipsis) {
+.p-news .page-item:hover:not(.p-news .page-item--ellipsis-next, .p-news .page-item--ellipsis-previous) {
   background: #fff;
   border: 2px solid #888;
   transition: border 0.2s ease;
 }
-section.main-section-news > .page-section-field > .page-section > .pagination-field > .pager > .page-list:active:not(.page-list__ellipsis) {
+.p-news .page-item:active:not(.p-news .page-item--ellipsis-next, .p-news .page-item--ellipsis-previous) {
   background: #eee;
 }
-section.main-section-news > .page-section-field > .page-section > .pagination-field > .pager > .page-list__ellipsis > button {
-  cursor: default;
-}
-section.main-section-news > .page-section-field > .page-section > .pagination-field > .pager > .page-list.current {
+.p-news .page-item--current {
   background: #fff;
   border: 2px solid rgb(255, 180, 50);
 }

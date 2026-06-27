@@ -59,20 +59,25 @@ const renderNewsList = () => {
   const container = document.querySelector('#news-list-container');
   if (!container) return;
   container.innerHTML = '';
-  Object.entries(newsData).forEach(([id, data]) => {
+  const newsEntries = Object.entries(newsData);
+  if (newsEntries.length === 0) {
+    container.innerHTML = `<li class="p-news__list--no-data">現在、新着情報はございません</li>`;
+    return;
+  }
+  newsEntries.forEach(([id, data]) => {
     const listItem = `
-      <li class="list-item">
-        <button class="news-link open-modal-button" 
+      <li class="p-news__item">
+        <button class="p-news__link open-modal-button" 
                 type="button" 
                 data-modal-target="${id}"
         >
-          <div class="news-meta">
-            <span class="category ${data.label}">${data.category}</span>
+          <div class="p-news__meta">
+            <span class="p-news__label p-news__label--${data.label}">${data.category}</span>
             <time datetime="${data.date.replaceAll('.', '-')}">${data.date}</time>
           </div>
-          <div class="news-content">
-            <h3 class="news-title">${data.title}</h3>
-            <p class="news-detail">${data.detail}</p>
+          <div class="p-news__content">
+            <h3 class="p-news__item-title">${data.title}</h3>
+            <p class="p-news__item-detail">${data.detail}</p>
           </div>
         </button>
       </li>
@@ -418,7 +423,7 @@ const accordion = () => {
  */
 const paginationPerPage = 3;  // 1ページごとのリスト数の初期値設定
 const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
-  const containerListUl = document.querySelector('ul.linked-to-pagination');
+  const containerListUl = document.querySelector('ul.js-linked-to-pagination');
   if (!containerListUl) return;
   const containerList = containerListUl.querySelectorAll('li');
   const pager = document.querySelector('ul.pager');
@@ -435,11 +440,11 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
   // ページリストの表示設定
   const pageListToDisplay = (current = 1) => {
     if (totalItems === 0) {
-      const listSection = containerListUl.closest('.page-section');
+      const listSection = containerListUl.closest('.js-page-section');
       if (!listSection) return;
       listSection.innerHTML = '';
       const noListDataDisplay = `
-        <div class="list__no-data">データがありません</div>
+        <div class="js-list__no-data">データがありません</div>
       `;
       listSection.insertAdjacentHTML('beforeend', noListDataDisplay);
     } else {
@@ -462,9 +467,9 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
     let listItems = [];
     pager.innerHTML = '';
     const createPageItem = (type, content, isCurrent = false) => {
-      const currentClass = isCurrent ? 'current' : '';
+      const currentClass = isCurrent ? 'page-item--current' : '';
       return `
-        <li class="page-list page-list__${type} ${currentClass}">
+        <li class="page-item page-item--${type} ${currentClass}">
           <button>${content}</button>
         </li>
       `;
@@ -479,7 +484,7 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
         for(let i = 2; i <= 7; i++) {
           listItems.push(createPageItem(i, i, (listItemToDisplay === i)));
         }
-        listItems.push(createPageItem('ellipsis--next', '…'));
+        listItems.push(createPageItem('ellipsis-next', '…'));
         listItems.push(createPageItem(totalPage, totalPage));
         listItems.push(createPageItem('next', '＞'));
         listItems.push(createPageItem('last', '≫'));
@@ -488,7 +493,7 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
         listItems.push(createPageItem('first', '≪'));
         listItems.push(createPageItem('previous', '＜'));
         listItems.push(createPageItem('1', '1'));
-        listItems.push(createPageItem('ellipsis--previous', '…'));
+        listItems.push(createPageItem('ellipsis-previous', '…'));
         for(let i = (totalPage - 6); i < totalPage; i++) {
           listItems.push(createPageItem(i, i, (listItemToDisplay === i)));
         }
@@ -500,11 +505,11 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
         listItems.push(createPageItem('first', '≪'));
         listItems.push(createPageItem('previous', '＜'));
         listItems.push(createPageItem('1', '1'));
-        listItems.push(createPageItem('ellipsis--previous', '…'));
+        listItems.push(createPageItem('ellipsis-previous', '…'));
         for(let i = (listItemToDisplay - 2); i <= (listItemToDisplay + 2); i++) {
           listItems.push(createPageItem(i, i, (listItemToDisplay === i)));
         }
-        listItems.push(createPageItem('ellipsis--next', '…'));
+        listItems.push(createPageItem('ellipsis-next', '…'));
         listItems.push(createPageItem(totalPage, totalPage));
         listItems.push(createPageItem('next', '＞'));
         listItems.push(createPageItem('last', '≫'));
@@ -530,20 +535,20 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
   pager.addEventListener('click', (event) => {
     const btn = event.target.closest('button');
     if (!btn) return;
-    const pageList = btn.closest('.page-list');
+    const pageList = btn.closest('.page-item');
     if (!pageList) return;
     if (isNaN(btn.textContent)) {
       // ページャーの番号以外が押された時の処理。
       pageList.classList.forEach(className => {
-        if (className.startsWith('page-list__')) {
-          const pageListName = className.replace('page-list__', '');
+        if (className.startsWith('page-item--')) {
+          const pageListName = className.replace('page-item--', '');
           if (pageListName === 'first') {
             currentPage = 1;
           } else if (pageListName === 'previous') {
             currentPage = currentPage > 1 ? (currentPage - 1) : currentPage;
-          } else if (pageListName === 'ellipsis--previous') {
+          } else if (pageListName === 'ellipsis-previous') {
             currentPage = Math.trunc((currentPage - 2) / 2);
-          } else if (pageListName === 'ellipsis--next') {
+          } else if (pageListName === 'ellipsis-next') {
             currentPage = Math.trunc((totalPage + currentPage + 2) / 2);
           } else if (pageListName === 'next') {
             currentPage = currentPage < totalPage ? (currentPage + 1) : currentPage;
@@ -810,7 +815,7 @@ const init = () => {
   if (document.querySelector('.js-accordion-trigger')) {
     accordion();
   }
-  if (document.querySelector('.pagination-field')) {
+  if (document.querySelector('.pagination')) {
     pagination(paginationPerPage);
   }
   if (document.querySelector('#inPageLink')) {
