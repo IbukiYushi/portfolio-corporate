@@ -422,7 +422,7 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
   const containerListUl = document.querySelector('ul.js-linked-to-pagination');
   if (!containerListUl) return;
   const containerList = containerListUl.querySelectorAll('li');
-  const pager = document.querySelector('ul.pager');
+  const pager = document.querySelector('ul.c-pagination__list');
   if (!containerList || !pager) return;
   let currentPage = 1; // カレントページ番号
   if(hashLinkedPage) {
@@ -463,9 +463,9 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
     let listItems = [];
     pager.innerHTML = '';
     const createPageItem = (type, content, isCurrent = false) => {
-      const currentClass = isCurrent ? 'page-item--current' : '';
+      const currentClass = isCurrent ? 'c-pagination__item--current' : '';
       return `
-        <li class="page-item page-item--${type} ${currentClass}">
+        <li class="c-pagination__item c-pagination__item--${type} ${currentClass}">
           <button>${content}</button>
         </li>
       `;
@@ -531,13 +531,13 @@ const pagination = (perPage = paginationPerPage, hashLinkedPage = '') => {
   pager.addEventListener('click', (event) => {
     const btn = event.target.closest('button');
     if (!btn) return;
-    const pageList = btn.closest('.page-item');
+    const pageList = btn.closest('.c-pagination__item');
     if (!pageList) return;
     if (isNaN(btn.textContent)) {
       // ページャーの番号以外が押された時の処理。
       pageList.classList.forEach(className => {
-        if (className.startsWith('page-item--')) {
-          const pageListName = className.replace('page-item--', '');
+        if (className.startsWith('c-pagination__item--')) {
+          const pageListName = className.replace('c-pagination__item--', '');
           if (pageListName === 'first') {
             currentPage = 1;
           } else if (pageListName === 'previous') {
@@ -811,7 +811,7 @@ const init = () => {
   if (document.querySelector('.js-accordion-trigger')) {
     accordion();
   }
-  if (document.querySelector('.pagination')) {
+  if (document.querySelector('.js-pagination')) {
     pagination(paginationPerPage);
   }
   if (document.querySelector('#inPageLink')) {
