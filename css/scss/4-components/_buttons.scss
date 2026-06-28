@@ -1,6 +1,102 @@
-.c-btn-to-main {
-  position: absolute;
-  inset: -16px 0 auto 0;
-  margin-inline: auto;
-  width: max-content;
+@use "../1-abstracts/mixins" as m;
+
+.c-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  line-height: 1;
+  color: #ffffff;
+  background: #2c6ebd;
+  border: 2px solid #444444;
+  border-radius: 0.5em;
+  text-align: center;
+  transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+  @include m.hover-state;
+  @include m.focus-visible-state;
+  @include m.active-state($background: #2c6ebd);
+  @include m.disabled-state;
+
+  &--sm {
+    padding: 0.25em 0.5em;
+    font-size: 1.0rem;
+  }
+  &--md {
+    padding: 0.5em 1.0em;
+    font-size: 1.25rem;
+  }
+  &--lg {
+    padding: 0.75em 1.5em;
+    font-size: 1.5rem;
+  }
+
+  &--border-circle {
+    border-radius: 100vmax;
+    @include m.focus-visible-state($border-radius: 100vmax);
+  }
+
+  &--outline {
+    color: #444444;
+    background: transparent;
+    border: 2px solid #444444;
+    @include m.active-state($background: #888888);
+  }
+
+  &--lift {
+    box-shadow: 0 2px 0 #444444;
+    &:focus-visible {
+      box-shadow: 0 1px 1px 0 #444444;
+    }
+    &:active {
+      box-shadow: 0 1px 0 #444444;
+      transform: translateY(1px) scaleY(0.98);
+    }
+  }
+
+  &--gradient {
+    color: #ffffff;
+    background: #2c6ebd;
+    $gradient-rainbow: linear-gradient(
+      120deg, #f79533, #f37055, #ef4e7b, #a166ab, #2c6ebd, #1098ad, #07b39b, #6fba82
+    );
+    background-image: $gradient-rainbow;
+    @include m.active-state($background: $gradient-rainbow);
+  }
+
+  &--shadow {
+    box-shadow: 0px 4px 8px 1px #444444;
+  }
+
+  &--square-circle {
+    display: flex;
+    flex-flow: column wrap;
+    line-height: 1.25;
+    padding: 0;
+    &.c-button--sm { width: 64px; height: 64px; font-size: 1.0rem; }
+    &.c-button--md { width: 80px; height: 80px; font-size: 1.25rem; }
+    &.c-button--lg { width: 112px; height: 112px; font-size: 1.5rem; }
+  }
+
+  &--submit {
+    color: #444444;
+    background: #dddddd;
+    border: 1px solid #444444;
+    border-radius: 0.25em;
+    padding-block: 0.5em;
+    @include m.hover-state;
+    @include m.focus-visible-state(
+      $outline-offset: 1px,
+      $border-radius: 4px
+    );
+  }
+
+  &--full {
+    color: #333333;
+    width: 100%;
+    border-width: 2px;
+    @include m.active-state (
+      $color: #444444,
+      $background: #dddddd
+    );
+  }
 }

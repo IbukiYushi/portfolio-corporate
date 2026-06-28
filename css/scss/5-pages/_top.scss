@@ -210,7 +210,7 @@
           .address-text { font-size: 1.1rem; font-weight: bold; }
         }
         .tel {
-          margin-left: 16px;
+          margin-left: 8px;
           a {
             display: inline-block;
             background: inherit;
@@ -241,7 +241,8 @@
       margin-top: 40px;
       padding-block: 20px;
       isolation: isolate;
-      .button {
+      a {
+        display: flex;
         background: orange;
         width: fit-content;
       }
@@ -254,7 +255,7 @@
         background: #ccc;
       }
       &--main {
-        .button { margin-inline: auto; }
+        a { margin-inline: auto; }
         &::before {
           left: 0;
           width: 135%;
@@ -263,7 +264,7 @@
       }
       &--recruit {
         margin-top: 24px;
-        .button { margin-inline: auto 20%; }
+        a { margin-inline: auto 20%; }
         &::before {
           right: 0;
           width: 105%;
