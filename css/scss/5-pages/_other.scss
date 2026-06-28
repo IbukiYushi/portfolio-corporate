@@ -1,55 +1,38 @@
-section {
-  &.main-section-other {
-    > .page-title-anchor-field {
+.p-other-reference {
+  &__title-field {
+    text-align: center;
+  }
+  &__section-wrapper {
+    margin: 40px 20px;
+  }
+  &__section-title {
+    font-size: 1.125rem;
+    text-align: center;
+    margin: 8px;
+  }
+  &__test-card {
+    border: 1px solid #000;
+    max-width: 80%;
+    border-radius: 0.25em;
+    margin-inline: auto;
+    padding: 8px;
+    h3 {
+      font-size: 1rem;
       text-align: center;
+      margin-bottom: 2svh;
     }
-    > .page-section-field {
-      > #button-reference {
-        margin: 40px 20px;
-        > h2 {
-          font-size: 1.125rem;
-          text-align: center;
-          margin: 8px;
-        }
-        > div {
-          border: 1px solid #000;
-          max-width: 80%;
-          border-radius: 0.25em;
-          margin-inline: auto;
-          padding: 8px;
-          > * {
-            margin-bottom: 2svh;
-          }
-          > h3 {
-            font-size: 1rem;
-            text-align: center;
-          }
-          > .button-field {
-            display: flex;
-            justify-content: center;
-            align-items: start;
-            flex-wrap: wrap;
-            gap: 2svw;
-          }
-        }
-      }
-      > #form-reference {
-        form {
-          margin: 20px 0;
-        }
-      }
-      > #left-picture-reference {
-        > h2 {
-          font-size: 1.125rem;
-          text-align: center;
-          margin: 8px;
-        }
-        > .dummyimg {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
+  }
+  &__grid-field {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 2svw;
+    margin-bottom: 2svh;
+  }
+  &__media-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

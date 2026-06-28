@@ -2203,47 +2203,38 @@ dialog {
   filter: brightness(0.8);
 }
 
-section.main-section-other > .page-title-anchor-field {
+.p-other-reference__title-field {
   text-align: center;
 }
-section.main-section-other > .page-section-field > #button-reference {
+.p-other-reference__section-wrapper {
   margin: 40px 20px;
 }
-section.main-section-other > .page-section-field > #button-reference > h2 {
+.p-other-reference__section-title {
   font-size: 1.125rem;
   text-align: center;
   margin: 8px;
 }
-section.main-section-other > .page-section-field > #button-reference > div {
+.p-other-reference__test-card {
   border: 1px solid #000;
   max-width: 80%;
   border-radius: 0.25em;
   margin-inline: auto;
   padding: 8px;
 }
-section.main-section-other > .page-section-field > #button-reference > div > * {
-  margin-bottom: 2svh;
-}
-section.main-section-other > .page-section-field > #button-reference > div > h3 {
+.p-other-reference__test-card h3 {
   font-size: 1rem;
   text-align: center;
+  margin-bottom: 2svh;
 }
-section.main-section-other > .page-section-field > #button-reference > div > .button-field {
+.p-other-reference__grid-field {
   display: flex;
   justify-content: center;
   align-items: start;
   flex-wrap: wrap;
   gap: 2svw;
+  margin-bottom: 2svh;
 }
-section.main-section-other > .page-section-field > #form-reference form {
-  margin: 20px 0;
-}
-section.main-section-other > .page-section-field > #left-picture-reference > h2 {
-  font-size: 1.125rem;
-  text-align: center;
-  margin: 8px;
-}
-section.main-section-other > .page-section-field > #left-picture-reference > .dummyimg {
+.p-other-reference__media-preview {
   display: flex;
   justify-content: center;
   align-items: center;
