@@ -91,30 +91,29 @@ const renderNewsList = () => {
  * 募集要項・エントリー両エリア左上の職種別ボタンのクリックにより、対応する職種による表示（activeクラス）を切り替える
  */
 const entryDetailActive = () => {
-  const tabRecruitDetailButtons = document.querySelectorAll('.p-recruit__tab-btn');
+  const tabRecruitDetailButtons = document.querySelectorAll('.js-recruit-tab');
   tabRecruitDetailButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // クリックされたナビゲーションタブの職種にのみ.activeをクラス付与
+      const targetJob = btn.dataset.target;
       tabRecruitDetailButtons.forEach((element) => {
         element.classList.remove('is-active');
       });
-      const someBtnClassElements = document.querySelectorAll(`button[data-target="${btn.dataset.target}"]`);
-      someBtnClassElements.forEach((element) => {
+      const relatedButtons = document.querySelectorAll(`.js-recruit-tab[data-target="${targetJob}"]`);
+      relatedButtons.forEach((element) => {
         element.classList.add('is-active');
       });
-      // クリックされたナビゲーションタブの職種に連動して、該当する職種の募集要項の内容にのみ.activeをクラス付与
-      const recruitDetailContent = document.querySelectorAll('.p-recruit__detail-content');
+      const recruitDetailContent = document.querySelectorAll('.js-recruit-detail');
       recruitDetailContent.forEach((element) => {
         element.classList.remove('is-active');
       });
-      const targetId = btn.dataset.target;
-      const targetRecruitDetailContent = document.getElementById(`detail-content__${targetId}`);
-      targetRecruitDetailContent.classList.add('is-active');
-      // クリックされたナビゲーションタブの職種に連動して、該当するエントリーフォームの希望職種フォームのテキストを変更
-      const btnText = btn.textContent;
-      const recruitEntrySelectedJob = document.getElementById('selected-job');
-      recruitEntrySelectedJob.value = btnText;
-      recruitEntrySelectedJob.setAttribute('value', btnText);
+      const targetContent = document.querySelector(`.js-recruit-detail[data-job="${targetJob}"]`);
+      targetContent.classList.add('is-active');
+      const recruitEntrySelectedJob = document.querySelector('.js-selected-job');
+      if (recruitEntrySelectedJob) {
+        const btnText = btn.textContent;
+        recruitEntrySelectedJob.value = btnText;
+        recruitEntrySelectedJob.setAttribute('value', btnText);
+      }
     });
   });
 };
