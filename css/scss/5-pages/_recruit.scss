@@ -232,27 +232,4 @@
       }
     }
   }
-
-  &__thanks {
-    display: none;
-    padding-block: 80px;
-    text-align: center;
-    animation: fadeInThanksMessage 0.8s ease forwards;
-    .thanks-content {
-      width: 50svw;
-      h4 {
-        font-size: 2rem;
-        color: orange;
-        margin-bottom: 20px;
-      }
-      p {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        margin-bottom: 40px;
-      }
-      button {
-        margin-inline: auto;
-      }
-    }
-  }
 }

@@ -20,30 +20,4 @@
       box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
     }
   }
-
-  &__thanks {
-    display: none;
-    padding-block: 80px;
-    text-align: center;
-    animation: fadeInContactThanks 0.8s ease forwards;
-  }
-  &__thanks-content {
-    h4 {
-      font-size: 2rem;
-      color: darkorange;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 40px;
-    }
-  }
-  &__back-btn {
-    margin-inline: auto;
-    @include m.active-state (
-      $color: #444444,
-      $background: #dddddd
-    );
-  }
 }
