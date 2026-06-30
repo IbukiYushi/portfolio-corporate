@@ -45,19 +45,24 @@
   </header>
 
   <aside class="l-sidebar">
-    <search>
-      <form action="./index.html" class="l-sidebar__search-form">
-        <label for="query">サイト内を検索</label>
-        <div class="search-inner">
-          <input type="search" name="search" id="query">
+    <search class="c-search-form">
+      <form action="./index.html">
+        <label class="c-search-form__label" for="query">サイト内を検索</label>
+        <div class="c-search-form__inner">
+          <input class="c-search-form__input" type="search" name="search" id="query">
           <button class="c-button c-button--submit c-button--sm" type="submit">検索</button>
         </div>
       </form>
     </search>
-    <nav class="l-sidebar__nav">
-      <details>
-        <summary class="title">ページ内ナビ</summary>
-        <div class="anchor-field">
+    <nav class="c-local-nav">
+      <details class="c-local-nav__accordion">
+        <summary class="c-local-nav__title">
+          <svg class="accordion-icon-svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <use href="./images/icon/sample/accordion-icon.svg#accordion-icon"></use>
+          </svg>
+          <span>ページ内ナビ</span>
+        </summary>
+        <div class="c-local-nav__anchor-field">
           <a href="#hero">ヒーローセクション</a>
           <a href="#main-section1">セクション1</a>
           <a href="#main-section2">セクション2</a>
@@ -65,13 +70,15 @@
         </div>
       </details>
     </nav>
-    <article>
-      <p>他の人気記事1</p>
-      <img src="https://placehold.jp/200x100.png" alt="他の人気記事" width="200" height="100" loading="lazy" decoding="async">
-    </article>
-    <article>
-      <p>他の人気記事2</p>
-      <img src="https://placehold.jp/200x100.png" alt="他の人気記事" width="200" height="100" loading="lazy" decoding="async">
+    <article class="c-article-field">
+      <section>
+        <p>他の人気記事1</p>
+        <img src="https://placehold.jp/200x100.png" alt="他の人気記事" width="200" height="100" loading="lazy" decoding="async">
+      </section>
+      <section>
+        <p>他の人気記事2</p>
+        <img src="https://placehold.jp/200x100.png" alt="他の人気記事" width="200" height="100" loading="lazy" decoding="async">
+      </section>
     </article>
   </aside>
 

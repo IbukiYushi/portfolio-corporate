@@ -20,15 +20,18 @@
 
 // 4. Components (再利用部品)
 @use "4-components/accordion";
+@use "4-components/article-field";
 @use "4-components/back-to-top";
 @use "4-components/btn-to-main";
 @use "4-components/buttons";
 @use "4-components/cards";
 @use "4-components/forms";
 @use "4-components/inpage-link";
+@use "4-components/local-nav";
 @use "4-components/modal";
 @use "4-components/news-item";
 @use "4-components/pagination";
+@use "4-components/search-form";
 @use "4-components/tables";
 @use "4-components/tabs";
 @use "4-components/thanks-card";

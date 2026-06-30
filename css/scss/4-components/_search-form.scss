@@ -1,0 +1,21 @@
+.c-search-form {
+  width: 100%;
+  max-width: 200px;
+  &__label {
+    display: block;
+    margin-bottom: 4px;
+  }
+  &__inner {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+  }
+  &__input {
+    flex: 1;
+    min-width: 0;
+    max-width: 160px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
