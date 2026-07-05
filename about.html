@@ -66,18 +66,46 @@
       <div class="page-section-field">
         <section id="greeting" class="p-about__section p-about__greeting">
           <h3>ご挨拶と理念</h3>
-          <blockquote class="vision-quote">
-            「技術と創造性で、未来の課題を解決する」<br>
-            これが私たちの変わらぬビジョンです。<br>
-            お客様の期待を超え、社会に新たな価値を提供し続けることが、私たちの使命です。
+          <blockquote>
+            <span class="vision-statement">
+              「<span>技術</span>と<span>創造性</span>で、未来の課題を解決する」
+            </span>
+            <span>
+              これが私たちの変わらぬビジョン
+            </span>
           </blockquote>
-          <figure class="representative-photo">
-            <img src="./images/contents/business/business-ceo.jpg" alt="代表取締役社長">
-            <figcaption class="signature">代表取締役社長 山田 太郎</figcaption>
-          </figure>
-          <p>
-            当社は設立以来、デジタルトランスフォーメーションの波に乗り、常に最先端の技術を取り入れてまいりました。特に、ユーザー体験（UX）を最優先したデザインと、堅牢なシステム構築の両立をコアコンピタンスとしております。この情熱と誠実さをもって、私たちは次の時代を創造します。
-          </p>
+          <div id="representative" class="representative-field">
+            <figure class="representative-photo">
+              <div class="img-outer">
+                <img src="./images/contents/business/business-ceo.jpg" alt="代表取締役社長">
+              </div>
+              <figcaption class="signature">
+                <span>代表取締役社長</span>
+                <span>山田</span>
+                <span>太郎</span>
+              </figcaption>
+            </figure>
+            <p class="representative-message">
+              <span class="ornamental-line"></span>
+              <span>当社は設立以来、デジタルトランスフォーメーションの波に乗り、</span>
+              <span>常に最先端の技術を取り入れてまいりました。</span>
+              <span class="--margin-top">特に、ユーザー体験（UX）を最優先したデザインと、</span>
+              <span>堅牢なシステム構築の両立をコアコンピタンスとしております。</span>
+              <span class="--margin-top">この情熱と誠実さをもって、私たちは次の時代を創造します。</span>
+              <span class="ornamental-line"></span>
+            </p>
+          </div>
+          <div class="employees-message-field">
+            <p class="employees-message">
+              <span>お客様の期待を超え、</span>
+              <span>社会に新たな価値を提供し続けることが、</span>
+              <span>私たちの使命です。</span>
+            </p>
+            <address class="signature">
+              <span class="signature-company">サンプル株式会社</span>
+              <span class="signature-team">一同</span>
+            </address>
+          </div>
         </section>
 
         <section id="business" class="p-about__section p-about__business">
@@ -139,7 +167,7 @@
                 <dt>設立</dt>
                 <dd>2020年4月1日</dd>
                 <dt>代表者</dt>
-                <dd><a href="#greeting">代表取締役社長 山田 太郎</a></dd>
+                <dd><a href="#representative">代表取締役社長 山田 太郎</a></dd>
                 <dt>資本金</dt>
                 <dd>1,000万円</dd>
                 <dt>事業内容</dt>
@@ -386,6 +414,7 @@
       </div>
 
     </section>
+
     <div id="inPageLink" class="c-inpage-nav">
       <div class="c-inpage-nav__trigger">
         <svg class="accordion-right-icon-svg c-inpage-nav__icon" width="24" height="32" viewBox="0 0 24 32" fill="none">
@@ -409,7 +438,6 @@
         <use class="backtotop-arrow" href="./images/icon/sample/backtotop-arrow.svg#backtotop-arrow" x="0" y="0" fill="" stroke="none"></use>
       </svg>
     </button>
-
   </main>
 
   <footer class="l-footer">

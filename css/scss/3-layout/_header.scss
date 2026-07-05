@@ -45,7 +45,11 @@
     position: fixed;
     inset: 16px 4svw auto auto;
     color: #D9D9D9;
+    outline: 0px solid #606060;
+    outline-offset: 0px;
+    border-radius: 8px;
     z-index: 10000;
+    transition: all 0.05s ease;
     &:hover {
       color: #B7B7B7;
       outline: 4px solid #606060;

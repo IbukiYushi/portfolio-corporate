@@ -74,9 +74,11 @@ html {
 body {
   position: relative;
   margin: auto;
-  background-color: #fff;
+  background-color: #fffbf8;
   width: 100%;
-  color: #000;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.7;
 }
 
 main {
@@ -89,9 +91,6 @@ hr {
   width: 100%;
 }
 
-/**************************************
-  汎用的コンポーネント
-**************************************/
 details > summary:focus-visible {
   outline: 2px solid #606060;
   outline-offset: 2px;
@@ -385,7 +384,11 @@ button {
   position: fixed;
   inset: 16px 4svw auto auto;
   color: #D9D9D9;
+  outline: 0px solid #606060;
+  outline-offset: 0px;
+  border-radius: 8px;
   z-index: 10000;
+  transition: all 0.05s ease;
 }
 .l-header > .hamburger-menu-button:hover {
   color: #B7B7B7;
@@ -1360,6 +1363,24 @@ dialog {
   margin-block: 8px;
 }
 
+@keyframes fadeToRightvisionStatement {
+  from {
+    padding-right: 80px;
+    text-shadow: 80px -16px 16px #fff;
+  }
+  to {
+    padding-right: 0px;
+    text-shadow: 0 0 0 #333;
+  }
+}
+@keyframes fadeToBottomText {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 .p-about {
   margin-block-end: 80px;
 }
@@ -1386,26 +1407,184 @@ dialog {
   box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
 }
 .p-about__section > h3 {
+  font-size: 2rem;
   text-align: center;
 }
 .p-about__greeting {
   display: grid;
   gap: 40px;
+  padding-bottom: 80px;
 }
-.p-about__greeting > * {
+.p-about__greeting blockquote {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
   text-align: center;
+  letter-spacing: 0.08em;
 }
-.p-about__greeting figure {
+.p-about__greeting blockquote span {
+  display: inline-block;
+}
+.p-about__greeting blockquote .vision-statement {
+  padding-block: 20px;
+  line-height: 1.5;
+  animation: fadeToRightvisionStatement 3s ease forwards;
+  background: #ccc;
+  background-image: linear-gradient(150deg, #fff 10%, #ccc 10%, #eee 50%, #ccc 90%, #fff 90%);
+}
+.p-about__greeting blockquote > span:nth-child(1) span {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.p-about__greeting blockquote > span:nth-child(2) {
+  text-align: center;
+  margin-block: 60px 24px;
+  animation: fadeToBottomText 3s ease forwards;
+}
+.p-about__greeting .representative-field {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  gap: 40px;
+  width: 100%;
+  max-width: 1040px;
+  margin-inline: auto;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  padding-block: 40px;
+}
+.p-about__greeting .representative-field:hover .img-outer {
+  box-shadow: 0 0 0 white;
+}
+.p-about__greeting .representative-field:hover img {
+  transform: scale(1.05);
+}
+.p-about__greeting .representative-field:hover .representative-message {
+  margin-top: 40px;
+}
+.p-about__greeting .representative-photo {
   width: auto;
   height: 100%;
   max-width: 400px;
-  aspect-ratio: 9/16;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin-inline: auto;
 }
-.p-about__greeting figure img {
-  box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
+.p-about__greeting .representative-photo .img-outer {
+  overflow: hidden;
+  box-shadow: 24px -16px 0 rgba(255, 200, 60, 0.6);
+  transition: box-shadow 0.3s ease;
+}
+.p-about__greeting .representative-photo img {
+  transition: transform 0.3s ease;
+}
+.p-about__greeting .representative-photo figcaption {
+  margin-top: 16px;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.p-about__greeting .representative-photo figcaption span:nth-child(2) {
+  padding-inline: 12px 4px;
+}
+.p-about__greeting .representative-message {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 1.25rem;
+  margin-block: 0 auto;
+  transition: margin-top 0.3s ease;
+}
+.p-about__greeting .representative-message span {
+  display: inline-block;
+}
+.p-about__greeting .representative-message span.ornamental-line {
+  width: 100%;
+  height: 24px;
+  background: #ccc;
+  background-image: linear-gradient(160deg, #ccc 5%, #ececec 20%, #cecece 35%, #ececec 50%, #cecece 65%, #ececec 80%, #ccc 100%);
+}
+.p-about__greeting .representative-message span.ornamental-line:first-child {
+  margin-bottom: 20px;
+}
+.p-about__greeting .representative-message span.ornamental-line:last-child {
+  margin-top: 40px;
+}
+.p-about__greeting .representative-message span.--margin-top {
+  margin-top: 24px;
+}
+.p-about__greeting .employees-message-field {
+  width: 75%;
+  max-width: 640px;
+  color: #111;
+  background: orange;
+  border-radius: 40px 8px 48px 4px;
+  margin-top: 16px;
+  margin-inline: auto;
+  padding-bottom: 8px;
+  transition: all 0.8s ease;
+}
+.p-about__greeting .employees-message-field:hover {
+  width: 100%;
+  max-width: 1040px;
+}
+.p-about__greeting .employees-message-field:hover .employees-message span:nth-child(1) {
+  transform: translateX(-168px);
+}
+.p-about__greeting .employees-message-field:hover .employees-message span:nth-child(3) {
+  transform: translateX(184px);
+}
+@media screen and (max-width: 768px) {
+  .p-about__greeting .employees-message-field {
+    width: 100%;
+    max-width: none;
+  }
+  .p-about__greeting .employees-message-field:hover {
+    width: 100%;
+    max-width: none;
+  }
+  .p-about__greeting .employees-message-field:hover .employees-message span:nth-child(1) {
+    transform: none;
+  }
+  .p-about__greeting .employees-message-field:hover .employees-message span:nth-child(3) {
+    transform: none;
+  }
+}
+.p-about__greeting .employees-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+}
+.p-about__greeting .employees-message span {
+  display: inline-block;
+}
+.p-about__greeting .employees-message span:nth-child(1) {
+  transform: translateX(-128px);
+  transition: transform 0.8s ease;
+}
+.p-about__greeting .employees-message span:nth-child(3) {
+  transform: translateX(144px);
+  transition: transform 0.8s ease;
+}
+@media screen and (max-width: 768px) {
+  .p-about__greeting .employees-message span:nth-child(1) {
+    transform: translateX(0);
+  }
+  .p-about__greeting .employees-message span:nth-child(3) {
+    transform: translateX(0);
+  }
+}
+.p-about__greeting .signature {
+  font-style: normal;
+  text-align: center;
+  padding-block: 8px;
+}
+.p-about__greeting .signature::before, .p-about__greeting .signature::after {
+  content: "ー";
+  padding-inline: 4px;
 }
 .p-about__business {
   padding: 40px 0;
@@ -1419,52 +1598,33 @@ dialog {
 .p-about__business-card {
   display: flex;
 }
-.p-about__business-card .content-text {
-  flex: 2;
-}
 .p-about__business-card .content-text h4 {
   text-align: center;
   margin: 24px;
 }
 .p-about__business-card .content-text p {
-  background: #1098ad;
   text-align: center;
   margin-inline: auto;
   margin-bottom: 16px;
 }
 .p-about__business-card .content-text ul {
-  background: orange;
   width: -moz-fit-content;
   width: fit-content;
   margin-inline: auto;
   margin-block: 40px 80px;
 }
-.p-about__business-card .content-image {
-  flex: 1;
-}
 .p-about__business-card .content-image img {
   box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
-}
-.p-about__business-card--reversed {
-  flex-direction: row-reverse;
-}
-.p-about__business-card--reversed .content-text {
-  flex: 4.5;
 }
 .p-about__business-card--reversed .content-text h4 {
   margin-bottom: 24px;
 }
 .p-about__business-card--reversed .content-text p {
   text-align: left;
-  width: -moz-fit-content;
-  width: fit-content;
   margin: 0 2.5svw 40px 2.5svw;
 }
 .p-about__business-card--reversed .content-text ul {
   margin-bottom: 40px;
-}
-.p-about__business-card--reversed .content-image {
-  flex: 5.5;
 }
 .p-about__company > h3 {
   margin-bottom: 40px;
@@ -1786,6 +1946,9 @@ dialog {
 }
 .p-about__member-footer.is-open .career-detail-container .career-detail {
   padding: 16px 3%;
+}
+.p-about__faq {
+  padding-bottom: 80px;
 }
 .p-about__faq > h3 {
   margin-bottom: 24px;

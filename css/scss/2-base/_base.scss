@@ -9,9 +9,11 @@ html {
 body {
   position: relative;
   margin: auto;
-  background-color: #fff;
+  background-color: #fffbf8;
   width: 100%;
-  color: #000;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.7;
 }
 
 main {
@@ -23,12 +25,6 @@ hr {
   border: 1px solid #404040;
   width: 100%;
 }
-
-// font-family
-/**************************************
-  汎用的コンポーネント
-**************************************/
-
 
 // 折りたたみボックス
 details {
@@ -66,7 +62,7 @@ a {
   // &:disabled {}
 }
 
-// フォーム
+// フォーム(※本来ならcomonent層のものも含まれている)
 form {
   > .form-header {
     text-align: center;
