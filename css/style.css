@@ -315,7 +315,14 @@ button {
 }
 
 .top-page {
-  grid-template-rows: 80px 1fr auto 8svh;
+  grid-template-rows: 80px 1fr auto 80px;
+}
+@media screen and (max-width: 768px) {
+  .top-page {
+    grid-template-rows: 80px 1fr auto 110px;
+  }
+}
+.top-page {
   grid-template-columns: 1fr;
   grid-template-areas: " header " " hero   " " main   " " footer ";
 }
@@ -323,13 +330,31 @@ button {
 .about-page,
 .news-page,
 .contact-page {
-  grid-template-rows: 8svh 1fr 8svh;
+  grid-template-rows: 80px 1fr 80px;
+}
+@media screen and (max-width: 768px) {
+  .about-page,
+  .news-page,
+  .contact-page {
+    grid-template-rows: 80px 1fr 110px;
+  }
+}
+.about-page,
+.news-page,
+.contact-page {
   grid-template-columns: 1fr;
   grid-template-areas: " header " " main   " " footer ";
 }
 
 .recruit-page {
-  grid-template-rows: 8svh 1fr 8svh;
+  grid-template-rows: 80px 1fr 80px;
+}
+@media screen and (max-width: 768px) {
+  .recruit-page {
+    grid-template-rows: 80px 1fr 110px;
+  }
+}
+.recruit-page {
   grid-template-columns: 1fr;
   grid-template-areas: " header " " main   " " footer ";
 }
@@ -338,7 +363,14 @@ button {
 }
 
 .other-page {
-  grid-template-rows: 8svh 1fr 8svh;
+  grid-template-rows: 80px 1fr 80px;
+}
+@media screen and (max-width: 768px) {
+  .other-page {
+    grid-template-rows: 80px 1fr 110px;
+  }
+}
+.other-page {
   grid-template-columns: 1fr clamp(240px, 20vw, 20vw);
   grid-template-areas: " header header  " " main   sidebar " " footer footer  ";
 }
@@ -354,6 +386,13 @@ button {
   display: flex;
   align-items: center;
   gap: 1svw;
+}
+@media screen and (max-width: 576px) {
+  .l-header > .site-logo-field {
+    gap: 2svw;
+  }
+}
+.l-header > .site-logo-field {
   width: -moz-fit-content;
   width: fit-content;
   height: 100%;
@@ -366,14 +405,30 @@ button {
 .l-header > .site-logo-field > a > .site-name {
   font-size: 1.5rem;
 }
+@media screen and (max-width: 576px) {
+  .l-header > .site-logo-field > a > .site-name {
+    font-size: 1.25rem;
+  }
+}
 .l-header > .global-nav {
   color: #fff;
   margin-inline-end: calc(8svw + 64px);
   margin-inline-end: 10svw;
 }
+@media screen and (max-width: 1200px) {
+  .l-header > .global-nav {
+    margin-inline-end: 12svw;
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .l-header > .global-nav {
+    display: none;
+  }
+}
 .l-header > .global-nav > ul[class=nav-link-field] {
   display: flex;
-  gap: 2svw;
+  gap: 1.8svw;
   list-style: none;
   padding-inline-start: 0;
 }
@@ -476,7 +531,7 @@ button {
 }
 .l-footer__copy {
   color: #fff;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .l-sidebar {
@@ -1766,13 +1821,13 @@ dialog {
   margin-bottom: 20px;
   padding: 0 20px 0 10px;
 }
-.p-about__highlight-card .stats-number {
+.p-about__highlight-card .status-number {
   font-size: 2.5rem;
   font-weight: bold;
   color: #333;
   white-space: nowrap;
 }
-.p-about__highlight-card .stats-number span {
+.p-about__highlight-card .status-number span {
   font-size: 1rem;
   margin-left: 4px;
 }
@@ -1785,24 +1840,24 @@ dialog {
 .p-about__highlight-card--employees h4 {
   width: 100%;
 }
-.p-about__highlight-card--employees .stats-body {
+.p-about__highlight-card--employees .status-body {
   margin: auto;
 }
-.p-about__highlight-card--employees .stats-body .stats-number {
+.p-about__highlight-card--employees .status-body .status-number {
   font-size: 3.5rem;
   margin-right: -16px;
 }
-.p-about__highlight-card--employees .stats-body .stats-number span {
+.p-about__highlight-card--employees .status-body .status-number span {
   font-size: 2rem;
   margin-left: 8px;
 }
-.p-about__highlight-card--performance .stats-grid {
+.p-about__highlight-card--performance .status-grid {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
 }
-.p-about__highlight-card--performance .stats-item {
+.p-about__highlight-card--performance .status-item {
   display: flex;
   flex-direction: column;
   gap: 8px;

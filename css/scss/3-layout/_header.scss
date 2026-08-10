@@ -11,6 +11,9 @@
     display: flex;
     align-items: center;
     gap: 1svw;
+    @include m.mq(sm) {
+      gap: 2svw;
+    }
     width: fit-content;
     height: 100%;
     margin-inline-start: 4svw;
@@ -19,17 +22,27 @@
       display: contents;
       > .site-name {
         font-size: 1.5rem;
+        @include m.mq(sm) {
+          font-size: 1.25rem;
+        }
       }
     }
   }
-  // TODO: ヘッダー・ハンバーガーメニューモーダル・ページ内リンクモーダル
+  
   > .global-nav {
     color: #fff;
     margin-inline-end: calc(8svw + 64px);
     margin-inline-end: 10svw;
+    @include m.mq(lg) {
+      margin-inline-end: 12svw;
+      font-size: 0.9rem;
+    }
+    @include m.mq(md) {
+      display: none;
+    }
     > ul[class='nav-link-field'] {
       display: flex;
-      gap: 2svw;
+      gap: 1.8svw;
       list-style: none;
       padding-inline-start: 0;
       > li[class='nav-item'] {

@@ -357,7 +357,6 @@
     .content-image {
       flex: 1;
       overflow: hidden;
-      // margin-block: 24px;
       margin-right: 20px;
       img {
         transition: all 0.3s ease;
@@ -425,7 +424,7 @@
       margin-bottom: 20px;
       padding: 0 20px 0 10px;
     }
-    .stats-number {
+    .status-number {
       font-size: 2.5rem;
       font-weight: bold;
       color: #333;
@@ -442,9 +441,9 @@
       align-items: center;
       min-width: 360px;
       h4 { width: 100%; }
-      .stats-body {
+      .status-body {
         margin: auto;
-        .stats-number {
+        .status-number {
           font-size: 3.5rem;
           margin-right: -16px;
           span { font-size: 2rem; margin-left: 8px; }
@@ -453,13 +452,13 @@
     }
     // 業績グラフ
     &--performance {
-      .stats-grid {
+      .status-grid {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 8px;
       }
-      .stats-item {
+      .status-item {
         display: flex;
         flex-direction: column;
         gap: 8px;
