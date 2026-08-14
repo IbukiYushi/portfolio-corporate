@@ -24,6 +24,25 @@ $breakpoints: (
   }
 }
 
+/**
+ * 🛠️ 改修例：$type 引数を追加し、初期値を "max" にしておく
+ * @include m.mq(md, $type: min) { ... }
+ */
+// @mixin mq($breakpoint-name, $type: max) {
+//   $width: map.get($breakpoints, $breakpoint-name);
+  
+//   @if $width {
+//     // $type が min なら min-width、それ以外なら max-width に切り替える
+//     $dir: if($type == min, 'min-width', 'max-width');
+    
+//     @media screen and (#{$dir}: #{$width}) {
+//       @content;
+//     }
+//   } @else {
+//     @error "指定されたブレイクポイント「#{$breakpoint-name}」は定義されていません。";
+//   }
+// }
+
 /**************************************
   インタラクション・ステート制御Mixin
 **************************************/

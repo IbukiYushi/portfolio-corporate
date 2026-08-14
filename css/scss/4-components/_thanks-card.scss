@@ -16,13 +16,18 @@
     font-size: 2rem;
     color: orange;
     margin-bottom: 20px;
+    &--recruit {
+      @include m.mq(sm) { font-size: 1.5rem; }
+    }
     &--contact {
       color: darkorange;
+      @include m.mq(sm) { font-size: 1.25rem; }
     }
   }
 
   &__text {
     font-size: 1.2rem;
+    @include m.mq(sm) { font-size: 1.1rem; }
     line-height: 1.8;
     margin-bottom: 40px;
   }

@@ -1,3 +1,5 @@
+@use "../1-abstracts/mixins" as m;
+
 @keyframes initGlassmorphism {
   from { background: rgba(255, 200, 60, 0.4); filter: blur(1px); }
   to { background: rgba(255, 200, 60, 0.6); filter: blur(0); }
@@ -19,25 +21,63 @@
     padding-block: 20px 40px;
     padding-inline: 40px;
     border-radius: 4px;
+    @include m.mq(lg) {
+      inset: 20% 10%;
+      margin: auto;
+      text-align: center;
+    }
+    @include m.mq(md) {
+      inset: 10% 5%;
+      margin: auto;
+    }
+    @include m.mq(sm) {
+      padding-inline: 20px;
+    }
   }
   &__title {
     font-size: clamp(2.5rem, 3.25svw, 4.0rem);
     color: #333333;
     font-weight: bold;
     line-height: 1.5;
-    padding-block: 40px;
+    padding-block: 60px 40px;
+    @include m.mq(lg) {
+      font-size: clamp(2.0rem, 4.0svw, 2.5rem);
+      padding-block: 80px 0;
+    }
+    @include m.mq(md) {
+      font-size: 2.25rem;
+      padding-block: 120px 0;
+      > span { display: block; }
+    }
+    @include m.mq(sm) {
+      font-size: 1.5rem;
+    }
   }
   &__subtitle {
     font-size: clamp(1.75rem, 2.25svw, 2.75rem);
     color: #555555;
     margin-top: 40px;
+    font-weight: bold;
     line-height: 1.5;
     > span {
       display: block;
       margin-left: 8svw;
       padding-block: 24px;
+      @include m.mq(lg) {
+        font-size: clamp(1.5rem, 2.75svw, 2.5rem);
+        margin-left: 0;
+      }
+      @include m.mq(sm) {
+        font-size: 1.0rem;
+      }
       &:last-of-type {
         margin-left: 10svw;
+        @include m.mq(lg) {
+          margin-left: 0;
+        }
+        @include m.mq(md) {
+          > span { display: block; line-height: 1.7;}
+        }
       }
     }
   }
@@ -48,7 +88,9 @@
     > img {
       height: calc(100svh - 80px);
       width: 100%;
-      // max-width: 100%; // TODO:レスポンシブ対応時
+      @include m.mq(lg) {
+        max-width: 100%;
+      }
       object-fit: cover;
       margin-inline: auto;
       filter: brightness(140%);

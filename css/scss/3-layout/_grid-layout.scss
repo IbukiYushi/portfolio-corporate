@@ -30,7 +30,7 @@
 .about-page,
 .news-page,
 .contact-page {
-  grid-template-rows: 80px 1fr 80px; 
+  grid-template-rows: 80px 1fr 80px;
   @include m.mq(md) {
     grid-template-rows: 80px 1fr 110px;
   }
@@ -42,7 +42,7 @@
 }
 // 3.  下層標準ページ（採用ページ）
 .recruit-page {
-  grid-template-rows: 80px 1fr 80px; 
+  grid-template-rows: 80px 1fr 80px;
   @include m.mq(md) {
     grid-template-rows: 80px 1fr 110px;
   }

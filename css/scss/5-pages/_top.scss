@@ -1,15 +1,21 @@
+@use "../1-abstracts/mixins" as m;
+
 .p-top {
   .section-header {
     text-align: center;
     padding-block: 80px 40px;
+    @include m.mq(lg) { padding-block: 40px 20px; }
+    @include m.mq(md) { padding-block: 40px; }
+    @include m.mq(sm) { padding-bottom: 0; }
     .section-title {
       color: #222222;
       font-size: 2.5rem;
+      @include m.mq(md) { font-size: 2.25rem; }
       letter-spacing: 0.08em;
       &--english {
         color: #aaaaaa;
         opacity: 0.4;
-        font-size: 3.5rem;
+        font-size: clamp(2.5rem, 1rem + 5svw, 3.5rem);
         font-style: italic;
         letter-spacing: 0.18em;
       }
@@ -22,12 +28,22 @@
   &__services {
     padding-block: 0 20px;
     padding-inline: 15svw;
+    @include m.mq(lg) { padding-block: 0 40px; }
+    @include m.mq(md) { padding-inline: 0; }
+    @include m.mq(sm) { padding-block: 0 80px; }
     margin-inline: auto;
+  }
+  &__services-container {
+    @include m.mq(sm) { padding-top: 40px; }
   }
   &__service-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 40px;
+    @include m.mq(lg) {
+      grid-template-columns: none;
+      grid-template-rows: auto 1fr;
+    }
     align-items: center;
     &-body {
       align-self: start;
@@ -36,27 +52,43 @@
     &-title {
       display: flex;
       flex-direction: column;
+      line-height: 1.5;
       span {
         font-size: 1.5rem;
+        @include m.mq(md) {
+          margin-inline: 40px;
+          border-left: 4px solid orange;
+          padding-left: 8px;
+          text-align: center;
+        }
         &.--en {
           font-size: 1.0rem;
           color: #aaaaaa;
           border-left: 4px solid orange;
           padding-left: 8px;
+          @include m.mq(md) { display: none; }
         }
       }
     }
     &-text {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
+      gap: 8px;
       color: #333333;
       padding-block: 40px;
       padding-inline: 16px;
+      line-height: 2.0;
+      @include m.mq(md) { text-align: center; }
     }
     &-btn-field {
-      padding-left: 16px;
       width: fit-content;
+      padding-left: 16px;
+      @include m.mq(lg) {
+        padding-left: 0;
+        padding-bottom: 20px;
+      }
+      @include m.mq(md) { margin-inline: auto; }
       > a {
         display: flex;
         justify-content: center;
@@ -64,8 +96,16 @@
         font-weight: normal;
         font-size: 1rem;
         border-width: 1px;
+        &:hover { 
+          font-weight: bold;
+          @include m.mq(md) {
+            padding-inline: 18px;
+            transition: padding-inline 0.1s ease;
+          }
+        }
         &:hover > svg {
           margin-left: 8px;
+          @include m.mq(md) { margin-left: 0; }
           transition: margin-left 0.2s ease;
         }
       }
@@ -87,12 +127,25 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     column-gap: 40px;
-    border-top: 2px solid #ccc;
+    border-top: 2px solid #555;
     padding-inline: 10svw;
+    @include m.mq(lg) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+    }
+    @include m.mq(sm) {
+      padding-inline: 0;
+    }
     .section-header {
       grid-column: 1 / 2;
       grid-row: 1 / 2;
       text-align: left;
+      @include m.mq(lg) {
+        grid-column: auto;
+        grid-row: auto;
+        order: 1;
+        text-align: center;
+      }
     }
     .news-button-field {
       grid-column: 1 / 2;
@@ -100,12 +153,25 @@
       padding-block: 40px;
       padding-left: 16px;
       width: fit-content;
+      @include m.mq(lg) {
+        grid-column: auto;
+        grid-row: auto;
+        order: 3;
+        margin-inline: auto;
+        padding-left: 0;
+      }
     }
   }
   &__news-container {
     grid-column: 2 / 3;
     grid-row: 1 / 3;
     padding-block: 80px;
+    @include m.mq(lg) {
+      grid-column: auto;
+      grid-row: auto;
+      order: 2;
+      padding-block: 20px;
+    }
   }
   // ニュースリスト（Component層の _news-item.scss 等に将来移設しやすいように独立）
   &__news-list {
@@ -115,6 +181,8 @@
     border-bottom: 2px solid #ccc;
     padding-block: 8px;
     padding-inline: 0 16px;
+    @include m.mq(lg) { padding-inline: 8px; }
+    @include m.mq(md) { padding-inline: 0; }
   }
   &__news-item {
     border-top: 2px solid #ccc;
@@ -128,8 +196,12 @@
   }
   &__news-link {
     display: flex;
-    align-items: center;
     gap: 32px;
+    @include m.mq(md) {
+      flex-flow: column;
+      gap: 20px;
+    }
+    align-items: center;
     padding: 20px;
     width: 100%;
     text-align: left;
@@ -168,27 +240,40 @@
   &__news-title {
     text-wrap: wrap;
     font-weight: bold;
+    @include m.mq(md) { text-align: center; }
   }
 
   // ----------------------------------------------------
   // CONTACT セクション
   // ----------------------------------------------------
   &__contact {
-    border-top: 2px solid #ccc;
+    border-top: 2px solid #555;
     margin-bottom: 80px;
+    @include m.mq(lg) { margin-bottom: 60px; }
     overflow: hidden;
   }
   &__contact-card {
     display: flex;
     background: #ffffff;
     backdrop-filter: blur(10px);
-    box-shadow: 0 12px 20px rgba(41, 40, 38, 0.15);
+    box-shadow: 0 12px 20px -8px rgba(41, 40, 38, 0.15);
     padding-block: 40px 80px;
+    margin-bottom: 20px;
+    @include m.mq(lg) {
+      flex-flow: column;
+      background: none;
+      box-shadow: none;
+      padding-block: 0;
+      margin-bottom: 0;
+    }
     &-main {
       flex: 1;
+      padding-inline: 10px;
+      @include m.mq(lg) { background: #ffffff; }
       .map-container {
-        width: max(330px, 80%);
+        width: max(260px, 80%);
         height: 400px;
+        @include m.mq(md) { height: 200px; }
         box-shadow: 0 8px 12px rgba(41, 40, 38, 0.15);
         margin: 20px auto;
         iframe {
@@ -199,6 +284,7 @@
       .address-info {
         color: #333;
         width: max(330px, 80%);
+        @include m.mq(lg) { width: fit-content; }
         margin-inline: auto;
         .address {
           display: flex;
@@ -208,9 +294,14 @@
           margin-bottom: 8px;
           .zip-code { font-size: 0.8rem; }
           .address-text { font-size: 1.1rem; font-weight: bold; }
+          @include m.mq(sm) { align-items: center; }
         }
         .tel {
           margin-left: 8px;
+          @include m.mq(lg) {
+            margin-left: 0;
+            text-align: center;
+          }
           a {
             display: inline-block;
             background: inherit;
@@ -222,8 +313,13 @@
         }
       }
     }
+
     &-recruit {
       flex: 1;
+      @include m.mq(lg) {
+        background: #cccccc;
+        padding-block: 40px 20px;
+      }
       .sub-header {
         color: #aaaaaa;
         opacity: 0.4;
@@ -234,11 +330,25 @@
         text-align: right;
         margin-top: 136px;
         margin-inline: auto 7.5%;
+        @include m.mq(lg) {
+          color: #ffffff;
+          opacity: 1;
+          text-align: center;
+          margin-top: 0;
+          margin-inline: auto;
+        }
+        @include m.mq(sm) { font-size: 2.25rem; letter-spacing: 0;}
       }
     }
     &-btn-field {
       position: relative;
       margin-top: 40px;
+      @include m.mq(lg) {
+        margin-block: 20px;
+      }
+      @include m.mq(sm) {
+        margin-top: 0;
+      }
       padding-block: 20px;
       isolation: isolate;
       a {
@@ -253,9 +363,12 @@
         height: 84px;
         z-index: -1;
         background: #ccc;
+        @include m.mq(lg) { content: none; }
       }
       &--main {
-        a { margin-inline: auto; }
+        a {
+          margin-inline: auto;
+        }
         &::before {
           left: 0;
           width: 135%;
@@ -264,7 +377,12 @@
       }
       &--recruit {
         margin-top: 24px;
-        a { margin-inline: auto 20%; }
+        @include m.mq(lg) { margin-top: 20px; }
+        @include m.mq(sm) { margin-top: 0; }
+        a {
+          margin-inline: auto 20%;
+          @include m.mq(lg) { margin-inline: auto; }
+        }
         &::before {
           right: 0;
           width: 105%;
@@ -280,4 +398,14 @@
   height: 1px;
   background: #aaaaaa;
   margin-block: 8px;
+  &__services {
+    @include m.mq(lg) { margin-block: 40px; }
+  }
+  &__contact {
+    display: none;
+    @include m.mq(lg) {
+      display: block;
+      margin-block: 10px;
+    }
+  }
 }
