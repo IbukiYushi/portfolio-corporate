@@ -15,7 +15,7 @@
       &--english {
         color: #aaaaaa;
         opacity: 0.4;
-        font-size: clamp(2.5rem, 1rem + 5svw, 3.5rem);
+        font-size: clamp(2.5rem, 5svw + 1rem, 3.5rem);
         font-style: italic;
         letter-spacing: 0.18em;
       }

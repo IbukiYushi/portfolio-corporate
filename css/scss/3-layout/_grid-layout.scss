@@ -40,6 +40,11 @@
     " main   "
     " footer ";
 }
+.about-page {
+  .l-main {
+    @include m.mq(sm) { padding: 10px; }
+  }
+}
 // 3.  下層標準ページ（採用ページ）
 .recruit-page {
   grid-template-rows: 80px 1fr 80px;
