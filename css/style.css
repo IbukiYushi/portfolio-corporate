@@ -3685,6 +3685,7 @@ dialog {
 }
 @media screen and (max-width: 576px) {
   .p-recruit__form .form-card .form-button-field button {
+    font-size: 1.2rem;
     padding-inline: 16px;
   }
 }
