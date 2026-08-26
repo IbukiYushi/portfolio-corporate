@@ -236,6 +236,14 @@ const entryThanksMessageButton = () => {
   const thanksMessageButton = thanksMessage.querySelector('.js-recruit-back-btn');
   const selectedJobInput = entryForm.querySelector('.js-selected-job');
   if (!submitBtn || !thanksMessageButton || !selectedJobInput) return;
+
+  const mediaQuery = window.matchMedia('(max-width: 1200px)');
+  const updateFormDisplay = (e) => {
+    if (entryForm.style.display === 'none' || entryForm.style.display === '') return;
+    entryForm.style.display = e.matches ? 'contents' : 'block';
+  };
+  mediaQuery.addEventListener('change', updateFormDisplay);
+
   thanksMessageButton.addEventListener('click', () => {
     // サンクスメッセージがフェードアウト&フォームがフェードイン
     (function showEntryForm() {
@@ -245,7 +253,7 @@ const entryThanksMessageButton = () => {
       setTimeout(() => {
         // フォーム表示による切り替え
         thanksMessage.style.display = 'none';
-        entryForm.style.display = 'block';
+        entryForm.style.display = mediaQuery.matches ? 'contents' : 'block';
         entryForm.style.opacity = '1';
         // フォーム値リセット
         const currentJob = selectedJobInput.value;
