@@ -177,6 +177,7 @@ dialog {
           padding-inline-start: 0;
           > li[class='nav-item'] {
             padding-block: 16px;
+            @include m.mq(sm) { padding-block: 8px; }
           }
         }
       }

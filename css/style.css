@@ -1115,6 +1115,11 @@ dialog {
 .c-modal--hamburger .c-modal__detail-inner > .global-nav > ul[class=nav-link-field] > li[class=nav-item] {
   padding-block: 16px;
 }
+@media screen and (max-width: 576px) {
+  .c-modal--hamburger .c-modal__detail-inner > .global-nav > ul[class=nav-link-field] > li[class=nav-item] {
+    padding-block: 8px;
+  }
+}
 
 .c-pagination {
   width: 100%;
