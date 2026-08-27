@@ -366,7 +366,7 @@
           background: orange;
           @include m.mq(sm) {
             font-size: 1.1rem;
-            padding-inline: 16px;
+            padding-inline: 8px;
           }
         }
       }

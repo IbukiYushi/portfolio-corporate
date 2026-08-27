@@ -943,6 +943,16 @@ button {
     transform: translateX(0);
   }
 }
+@keyframes slideInLeftCardSm {
+  from {
+    opacity: 0;
+    transform: translateX(8svw);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 dialog {
   padding: 0;
   border: none;
@@ -1094,6 +1104,11 @@ dialog {
   margin-inline-end: 6svw;
   animation: slideInLeftCard 0.4s ease-out forwards;
 }
+@media screen and (max-width: 576px) {
+  .c-modal--hamburger .c-modal__card {
+    animation: slideInLeftCardSm 0.4s ease-out forwards;
+  }
+}
 .c-modal--hamburger .c-modal__header {
   min-height: 40px;
 }
@@ -1105,7 +1120,7 @@ dialog {
   padding: 0;
   border: none;
   background: white;
-  margin-block: 0 32px;
+  padding-bottom: 32px;
   margin-inline: 32px;
 }
 .c-modal--hamburger .c-modal__detail-inner > .global-nav > ul[class=nav-link-field] {
@@ -1117,7 +1132,7 @@ dialog {
 }
 @media screen and (max-width: 576px) {
   .c-modal--hamburger .c-modal__detail-inner > .global-nav > ul[class=nav-link-field] > li[class=nav-item] {
-    padding-block: 16px;
+    padding-block: 8px;
   }
 }
 
@@ -3686,7 +3701,7 @@ dialog {
 @media screen and (max-width: 576px) {
   .p-recruit__form .form-card .form-button-field button {
     font-size: 1.1rem;
-    padding-inline: 16px;
+    padding-inline: 8px;
   }
 }
 
