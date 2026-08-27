@@ -365,7 +365,7 @@
           color: #222;
           background: orange;
           @include m.mq(sm) {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             padding-inline: 16px;
           }
         }
