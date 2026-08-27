@@ -28,8 +28,8 @@ dialog {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    width: 100svw;
-    height: 100svh;
+    width: 100dvw;
+    height: 100dvh;
     z-index: 1000;
     background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(4px);
@@ -142,8 +142,8 @@ dialog {
       flex-direction: column;
       justify-content: start;
       align-items: center;
-      width: 100svw;
-      height: 100svh;
+      width: 100dvw;
+      height: 100dvh;
       z-index: 1000;
       background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(4px);
@@ -177,7 +177,7 @@ dialog {
           padding-inline-start: 0;
           > li[class='nav-item'] {
             padding-block: 16px;
-            @include m.mq(sm) { padding-block: 8px; }
+            @include m.mq(sm) { padding-block: 16px; }
           }
         }
       }

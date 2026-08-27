@@ -486,7 +486,7 @@ button {
 .l-hero {
   position: relative;
   width: 100%;
-  height: calc(100svh - 80px);
+  height: calc(100dvh - 80px);
   overflow: hidden;
 }
 .l-hero__text {
@@ -587,7 +587,7 @@ button {
   height: 100%;
 }
 .l-hero__image > img {
-  height: calc(100svh - 80px);
+  height: calc(100dvh - 80px);
   width: 100%;
 }
 @media screen and (max-width: 1200px) {
@@ -957,8 +957,8 @@ dialog {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 100svw;
-  height: 100svh;
+  width: 100dvw;
+  height: 100dvh;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(4px);
@@ -1082,8 +1082,8 @@ dialog {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 100svw;
-  height: 100svh;
+  width: 100dvw;
+  height: 100dvh;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(4px);
@@ -1117,7 +1117,7 @@ dialog {
 }
 @media screen and (max-width: 576px) {
   .c-modal--hamburger .c-modal__detail-inner > .global-nav > ul[class=nav-link-field] > li[class=nav-item] {
-    padding-block: 8px;
+    padding-block: 16px;
   }
 }
 
