@@ -486,7 +486,7 @@ button {
 .l-hero {
   position: relative;
   width: 100%;
-  height: calc(100dvh - 80px);
+  height: calc(100svh - 80px);
   overflow: hidden;
 }
 .l-hero__text {
@@ -587,7 +587,7 @@ button {
   height: 100%;
 }
 .l-hero__image > img {
-  height: calc(100dvh - 80px);
+  height: calc(100svh - 80px);
   width: 100%;
 }
 @media screen and (max-width: 1200px) {
@@ -802,7 +802,7 @@ button {
 
 .c-inpage-nav {
   position: fixed;
-  inset: 65svh auto auto 0;
+  inset: 60svh auto auto 0;
   display: flex;
   flex-direction: row-reverse;
   justify-content: start;
@@ -967,7 +967,7 @@ dialog {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 100dvw;
+  width: 100svw;
   height: 100dvh;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.75);
@@ -1092,7 +1092,7 @@ dialog {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 100dvw;
+  width: 100svw;
   height: 100dvh;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.75);
@@ -1221,6 +1221,11 @@ dialog {
 .c-thanks-card__content--recruit {
   width: 50svw;
 }
+@media screen and (max-width: 1200px) {
+  .c-thanks-card__content--recruit {
+    width: 100%;
+  }
+}
 .c-thanks-card__title {
   font-size: 2rem;
   color: orange;
@@ -1229,6 +1234,11 @@ dialog {
 @media screen and (max-width: 576px) {
   .c-thanks-card__title--recruit {
     font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .c-thanks-card__title--recruit span {
+    display: block;
   }
 }
 .c-thanks-card__title--contact {
@@ -1251,8 +1261,16 @@ dialog {
   line-height: 1.8;
   margin-bottom: 40px;
 }
+.c-thanks-card__text span {
+  display: block;
+}
 .c-thanks-card__action-btn {
   margin-inline: auto;
+}
+@media screen and (max-width: 576px) {
+  .c-thanks-card__action-btn--recruit {
+    font-size: 1.1rem;
+  }
 }
 .c-thanks-card__action-btn--contact:active {
   color: #444444;

@@ -9,6 +9,7 @@
   &__content {
     &--recruit {
       width: 50svw;
+      @include m.mq(lg) { width: 100%; }
     }
   }
 
@@ -18,6 +19,7 @@
     margin-bottom: 20px;
     &--recruit {
       @include m.mq(sm) { font-size: 1.5rem; }
+      span { @include m.mq(md) { display: block; }}
     }
     &--contact {
       color: darkorange;
@@ -30,10 +32,16 @@
     @include m.mq(sm) { font-size: 1.1rem; }
     line-height: 1.8;
     margin-bottom: 40px;
+    span { display: block; }
   }
 
   &__action-btn {
     margin-inline: auto;
+    &--recruit {
+      @include m.mq(sm) {
+        font-size: 1.1rem;
+      }
+    }
     &--contact {
       @include m.active-state (
         $color: #444444,

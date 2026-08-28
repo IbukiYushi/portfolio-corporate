@@ -8,7 +8,7 @@
 .l-hero {
   position: relative;
   width: 100%;
-  height: calc(100dvh - 80px);
+  height: calc(100svh - 80px);
   overflow: hidden;
 // テキストエリア
   &__text {
@@ -86,7 +86,7 @@
     width: 100%;
     height: 100%;
     > img {
-      height: calc(100dvh - 80px);
+      height: calc(100svh - 80px);
       width: 100%;
       @include m.mq(lg) {
         max-width: 100%;
