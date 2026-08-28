@@ -2193,6 +2193,7 @@ dialog {
 @media screen and (max-width: 576px) {
   .p-about__greeting .employees-message {
     font-size: 1rem;
+    text-align: center;
   }
 }
 .p-about__greeting .signature {

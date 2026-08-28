@@ -274,6 +274,7 @@
       }
       @include m.mq(sm) {
         font-size: 1.0rem;
+        text-align: center;
       }
     }
     .signature {
