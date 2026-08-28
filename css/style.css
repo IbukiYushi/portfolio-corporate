@@ -988,6 +988,11 @@ dialog {
     width: 90%;
   }
 }
+@media screen and (max-width: 576px) {
+  .c-modal__card--news {
+    margin-block: 8svh auto;
+  }
+}
 .c-modal__header {
   position: relative;
 }
