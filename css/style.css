@@ -491,7 +491,7 @@ button {
 }
 .l-hero__text {
   position: absolute;
-  inset: 15% 20% 25% 10%;
+  inset: 15% 20% 20% 10%;
   z-index: 2;
   text-align: left;
   background: rgba(255, 200, 60, 0.6);
@@ -533,7 +533,7 @@ button {
 }
 @media screen and (max-width: 768px) {
   .l-hero__title {
-    font-size: 2.25rem;
+    font-size: 2.2rem;
     padding-block: 120px 0;
   }
   .l-hero__title > span {
@@ -543,10 +543,11 @@ button {
 @media screen and (max-width: 576px) {
   .l-hero__title {
     font-size: 1.5rem;
+    padding-block: 10svh 0;
   }
 }
 .l-hero__subtitle {
-  font-size: clamp(1.75rem, 2.25svw, 2.75rem);
+  font-size: clamp(1.675rem, 2.2svw, 2.75rem);
   color: #555555;
   margin-top: 40px;
   font-weight: bold;
@@ -559,8 +560,14 @@ button {
 }
 @media screen and (max-width: 1200px) {
   .l-hero__subtitle > span {
-    font-size: clamp(1.5rem, 2.75svw, 2.5rem);
+    font-size: clamp(1.25rem, 2.75svw, 2.5rem);
     margin-left: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .l-hero__subtitle > span {
+    font-size: 1.5rem;
+    padding-bottom: 0;
   }
 }
 @media screen and (max-width: 576px) {
@@ -569,6 +576,10 @@ button {
   }
 }
 .l-hero__subtitle > span:last-of-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin-left: 10svw;
 }
 @media screen and (max-width: 1200px) {
@@ -577,9 +588,16 @@ button {
   }
 }
 @media screen and (max-width: 768px) {
+  .l-hero__subtitle > span:last-of-type {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
   .l-hero__subtitle > span:last-of-type > span {
     display: block;
-    line-height: 1.7;
+  }
+  .l-hero__subtitle > span:last-of-type > span:last-of-type {
+    padding-top: 24px;
   }
 }
 .l-hero__image {

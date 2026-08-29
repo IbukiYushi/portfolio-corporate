@@ -13,7 +13,7 @@
 // テキストエリア
   &__text {
     position: absolute;
-    inset: 15% 20% 25% 10%;
+    inset: 15% 20% 20% 10%;
     z-index: 2;
     text-align: left;
     background: rgba(255, 200, 60, 0.6);
@@ -45,16 +45,17 @@
       padding-block: 80px 0;
     }
     @include m.mq(md) {
-      font-size: 2.25rem;
+      font-size: 2.2rem;
       padding-block: 120px 0;
       > span { display: block; }
     }
     @include m.mq(sm) {
       font-size: 1.5rem;
+      padding-block: 10svh 0;
     }
   }
   &__subtitle {
-    font-size: clamp(1.75rem, 2.25svw, 2.75rem);
+    font-size: clamp(1.675rem, 2.2svw, 2.75rem);
     color: #555555;
     margin-top: 40px;
     font-weight: bold;
@@ -64,19 +65,29 @@
       margin-left: 8svw;
       padding-block: 24px;
       @include m.mq(lg) {
-        font-size: clamp(1.5rem, 2.75svw, 2.5rem);
+        font-size: clamp(1.25rem, 2.75svw, 2.5rem);
         margin-left: 0;
       }
-      @include m.mq(sm) {
-        font-size: 1.0rem;
+      @include m.mq(md) {
+        font-size: 1.5rem;
+        padding-bottom: 0;
       }
+      @include m.mq(sm) { font-size: 1.0rem; }
       &:last-of-type {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
         margin-left: 10svw;
         @include m.mq(lg) {
           margin-left: 0;
         }
-        @include m.mq(md) {
-          > span { display: block; line-height: 1.7;}
+        @include m.mq(md) { display: block; }
+        > span {
+          @include m.mq(md) {
+            display: block;
+            &:last-of-type { padding-top: 24px; }
+          }
         }
       }
     }
