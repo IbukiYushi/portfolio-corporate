@@ -46,11 +46,13 @@ dialog {
     background: #fff;
     width: max(576px, 40svw);
     height: auto;
+    min-height: 368px;
     margin-block: 16svh auto;
     margin-inline: auto;
     border-radius: 8px;
     animation: slideInDownCard 0.8s ease-out forwards;
     @include m.mq(md) { width: 90%; }
+    @include m.mq(sm) { min-height: 0; }
     &--news { @include m.mq(sm) { margin-block: 8svh auto; } }
   }
   &__header {
@@ -119,7 +121,7 @@ dialog {
   &__detail-inner {
     white-space: pre-wrap;
     min-height: 20svh;
-    max-height: 40svh;
+    max-height: 368px;
     overflow-y: auto;
     padding-block: 16px 48px;
     padding-inline: 8px 16px;
@@ -175,15 +177,14 @@ dialog {
       border: none;
       background: white;
       padding-bottom: 32px;
-      margin-inline: 32px;
-      // TODO: ヘッダー・ハンバーガーメニューモーダル・ページ内リンクモーダル
+      margin-left: 32px;
       > .global-nav {
         > ul[class='nav-link-field'] {
           list-style: none;
           padding-inline-start: 0;
           > li[class='nav-item'] {
             padding-block: 16px;
-            @include m.mq(sm) { padding-block: 8px; }
+            @include m.mq(sm) { padding-block: 12px; }
           }
         }
       }
