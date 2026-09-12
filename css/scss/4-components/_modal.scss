@@ -53,7 +53,10 @@ dialog {
     animation: slideInDownCard 0.8s ease-out forwards;
     @include m.mq(md) { width: 90%; }
     @include m.mq(sm) { min-height: 0; }
-    &--news { @include m.mq(sm) { margin-block: 8svh auto; } }
+    &--news {
+      @include m.mq(sm) { margin-block: 8svh auto; }
+      .c-modal__detail-inner { @include m.mq(sm) { max-height: 40dvh; } }
+    }
   }
   &__header {
     position: relative;

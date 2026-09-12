@@ -1017,6 +1017,11 @@ dialog {
     margin-block: 8svh auto;
   }
 }
+@media screen and (max-width: 576px) {
+  .c-modal__card--news .c-modal__detail-inner {
+    max-height: 40dvh;
+  }
+}
 .c-modal__header {
   position: relative;
 }
